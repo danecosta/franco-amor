@@ -1,0 +1,34 @@
+main {
+    /* The image used */
+  background-color: #cccccc;
+  background-image: url("../../assets/img/francoAmor/francoamorsite2.jpg");
+
+  /* Full height */
+  height: -moz-calc(100% - 80px);
+  height: -webkit-calc(100% - 80px);
+  height: calc(100% - 80px);
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.icon-card-home{
+  font-size:35px;
+}
+
+.titulo-card-home{
+  font-size: 18px;
+}
+
+.btn-card-home{
+  border-radius: 50px;
+  width: 20em;
+  height: 20em;
+  padding-top: 7.5em;
+
+  &:not(:last-child) {
+    margin-right: 5rem;
+  }
+}
