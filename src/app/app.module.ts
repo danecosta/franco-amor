@@ -6,26 +6,48 @@ import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app.routing';
 
 import { AppComponent } from './app.component';
-import { SignupComponent } from './signup/signup.component';
-import { LandingComponent } from './landing/landing.component';
-import { ProfileComponent } from './profile/profile.component';
-import { NavbarComponent } from './shared/navbar/navbar.component';
+import { ListarInstituicaoComponent } from './admin/listar-instituicao/listar-instituicao.component';
+import { ListarPostagemComponent } from './admin/listar-postagem/listar-postagem.component';
+import { ListarProdutoComponent } from './admin/listar-produto/listar-produto.component';
+import { ListarVoluntarioComponent } from './admin/listar-voluntario/listar-voluntario.component';
+import { ManterInstituicaoComponent } from './admin/manter-instituicao/manter-instituicao.component';
+import { ManterPostagemComponent } from './admin/manter-postagem/manter-postagem.component';
+import { ManterProdutoComponent } from './admin/manter-produto/manter-produto.component';
+import { ManterVoluntarioComponent } from './admin/manter-voluntario/manter-voluntario.component';
+import { LoginComponent } from './auth/login/login.component';
+import { SignupComponent } from './auth/signup/signup.component';
 import { FooterComponent } from './shared/footer/footer.component';
+import { NavbarComponent } from './shared/navbar/navbar.component';
+import { ContatoComponent } from './site/contato/contato.component';
+import { HomeModule } from './site/home/home.module';
+import { HomeAdminComponent } from './admin/home-admin/home-admin.component';
+import { DoacaoComponent } from './site/doacao/doacao.component';
+import { ProcuroAjudaComponent } from './site/procuro-ajuda/procuro-ajuda.component';
+import { QueroAjudarComponent } from './site/quero-ajudar/quero-ajudar.component';
+import { SobreNosComponent } from './site/sobre-nos/sobre-nos.component';
 
-import { HomeModule } from './home/home.module';
-import { LoginComponent } from './login/login.component';
-import { ContatoComponent } from './contato/contato.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SignupComponent,
-    LandingComponent,
-    ProfileComponent,
+    SobreNosComponent,
     NavbarComponent,
     FooterComponent,
     LoginComponent,
-    ContatoComponent
+    ContatoComponent,
+    ManterInstituicaoComponent,
+    ManterPostagemComponent,
+    ManterVoluntarioComponent,
+    ManterProdutoComponent,
+    ListarProdutoComponent,
+    ListarVoluntarioComponent,
+    ListarPostagemComponent,
+    ListarInstituicaoComponent,
+    HomeAdminComponent,
+    QueroAjudarComponent,
+    ProcuroAjudaComponent,
+    DoacaoComponent
   ],
   imports: [
     BrowserModule,

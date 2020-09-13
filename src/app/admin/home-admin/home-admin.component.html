@@ -1,0 +1,30 @@
+<main class="main-admin">
+    <section class="section section-shaped"> </section>
+
+    <section class="section section-shaped bg-secondary">
+        <div class="container">
+            <ngb-tabset [justify]="'center'" class="custom-tab-content flex-column flex-md-row" type="pills">
+                <ngb-tab title="Instituições">
+                    <ng-template ngbTabContent>
+                        <app-listar-instituicao></app-listar-instituicao>
+                    </ng-template>
+                </ngb-tab>
+                <ngb-tab title="Voluntários">
+                    <ng-template ngbTabContent>
+                        <app-listar-voluntario></app-listar-voluntario>
+                    </ng-template>
+                </ngb-tab>
+                <ngb-tab title="Postagens">
+                    <ng-template ngbTabContent>
+                        <app-listar-postagem></app-listar-postagem>
+                    </ng-template>
+                </ngb-tab>
+                <ngb-tab title="Produtos">
+                    <ng-template ngbTabContent>
+                        <app-listar-produto></app-listar-produto>
+                    </ng-template>
+                </ngb-tab>
+            </ngb-tabset>
+        </div>
+    </section>
+</main>

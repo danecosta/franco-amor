@@ -1,0 +1,23 @@
+<section class="section section-shaped bg-secondary">
+    <div class="container">
+        <button type="button" class="btn btn-outline-success btnNovo">Cadastrar voluntário</button>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">Nome</th>
+                    <th scope="col">CPF</th>
+                    <th scope="col">E-mail</th>
+                    <th scope="col">Whatsapp</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of voluntarios">
+                    <td>{{item?.nome}}</td>
+                    <td>{{item?.cpf}}</td>
+                    <td>{{item?.email}}</td>
+                    <td>{{item?.whatsapp}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</section>

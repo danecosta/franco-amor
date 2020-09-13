@@ -1,0 +1,21 @@
+<section class="section section-shaped bg-secondary">
+    <div class="container">
+        <button type="button" class="btn btn-outline-success btnNovo">Cadastrar postagem</button>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">Título</th>
+                    <th scope="col">Autor</th>
+                    <th scope="col">Data</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of postagens">
+                    <td>{{item?.titulo}}</td>
+                    <td>{{item?.autor}}</td>
+                    <td>{{item?.data}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</section>

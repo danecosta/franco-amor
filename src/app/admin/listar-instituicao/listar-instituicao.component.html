@@ -1,0 +1,23 @@
+<section class="section section-shaped bg-secondary">
+    <div class="container">
+        <button type="button" class="btn btn-outline-success btnNovo">Cadastrar instituição</button>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">Nome</th>
+                    <th scope="col">CNPJ</th>
+                    <th scope="col">E-mail</th>
+                    <th scope="col">Telefone</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of instituicoes">
+                    <td>{{item?.nome}}</td>
+                    <td>{{item?.cnpj}}</td>
+                    <td>{{item?.email}}</td>
+                    <td>{{item?.telefone}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</section>

@@ -4,3 +4,23 @@ html,body {
     padding:0;
     margin:0;
 }
+
+.main-site{
+   /* The image used */
+   background-color: #cccccc;
+   background-image: url("assets/img/francoAmor/francoamorsite2.jpg");
+ 
+   /* Center and scale the image nicely */
+   background-position: center;
+   background-repeat: no-repeat;
+   background-size: cover;
+}
+
+.main-admin{
+    background-color: #1da1f2;
+}
+
+.btnNovo{
+    float: right;
+    margin-bottom: 1em;
+}

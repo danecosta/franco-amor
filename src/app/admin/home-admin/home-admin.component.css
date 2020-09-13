@@ -1,0 +1,5 @@
+::ng-deep .nav-pills .nav-link.active, 
+::ng-deep .nav-pills .show > .nav-link {
+    color: #fff;
+    background-color: #1da1f2;
+}
