@@ -7,9 +7,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ManterInstituicaoComponent implements OnInit {
 
+  model: any;
   constructor() { }
 
   ngOnInit(): void {
   }
+
+  voltar() {
+    history.back();
+  }
+
+  salvar() { }
 
 }

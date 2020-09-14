@@ -12,4 +12,9 @@ export class ManterPresencialComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  voltar() {
+    history.back();
+  }
+
+  salvar() { }
 }

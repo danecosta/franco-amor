@@ -12,4 +12,10 @@ export class ManterProdutoComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  voltar() {
+    history.back();
+  }
+
+  salvar() { }
+
 }

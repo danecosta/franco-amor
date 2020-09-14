@@ -24,3 +24,11 @@ html,body {
     float: right;
     margin-bottom: 1em;
 }
+
+.btnVoltar{
+    float: left;
+}
+
+.btnSalvar{
+    float: right;
+}

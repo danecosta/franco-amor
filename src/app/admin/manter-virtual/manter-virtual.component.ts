@@ -12,4 +12,9 @@ export class ManterVirtualComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  voltar() {
+    history.back();
+  }
+
+  salvar() { }
 }

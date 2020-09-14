@@ -12,4 +12,9 @@ export class ManterVoluntarioComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  voltar() {
+    history.back();
+  }
+
+  salvar() { }
 }

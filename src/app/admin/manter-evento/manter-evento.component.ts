@@ -12,4 +12,9 @@ export class ManterEventoComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  voltar() {
+    history.back();
+  }
+
+  salvar() { }
 }

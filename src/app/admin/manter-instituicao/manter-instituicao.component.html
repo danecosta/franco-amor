@@ -4,6 +4,222 @@
     <section class="section section-shaped bg-secondary">
         <div class="container pt-lg-md">
             <h3>Manter Instituição</h3>
+            <hr>
+            <form>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>Nome</label>
+                            <input type="text" class="form-control" id="nome" placeholder="Nome da instituição">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Telefone</label>
+                            <input type="text" class="form-control" id="telefone" placeholder="Telefone de contato">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>E-mail</label>
+                            <input type="text" class="form-control" id="email" placeholder="E-mail de contato">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Representante 1</label>
+                            <input type="text" class="form-control" id="nomerep1" placeholder="Nome do representante">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>CPF</label>
+                            <input type="text" class="form-control" id="cpfrep1" placeholder="Cpf do representante">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Representante 2</label>
+                            <input type="text" class="form-control" id="nomerep2" placeholder="Nome do representante">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>CPF</label>
+                            <input type="text" class="form-control" id="cpfrep2" placeholder="Cpf do representante">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <label>Tipo de empresa</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="input-group">
+                            <div class="custom-control custom-radio mb-3">
+                                <input name="tipoEmpresa" class="custom-control-input" id="associacao" type="radio">
+                                <label class="custom-control-label" for="customRadio5">Associação</label>
+                            </div>
+                            <div class="custom-control custom-radio mb-3">
+                                <input name="tipoEmpresa" class="custom-control-input" id="mei" type="radio">
+                                <label class="custom-control-label" for="customRadio5">MEI</label>
+                            </div>
+                            <div class="custom-control custom-radio mb-3">
+                                <input name="tipoEmpresa" class="custom-control-input" id="eireli" type="radio">
+                                <label class="custom-control-label" for="customRadio5">EIRELI</label>
+                            </div>
+                            <div class="custom-control custom-radio mb-3">
+                                <input name="tipoEmpresa" class="custom-control-input" id="ltda" type="radio">
+                                <label class="custom-control-label" for="customRadio5">Ltda</label>
+                            </div>
+                            <div class="custom-control custom-radio mb-3">
+                                <input name="tipoEmpresa" class="custom-control-input" id="fundacao" type="radio">
+                                <label class="custom-control-label" for="customRadio5">Fundação</label>
+                            </div>
+                            <div class="custom-control custom-radio mb-3">
+                                <input name="tipoEmpresa" class="custom-control-input" id="outro" type="radio">
+                                <label class="custom-control-label" for="customRadio5">Outro</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>CNPJ</label>
+                            <input type="text" class="form-control" id="cnpj" placeholder="CNPJ da instituição">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Data de Fundação</label>
+                            <div class="input-group input-group-alternative">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
+                                </div>
+                                <input class="form-control datepicker" placeholder="Data de fundação" name="dp"
+                                    [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker" (click)="d.toggle()"
+                                    type="text" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>CRP</label>
+                            <input type="text" class="form-control" id="crp" placeholder="CRP, caso possua">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Serviços que atende</label>
+                            <input type="text" class="form-control" id="servicos" placeholder="Serviços que atende">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Especialidade de atendimento</label>
+                            <input type="text" class="form-control" id="especialidade"
+                                placeholder="Especialidade de atendimento, caso possua">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Público alvo</label>
+                            <input type="text" class="form-control" id="especialidade"
+                                placeholder="Público alvo, caso possua">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Twitter</label>
+                            <input type="text" class="form-control" id="twitter" placeholder="Twitter, caso possua">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Instagram</label>
+                            <input type="text" class="form-control" id="instagram" placeholder="Instagram, caso possua">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Pinterest</label>
+                            <input type="text" class="form-control" id="pinterest" placeholder="Pinterest, caso possua">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Facebook</label>
+                            <input type="text" class="form-control" id="facebook" placeholder="Facebook, caso possua">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>LinkedIn</label>
+                            <input type="text" class="form-control" id="linkedIn" placeholder="LinkedIn, caso possua">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Site</label>
+                            <input type="text" class="form-control" id="site" placeholder="Site, caso possua">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>Objetivo da fundação</label>
+                            <textarea class="form-control" id="objetivo" rows="3"
+                                placeholder="Objetivo da fundação"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>Breve história da fundação</label>
+                            <textarea class="form-control" id="historia" rows="3"
+                                placeholder="Breve história da fundação"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <hr>
+                <div class="rodape">
+                    <button type="button" class="btn btn-outline-light btnVoltar" (click)="voltar()">Voltar</button>
+                    <button type="button" class="btn btn-outline-success btnSalvar" (click)="salvar()">Salvar</button>
+                </div>
+            </form>
         </div>
     </section>
 </main>
