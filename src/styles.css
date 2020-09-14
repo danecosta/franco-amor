@@ -20,6 +20,10 @@ html,body {
     background-color: #1da1f2;
 }
 
+.main-blog{
+    background-color: #20c997;
+}
+
 .btnNovo{
     float: right;
     margin-bottom: 1em;

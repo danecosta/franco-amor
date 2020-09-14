@@ -7,7 +7,201 @@
             <hr>
 
             <form>
+                <div class="row" style="margin-bottom: 1em;">
+                    <div class="col-md-6">
+                        <label>Nome</label>
+                        <input type="text" class="form-control" id="nome" placeholder="Nome do atendimento">
+                    </div>
+                </div>
 
+                <div class="row" style="margin-bottom: 1em;">
+                    <div class="col-md-6">
+                        <label>Instituição</label>
+                        <select class="form-control" id="instituicao">
+                            <option>ABC</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <label>Site</label>
+                        <input type="text" class="form-control" id="site" placeholder="Site de atendimento">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <label>Tipo</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="input-group">
+                            <div class="custom-control custom-radio mb-3">
+                                <input name="tipoEmpresa" class="custom-control-input" id="aplicativo" type="radio">
+                                <label class="custom-control-label" for="aplicativo">Aplicativo</label>
+                            </div>
+                            <div class="custom-control custom-radio mb-3">
+                                <input name="tipoEmpresa" class="custom-control-input" id="chat" type="radio">
+                                <label class="custom-control-label" for="chat">Chat</label>
+                            </div>
+                            <div class="custom-control custom-radio mb-3">
+                                <input name="tipoEmpresa" class="custom-control-input" id="site" type="radio">
+                                <label class="custom-control-label" for="site">Site</label>
+                            </div>
+                            <div class="custom-control custom-radio mb-3">
+                                <input name="tipoEmpresa" class="custom-control-input" id="outro" type="radio">
+                                <label class="custom-control-label" for="outro">Outro</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>Horário de Atendimento</label>
+                            <div class="row" style="margin-bottom: 1em;">
+                                <div class="col-md-4">
+                                    <div class="custom-control custom-checkbox mb-3">
+                                        <input class="custom-control-input" id="domingo" type="checkbox">
+                                        <label class="custom-control-label" for="domingo">Domingo</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-8" style="display: inline-flex;">
+                                    <div class="col-md-6">
+                                        <input type="text" class="form-control" id="domingoinicio" placeholder="00:00">
+                                    </div>
+                                    -
+                                    <div class="col-md-6">
+                                        <input type="text" class="form-control" id="domingofim" placeholder="00:00">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row" style="margin-bottom: 1em;">
+                                <div class="col-md-4">
+                                    <div class="custom-control custom-checkbox mb-3">
+                                        <input class="custom-control-input" id="segunda" type="checkbox">
+                                        <label class="custom-control-label" for="segunda">Segunda-feira</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-8" style="display: inline-flex;">
+                                    <div class="col-md-6">
+                                        <input type="text" class="form-control" id="segundainicio" placeholder="00:00">
+                                    </div>
+                                    -
+                                    <div class="col-md-6">
+                                        <input type="text" class="form-control" id="segundafim" placeholder="00:00">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row" style="margin-bottom: 1em;">
+                                <div class="col-md-4">
+                                    <div class="custom-control custom-checkbox mb-3">
+                                        <input class="custom-control-input" id="terca" type="checkbox">
+                                        <label class="custom-control-label" for="terca">Terça-feira</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-8" style="display: inline-flex;">
+                                    <div class="col-md-6">
+                                        <input type="text" class="form-control" id="tercainicio" placeholder="00:00">
+                                    </div>
+                                    -
+                                    <div class="col-md-6">
+                                        <input type="text" class="form-control" id="tercafim" placeholder="00:00">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row" style="margin-bottom: 1em;">
+                                <div class="col-md-4">
+                                    <div class="custom-control custom-checkbox mb-3">
+                                        <input class="custom-control-input" id="quarta" type="checkbox">
+                                        <label class="custom-control-label" for="quarta">Quarta-feira</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-8" style="display: inline-flex;">
+                                    <div class="col-md-6">
+                                        <input type="text" class="form-control" id="quartainicio" placeholder="00:00">
+                                    </div>
+                                    -
+                                    <div class="col-md-6">
+                                        <input type="text" class="form-control" id="quartafim" placeholder="00:00">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row" style="margin-bottom: 1em;">
+                                <div class="col-md-4">
+                                    <div class="custom-control custom-checkbox mb-3">
+                                        <input class="custom-control-input" id="quinta" type="checkbox">
+                                        <label class="custom-control-label" for="quinta">Quinta-feira</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-8" style="display: inline-flex;">
+                                    <div class="col-md-6">
+                                        <input type="text" class="form-control" id="quintainicio" placeholder="00:00">
+                                    </div>
+                                    -
+                                    <div class="col-md-6">
+                                        <input type="text" class="form-control" id="quintafim" placeholder="00:00">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row" style="margin-bottom: 1em;">
+                                <div class="col-md-4">
+                                    <div class="custom-control custom-checkbox mb-3">
+                                        <input class="custom-control-input" id="sexta" type="checkbox">
+                                        <label class="custom-control-label" for="sexta">Sexta-feira</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-8" style="display: inline-flex;">
+                                    <div class="col-md-6">
+                                        <input type="text" class="form-control" id="sextainicio" placeholder="00:00">
+                                    </div>
+                                    -
+                                    <div class="col-md-6">
+                                        <input type="text" class="form-control" id="sextafim" placeholder="00:00">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row" style="margin-bottom: 1em;">
+                                <div class="col-md-4">
+                                    <div class="custom-control custom-checkbox mb-3">
+                                        <input class="custom-control-input" id="sabado" type="checkbox">
+                                        <label class="custom-control-label" for="sabado">Sábado</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-8" style="display: inline-flex;">
+                                    <div class="col-md-6">
+                                        <input type="text" class="form-control" id="sabadoinicio" placeholder="00:00">
+                                    </div>
+                                    -
+                                    <div class="col-md-6">
+                                        <input type="text" class="form-control" id="sabadofim" placeholder="00:00">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row" style="margin-bottom: 1em;">
+                                <div class="col-md-6">
+                                    <label>Valor</label>
+                                    <input type="text" class="form-control" id="valor" placeholder="Valor do atendimento">
+                                </div>
+                                <div class="col-md-6">
+                                    <label>Nº atendimentos mensais</label>
+                                    <input type="text" class="form-control" id="qtdAtendimento" placeholder="Nº de atendimentos/mês">
+                                </div>
+                            </div>            
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Observação</label>
+                                        <textarea class="form-control" id="obs" rows="3"
+                                            placeholder="Observação"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </form>
 
             <hr>
