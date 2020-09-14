@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-listar-produto',
@@ -9,9 +10,13 @@ export class ListarProdutoComponent implements OnInit {
 
   produtos: any[] = [];
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
+  }
+
+  novoProduto() {
+    this.router.navigate(['manter-produto']);
   }
 
 }

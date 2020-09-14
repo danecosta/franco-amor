@@ -25,7 +25,12 @@ import { DoacaoComponent } from './site/doacao/doacao.component';
 import { ProcuroAjudaComponent } from './site/procuro-ajuda/procuro-ajuda.component';
 import { QueroAjudarComponent } from './site/quero-ajudar/quero-ajudar.component';
 import { SobreNosComponent } from './site/sobre-nos/sobre-nos.component';
-
+import { ListarAtendimentosAtividadesComponent } from './admin/listar-atendimentos-atividades/listar-atendimentos-atividades.component';
+import { ManterAtividadesComponent } from './admin/manter-atividades/manter-atividades.component';
+import { ManterEventoComponent } from './admin/manter-evento/manter-evento.component';
+import { ManterPresencialComponent } from './admin/manter-presencial/manter-presencial.component';
+import { ManterTelefonicoComponent } from './admin/manter-telefonico/manter-telefonico.component';
+import { ManterVirtualComponent } from './admin/manter-virtual/manter-virtual.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +52,13 @@ import { SobreNosComponent } from './site/sobre-nos/sobre-nos.component';
     HomeAdminComponent,
     QueroAjudarComponent,
     ProcuroAjudaComponent,
-    DoacaoComponent
+    DoacaoComponent,
+    ListarAtendimentosAtividadesComponent,
+    ManterTelefonicoComponent,
+    ManterPresencialComponent,
+    ManterVirtualComponent,
+    ManterAtividadesComponent,
+    ManterEventoComponent
   ],
   imports: [
     BrowserModule,

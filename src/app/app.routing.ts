@@ -21,27 +21,45 @@ import { QueroAjudarComponent } from './site/quero-ajudar/quero-ajudar.component
 import { DoacaoComponent } from './site/doacao/doacao.component';
 import { ProdutosComponent } from './site/produtos/produtos.component';
 import { BlogComponent } from './blog/blog.component';
+import { ListarAtendimentosAtividadesComponent } from './admin/listar-atendimentos-atividades/listar-atendimentos-atividades.component';
+import { ManterAtividadesComponent } from './admin/manter-atividades/manter-atividades.component';
+import { ManterEventoComponent } from './admin/manter-evento/manter-evento.component';
+import { ManterPresencialComponent } from './admin/manter-presencial/manter-presencial.component';
+import { ManterTelefonicoComponent } from './admin/manter-telefonico/manter-telefonico.component';
+import { ManterVirtualComponent } from './admin/manter-virtual/manter-virtual.component';
 
 const routes: Routes = [
+  // Site
   { path: 'home', component: HomeComponent },
   { path: 'registro', component: SignupComponent },
   { path: 'sobre-nos', component: SobreNosComponent },
   { path: 'login', component: LoginComponent },
   { path: 'contato', component: ContatoComponent },
   { path: 'doacao', component: DoacaoComponent },
-  { path: 'blog', component: BlogComponent },
   { path: 'produtos', component: ProdutosComponent },
   { path: 'procuro-ajuda', component: ProcuroAjudaComponent },
   { path: 'quero-ajudar', component: QueroAjudarComponent },
+
+  // Blog
+  { path: 'blog', component: BlogComponent },
+
+  // Admin
   { path: 'home-admin', component: HomeAdminComponent },
   { path: 'listar-instituicao', component: ListarInstituicaoComponent },
   { path: 'listar-postagem', component: ListarPostagemComponent },
   { path: 'listar-produto', component: ListarProdutoComponent },
   { path: 'listar-voluntario', component: ListarVoluntarioComponent },
+  { path: 'listar-atendimentos-atividades', component: ListarAtendimentosAtividadesComponent },
   { path: 'manter-instituicao', component: ManterInstituicaoComponent },
   { path: 'manter-postagem', component: ManterPostagemComponent },
   { path: 'manter-produto', component: ManterProdutoComponent },
   { path: 'manter-voluntario', component: ManterVoluntarioComponent },
+  { path: 'manter-atividades', component: ManterAtividadesComponent },
+  { path: 'manter-evento', component: ManterEventoComponent },
+  { path: 'manter-presencial', component: ManterPresencialComponent },
+  { path: 'manter-telefonico', component: ManterTelefonicoComponent },
+  { path: 'manter-virtual', component: ManterVirtualComponent },
+
   { path: '', redirectTo: 'home', pathMatch: 'full' }
 ];
 

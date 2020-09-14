@@ -1,0 +1,30 @@
+<section class="section section-shaped bg-secondary">
+    <div class="container">
+        <button type="button" class="btn btn-outline-success btnNovo" (click)="novoEvento()">
+            <i class="ni ni-fat-add"></i> Evento</button>
+        <button type="button" class="btn btn-outline-success btnNovo" (click)="novaAtividade()">
+            <i class="ni ni-fat-add"></i> Atividade</button>
+        <button type="button" class="btn btn-outline-success btnNovo" (click)="novoTelefonico()">
+            <i class="ni ni-fat-add"></i> Telefônico</button>
+        <button type="button" class="btn btn-outline-success btnNovo" (click)="novoVirtual()">
+            <i class="ni ni-fat-add"></i> Virtual</button>
+        <button type="button" class="btn btn-outline-success btnNovo" (click)="novoPresencial()">
+            <i class="ni ni-fat-add"></i> Presencial</button>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Instituição</th>
+                    <th scope="col">Tipo</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of atividades">
+                    <td>{{item?.nome}}</td>
+                    <td>{{item?.instituicao}}</td>
+                    <td>{{item?.tipo}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</section>

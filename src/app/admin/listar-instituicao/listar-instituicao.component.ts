@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-listar-instituicao',
@@ -9,9 +10,12 @@ export class ListarInstituicaoComponent implements OnInit {
 
   instituticoes: any[] = [];
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
 
+  novaInstituicao() {
+    this.router.navigate(['manter-instituicao']);
+  }
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-listar-postagem',
@@ -9,9 +10,13 @@ export class ListarPostagemComponent implements OnInit {
 
   postagens: any[] = [];
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
+  }
+
+  novaPostagem() {
+    this.router.navigate(['manter-postagem']);
   }
 
 }
