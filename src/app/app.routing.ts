@@ -6,7 +6,6 @@ import { LoginComponent } from './auth/login/login.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { ContatoComponent } from './site/contato/contato.component';
 import { HomeComponent } from './site/home/home.component';
-import { SobreNosComponent } from './site/sobre-nos/sobre-nos.component';
 import { ListarInstituicaoComponent } from './admin/listar-instituicao/listar-instituicao.component';
 import { ListarPostagemComponent } from './admin/listar-postagem/listar-postagem.component';
 import { ListarProdutoComponent } from './admin/listar-produto/listar-produto.component';
@@ -32,7 +31,6 @@ const routes: Routes = [
   // Site
   { path: 'home', component: HomeComponent },
   { path: 'registro', component: SignupComponent },
-  { path: 'sobre-nos', component: SobreNosComponent },
   { path: 'login', component: LoginComponent },
   { path: 'contato', component: ContatoComponent },
   { path: 'doacao', component: DoacaoComponent },

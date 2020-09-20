@@ -7,6 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ManterTelefonicoComponent implements OnInit {
 
+  domingo = false;
+  segunda = false;
+  terca = false;
+  quarta = false;
+  quinta = false;
+  sexta = false;
+  sabado = false;
+  
   constructor() { }
 
   ngOnInit(): void {

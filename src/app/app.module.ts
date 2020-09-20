@@ -24,19 +24,19 @@ import { HomeAdminComponent } from './admin/home-admin/home-admin.component';
 import { DoacaoComponent } from './site/doacao/doacao.component';
 import { ProcuroAjudaComponent } from './site/procuro-ajuda/procuro-ajuda.component';
 import { QueroAjudarComponent } from './site/quero-ajudar/quero-ajudar.component';
-import { SobreNosComponent } from './site/sobre-nos/sobre-nos.component';
 import { ListarAtendimentosAtividadesComponent } from './admin/listar-atendimentos-atividades/listar-atendimentos-atividades.component';
 import { ManterAtividadesComponent } from './admin/manter-atividades/manter-atividades.component';
 import { ManterEventoComponent } from './admin/manter-evento/manter-evento.component';
 import { ManterPresencialComponent } from './admin/manter-presencial/manter-presencial.component';
 import { ManterTelefonicoComponent } from './admin/manter-telefonico/manter-telefonico.component';
 import { ManterVirtualComponent } from './admin/manter-virtual/manter-virtual.component';
+import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
     AppComponent,
     SignupComponent,
-    SobreNosComponent,
     NavbarComponent,
     FooterComponent,
     LoginComponent,
@@ -66,7 +66,9 @@ import { ManterVirtualComponent } from './admin/manter-virtual/manter-virtual.co
     FormsModule,
     RouterModule,
     AppRoutingModule,
-    HomeModule
+    HomeModule,
+    NgxMaterialTimepickerModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

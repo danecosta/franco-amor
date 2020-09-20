@@ -7,6 +7,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ManterPresencialComponent implements OnInit {
 
+  domingo = false;
+  segunda = false;
+  terca = false;
+  quarta = false;
+  quinta = false;
+  sexta = false;
+  sabado = false;
+
+  valor: string;
+  participacao: string;
+  tipoEncontro: string;
+
   constructor() { }
 
   ngOnInit(): void {

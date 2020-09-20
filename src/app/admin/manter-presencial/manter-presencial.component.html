@@ -38,16 +38,22 @@
                     <div class="col-md-12">
                         <div class="input-group">
                             <div class="custom-control custom-radio mb-3">
-                                <input name="tipoEmpresa" class="custom-control-input" id="reuniao" type="radio">
+                                <input name="tipoEncontro" class="custom-control-input" id="reuniao" type="radio"
+                                    value="reuniao" [(ngModel)]="tipoEncontro">
                                 <label class="custom-control-label" for="reuniao">Reunião</label>
                             </div>
                             <div class="custom-control custom-radio mb-3">
-                                <input name="tipoEmpresa" class="custom-control-input" id="atendimento" type="radio">
+                                <input name="tipoEncontro" class="custom-control-input" id="atendimento" type="radio"
+                                    value="atendimento" [(ngModel)]="tipoEncontro">
                                 <label class="custom-control-label" for="atendimento">Atendimento</label>
                             </div>
                             <div class="custom-control custom-radio mb-3">
-                                <input name="tipoEmpresa" class="custom-control-input" id="outro" type="radio">
+                                <input name="tipoEncontro" class="custom-control-input" id="outro" type="radio"
+                                    value="outro" [(ngModel)]="tipoEncontro">
                                 <label class="custom-control-label" for="outro">Outro</label>
+                            </div>
+                            <div class="col-md-4" *ngIf="tipoEncontro === 'outro'">
+                                <input type="text" class="form-control" id="valor" placeholder="Outro tipo">
                             </div>
                         </div>
                     </div>
@@ -62,12 +68,18 @@
                     <div class="col-md-12">
                         <div class="input-group">
                             <div class="custom-control custom-radio mb-3">
-                                <input name="tipoEmpresa" class="custom-control-input" id="livre" type="radio">
+                                <input name="participacao" class="custom-control-input" id="livre" type="radio"
+                                    value="livre" [(ngModel)]="participacao">
                                 <label class="custom-control-label" for="livre">Livre</label>
                             </div>
                             <div class="custom-control custom-radio mb-3">
-                                <input name="tipoEmpresa" class="custom-control-input" id="agendar" type="radio">
+                                <input name="participacao" class="custom-control-input" id="agendar" type="radio"
+                                    value="agendar" [(ngModel)]="participacao">
                                 <label class="custom-control-label" for="agendar">Agendar</label>
+                            </div>
+                            <div class="col-md-4" *ngIf="participacao === 'agendar'">
+                                <input type="text" class="form-control" id="valor"
+                                    placeholder="Link, e-mail ou telefone">
                             </div>
                         </div>
                     </div>
@@ -80,145 +92,203 @@
                             <div class="row" style="margin-bottom: 1em;">
                                 <div class="col-md-4">
                                     <div class="custom-control custom-checkbox mb-3">
-                                        <input class="custom-control-input" id="domingo" type="checkbox">
+                                        <input class="custom-control-input" id="domingo" type="checkbox"
+                                            name="chkDomingo" [(ngModel)]="domingo">
                                         <label class="custom-control-label" for="domingo">Domingo</label>
                                     </div>
                                 </div>
                                 <div class="col-md-8" style="display: inline-flex;">
                                     <div class="col-md-6">
-                                        <input type="text" class="form-control" id="domingoinicio" placeholder="00:00">
+                                        <input [ngxTimepicker]="picker1" [format]="24" [disabled]="!domingo"
+                                            class="form-control" placeholder="00:00" id="domingoinicio">
+                                        <ngx-material-timepicker #picker1></ngx-material-timepicker>
                                     </div>
                                     -
                                     <div class="col-md-6">
-                                        <input type="text" class="form-control" id="domingofim" placeholder="00:00">
+                                        <input [ngxTimepicker]="picker2" [format]="24" [disabled]="!domingo"
+                                            class="form-control" placeholder="00:00" id="domingofim">
+                                        <ngx-material-timepicker #picker2></ngx-material-timepicker>
                                     </div>
                                 </div>
                             </div>
                             <div class="row" style="margin-bottom: 1em;">
                                 <div class="col-md-4">
                                     <div class="custom-control custom-checkbox mb-3">
-                                        <input class="custom-control-input" id="segunda" type="checkbox">
+                                        <input class="custom-control-input" id="segunda" type="checkbox"
+                                            name="chkSegunda" [(ngModel)]="segunda">
                                         <label class="custom-control-label" for="segunda">Segunda-feira</label>
                                     </div>
                                 </div>
                                 <div class="col-md-8" style="display: inline-flex;">
                                     <div class="col-md-6">
-                                        <input type="text" class="form-control" id="segundainicio" placeholder="00:00">
+                                        <input [ngxTimepicker]="picker3" [format]="24" [disabled]="!segunda"
+                                            class="form-control" placeholder="00:00" id="segundainicio">
+                                        <ngx-material-timepicker #picker3></ngx-material-timepicker>
                                     </div>
                                     -
                                     <div class="col-md-6">
-                                        <input type="text" class="form-control" id="segundafim" placeholder="00:00">
+                                        <input [ngxTimepicker]="picker4" [format]="24" [disabled]="!segunda"
+                                            class="form-control" placeholder="00:00" id="segundafim">
+                                        <ngx-material-timepicker #picker4></ngx-material-timepicker>
                                     </div>
                                 </div>
                             </div>
                             <div class="row" style="margin-bottom: 1em;">
                                 <div class="col-md-4">
                                     <div class="custom-control custom-checkbox mb-3">
-                                        <input class="custom-control-input" id="terca" type="checkbox">
+                                        <input class="custom-control-input" id="terca" type="checkbox" name="chkTerca"
+                                            [(ngModel)]="terca">
                                         <label class="custom-control-label" for="terca">Terça-feira</label>
                                     </div>
                                 </div>
                                 <div class="col-md-8" style="display: inline-flex;">
                                     <div class="col-md-6">
-                                        <input type="text" class="form-control" id="tercainicio" placeholder="00:00">
+                                        <input [ngxTimepicker]="picker5" [format]="24" [disabled]="!terca"
+                                            class="form-control" placeholder="00:00" id="tercainicio">
+                                        <ngx-material-timepicker #picker5></ngx-material-timepicker>
                                     </div>
                                     -
                                     <div class="col-md-6">
-                                        <input type="text" class="form-control" id="tercafim" placeholder="00:00">
+                                        <input [ngxTimepicker]="picker6" [format]="24" [disabled]="!terca"
+                                            class="form-control" placeholder="00:00" id="tercafim">
+                                        <ngx-material-timepicker #picker6></ngx-material-timepicker>
                                     </div>
                                 </div>
                             </div>
                             <div class="row" style="margin-bottom: 1em;">
                                 <div class="col-md-4">
                                     <div class="custom-control custom-checkbox mb-3">
-                                        <input class="custom-control-input" id="quarta" type="checkbox">
+                                        <input class="custom-control-input" id="quarta" type="checkbox" name="chkQuarta"
+                                            [(ngModel)]="quarta">
                                         <label class="custom-control-label" for="quarta">Quarta-feira</label>
                                     </div>
                                 </div>
                                 <div class="col-md-8" style="display: inline-flex;">
                                     <div class="col-md-6">
-                                        <input type="text" class="form-control" id="quartainicio" placeholder="00:00">
+                                        <input [ngxTimepicker]="picker7" [format]="24" [disabled]="!quarta"
+                                            class="form-control" placeholder="00:00" id="quartainicio">
+                                        <ngx-material-timepicker #picker7></ngx-material-timepicker>
                                     </div>
                                     -
                                     <div class="col-md-6">
-                                        <input type="text" class="form-control" id="quartafim" placeholder="00:00">
+                                        <input [ngxTimepicker]="picker8" [format]="24" [disabled]="!quarta"
+                                            class="form-control" placeholder="00:00" id="quartafim">
+                                        <ngx-material-timepicker #picker8></ngx-material-timepicker>
                                     </div>
                                 </div>
                             </div>
                             <div class="row" style="margin-bottom: 1em;">
                                 <div class="col-md-4">
                                     <div class="custom-control custom-checkbox mb-3">
-                                        <input class="custom-control-input" id="quinta" type="checkbox">
+                                        <input class="custom-control-input" id="quinta" type="checkbox" name="chkQuinta"
+                                            [(ngModel)]="quinta">
                                         <label class="custom-control-label" for="quinta">Quinta-feira</label>
                                     </div>
                                 </div>
                                 <div class="col-md-8" style="display: inline-flex;">
                                     <div class="col-md-6">
-                                        <input type="text" class="form-control" id="quintainicio" placeholder="00:00">
+                                        <input [ngxTimepicker]="picker9" [format]="24" [disabled]="!quinta"
+                                            class="form-control" placeholder="00:00" id="quintainicio">
+                                        <ngx-material-timepicker #picker9></ngx-material-timepicker>
                                     </div>
                                     -
                                     <div class="col-md-6">
-                                        <input type="text" class="form-control" id="quintafim" placeholder="00:00">
+                                        <input [ngxTimepicker]="picker10" [format]="24" [disabled]="!quinta"
+                                            class="form-control" placeholder="00:00" id="quintafim">
+                                        <ngx-material-timepicker #picker10></ngx-material-timepicker>
                                     </div>
                                 </div>
                             </div>
                             <div class="row" style="margin-bottom: 1em;">
                                 <div class="col-md-4">
                                     <div class="custom-control custom-checkbox mb-3">
-                                        <input class="custom-control-input" id="sexta" type="checkbox">
+                                        <input class="custom-control-input" id="sexta" type="checkbox" name="chkSexta"
+                                            [(ngModel)]="sexta">
                                         <label class="custom-control-label" for="sexta">Sexta-feira</label>
                                     </div>
                                 </div>
                                 <div class="col-md-8" style="display: inline-flex;">
                                     <div class="col-md-6">
-                                        <input type="text" class="form-control" id="sextainicio" placeholder="00:00">
+                                        <input [ngxTimepicker]="picker11" [format]="24" [disabled]="!sexta"
+                                            class="form-control" placeholder="00:00" id="sextainicio">
+                                        <ngx-material-timepicker #picker11></ngx-material-timepicker>
                                     </div>
                                     -
                                     <div class="col-md-6">
-                                        <input type="text" class="form-control" id="sextafim" placeholder="00:00">
+                                        <input [ngxTimepicker]="picker12" [format]="24" [disabled]="!sexta"
+                                            class="form-control" placeholder="00:00" id="sextafim">
+                                        <ngx-material-timepicker #picker12></ngx-material-timepicker>
                                     </div>
                                 </div>
                             </div>
                             <div class="row" style="margin-bottom: 1em;">
                                 <div class="col-md-4">
                                     <div class="custom-control custom-checkbox mb-3">
-                                        <input class="custom-control-input" id="sabado" type="checkbox">
+                                        <input class="custom-control-input" id="sabado" type="checkbox" name="chkSabado"
+                                            [(ngModel)]="sabado">
                                         <label class="custom-control-label" for="sabado">Sábado</label>
                                     </div>
                                 </div>
                                 <div class="col-md-8" style="display: inline-flex;">
                                     <div class="col-md-6">
-                                        <input type="text" class="form-control" id="sabadoinicio" placeholder="00:00">
+                                        <input [ngxTimepicker]="picker13" [format]="24" [disabled]="!sabado"
+                                            class="form-control" placeholder="00:00" id="sabadoinicio">
+                                        <ngx-material-timepicker #picker13></ngx-material-timepicker>
                                     </div>
                                     -
                                     <div class="col-md-6">
-                                        <input type="text" class="form-control" id="sabadofim" placeholder="00:00">
+                                        <input [ngxTimepicker]="picker14" [format]="24" [disabled]="!sabado"
+                                            class="form-control" placeholder="00:00" id="sabadofim">
+                                        <ngx-material-timepicker #picker14></ngx-material-timepicker>
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                </div>
 
-                            <div class="row" style="margin-bottom: 1em;">
-                                <div class="col-md-6">
-                                    <label>Valor</label>
-                                    <input type="text" class="form-control" id="valor"
-                                        placeholder="Valor do atendimento">
-                                </div>
-                                <div class="col-md-6">
-                                    <label>Nº atendimentos mensais</label>
-                                    <input type="text" class="form-control" id="qtdAtendimento"
-                                        placeholder="Nº de atendimentos/mês">
-                                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <label>Valor</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="input-group">
+                            <div class="custom-control custom-radio mb-3">
+                                <input name="chkValor" class="custom-control-input" id="gratuito" type="radio"
+                                    value="gratuito" [(ngModel)]="valor">
+                                <label class="custom-control-label" for="gratuito">Gratuito</label>
                             </div>
+                            <div class="custom-control custom-radio mb-3">
+                                <input name="chkValor" class="custom-control-input" id="social" type="radio"
+                                    value="social" [(ngModel)]="valor">
+                                <label class="custom-control-label" for="social">Social</label>
+                            </div>
+                            <div class="col-md-4" *ngIf="valor === 'social'">
+                                <input type="text" class="form-control" id="valor" placeholder="Valor (R$)">
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label>Observação</label>
-                                        <textarea class="form-control" id="obs" rows="3"
-                                            placeholder="Observação"></textarea>
-                                    </div>
-                                </div>
-                            </div>
+                <div class="row" style="margin-bottom: 1em;">
+                    <div class="col-md-6">
+                        <label>Nº atendentes</label>
+                        <input type="text" class="form-control" id="qtdAtendentes" placeholder="Nº de atendentes">
+                    </div>
+                    <div class="col-md-6">
+                        <label>Nº atendimentos mensais</label>
+                        <input type="text" class="form-control" id="qtdAtendimento"
+                            placeholder="Nº de atendimentos/mês">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>Observação</label>
+                            <textarea class="form-control" id="obs" rows="3" placeholder="Observação"></textarea>
                         </div>
                     </div>
                 </div>
