@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import * as cep from 'cep-promise';
 
 @Component({
   selector: 'app-manter-instituicao',
@@ -7,7 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ManterInstituicaoComponent implements OnInit {
 
-  model: any;
+  cpfInformado: string;
+
+  logradouro: string;
+  bairro: string;
+  cidade: string;
+
+  dataFundacao: any;
+
   constructor() { }
 
   ngOnInit(): void {
@@ -18,5 +26,23 @@ export class ManterInstituicaoComponent implements OnInit {
   }
 
   salvar() { }
+
+  buscarCep() {
+
+    this.limparCamposCep();
+
+    cep(this.cpfInformado).then(
+      data => {
+        this.logradouro = data.street;
+        this.bairro = data.neighborhood;
+        this.cidade = data.city;
+      });
+  }
+
+  limparCamposCep() {
+    this.logradouro = '';
+    this.bairro = '';
+    this.cidade = '';
+  }
 
 }
