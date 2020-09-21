@@ -17,6 +17,7 @@ export class ManterAtividadesComponent implements OnInit {
 
   valor: string;
   participacao: string;
+  endereco: string = null;
 
   constructor() { }
 

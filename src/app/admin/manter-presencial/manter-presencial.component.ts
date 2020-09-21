@@ -18,6 +18,7 @@ export class ManterPresencialComponent implements OnInit {
   valor: string;
   participacao: string;
   tipoEncontro: string;
+  endereco: string = null;
 
   constructor() { }
 

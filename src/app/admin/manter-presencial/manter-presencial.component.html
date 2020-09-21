@@ -23,11 +23,64 @@
                     </div>
                     <div class="col-md-6">
                         <label>Endereço</label>
-                        <select class="form-control" id="endereco">
-                            <option>Endereço 1</option>
+                        <select class="form-control" id="endereco" name='endereco' [(ngModel)]="endereco">
+                            <option value=null>Endereço 1</option>
+                            <option value='outro'>Outro</option>
                         </select>
                     </div>
                 </div>
+
+                <div *ngIf="endereco === 'outro'">
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>CEP</label>
+                            <div class="input-group mb-3 campoCep">
+                                <input type="text" class="form-control" name="cep" placeholder="CEP"
+                                    [(ngModel)]="cpfInformado">
+                                <div class="input-group-append">
+                                    <button class="btn btn-outline-primary" type="button"
+                                        (click)="buscarCep()">Buscar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Logradouro</label>
+                                <input type="text" class="form-control" id="logradouro" placeholder="Rua ou Av"
+                                    name="logradouro" [(ngModel)]="logradouro">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Nº/Complemento</label>
+                                <input type="text" class="form-control" id="numComp" placeholder="Nº/Bloco/Apto">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Bairro</label>
+                                <input type="text" class="form-control" id="bairro" placeholder="Bairro" name="bairro"
+                                    [(ngModel)]="bairro">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Cidade</label>
+                                <input type="text" class="form-control" id="cidade" placeholder="Cidade" name="cidade"
+                                    [(ngModel)]="cidade">
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr>
+                </div> 
 
                 <div class="row">
                     <div class="col-md-12">
