@@ -41,3 +41,20 @@ html,body {
     margin-left: 10px;
     margin-right: 0;
 }
+
+/* Modal imagens */
+.afu-dragndrop-box{
+    width: 100% !important;
+}
+.afu-select-btn{
+    width: 30% !important;
+}
+.afu-reset-btn{
+    float: right;
+    margin-right: 0 !important;
+    width: 30% !important;
+}
+.afu-upload-btn{
+    margin: 0 auto !important;
+    width: 100% !important;
+}

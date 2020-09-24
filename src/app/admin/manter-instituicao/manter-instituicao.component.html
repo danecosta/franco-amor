@@ -7,10 +7,19 @@
             <hr>
             <form>
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-md-10">
                         <div class="form-group">
                             <label>Nome</label>
                             <input type="text" class="form-control" id="nome" placeholder="Nome da instituição">
+                        </div>
+                    </div>
+
+                    <div class="col-md-2">
+                        <div class="card-profile-image" (click)="openModal(classicLogo)">
+                            <a href="javascript:void(0)">
+                                <img src="./assets/img/francoAmor/instituicao.png" class="rounded-circle"
+                                    style="width: 100px;">
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -19,7 +28,8 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label>Telefone</label>
-                            <input type="text" class="form-control" id="telefone" placeholder="Telefone de contato">
+                            <input type="text" class="form-control" id="telefone" placeholder="Telefone de contato"
+                                [textMask]="{mask: phoneMask}">
                         </div>
                     </div>
                     <div class="col-md-6">
@@ -45,8 +55,8 @@
                                     [(ngModel)]="tipoEmpresa">Associação</label>
                             </div>
                             <div class="custom-control custom-radio mb-3">
-                                <input name="tipoEmpresa" class="custom-control-input" id="mei" type="radio"
-                                    value="mei" [(ngModel)]="tipoEmpresa">
+                                <input name="tipoEmpresa" class="custom-control-input" id="mei" type="radio" value="mei"
+                                    [(ngModel)]="tipoEmpresa">
                                 <label class="custom-control-label" for="mei">MEI</label>
                             </div>
                             <div class="custom-control custom-radio mb-3">
@@ -80,7 +90,8 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label>CNPJ</label>
-                            <input type="text" class="form-control" id="cnpj" placeholder="CNPJ da instituição">
+                            <input type="text" [textMask]="{mask: cnpjMask}" class="form-control" id="cnpj"
+                                placeholder="CNPJ da instituição">
                         </div>
                     </div>
                     <div class="col-md-6">
@@ -136,8 +147,8 @@
                     <div class="col-md-6">
                         <label>CEP</label>
                         <div class="input-group mb-3 campoCep">
-                            <input type="text" class="form-control" name="cep" placeholder="CEP"
-                                [(ngModel)]="cpfInformado">
+                            <input type="text" [textMask]="{mask: cepMask}" class="form-control" name="cep"
+                                placeholder="CEP" [(ngModel)]="cepInformado">
                             <div class="input-group-append">
                                 <button class="btn btn-outline-primary" type="button"
                                     (click)="buscarCep()">Buscar</button>
@@ -191,7 +202,8 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label>CPF</label>
-                            <input type="text" class="form-control" id="cpfrep1" placeholder="Cpf do representante">
+                            <input type="text" [textMask]="{mask: cpfMask}" class="form-control" id="cpfrep1"
+                                placeholder="Cpf do representante">
                         </div>
                     </div>
                 </div>
@@ -206,7 +218,8 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label>CPF</label>
-                            <input type="text" class="form-control" id="cpfrep2" placeholder="Cpf do representante">
+                            <input type="text" [textMask]="{mask: cpfMask}" class="form-control" id="cpfrep2"
+                                placeholder="Cpf do representante">
                         </div>
                     </div>
                 </div>
@@ -281,6 +294,15 @@
                 </div>
 
                 <hr>
+                <div class="row">
+                    <div class="col-md-3" style="margin: 0 auto;">
+                        <button class="btn btn-block btn-outline-primary mb-3" (click)="openModal(classic)">
+                            Selecionar imagens
+                        </button>
+                    </div>
+                </div>
+
+                <hr>
                 <div class="rodape">
                     <button type="button" class="btn btn-outline-light btnVoltar" (click)="voltar()">Voltar</button>
                     <button type="button" class="btn btn-outline-success btnSalvar" (click)="salvar()">Salvar</button>
@@ -289,3 +311,35 @@
         </div>
     </section>
 </main>
+
+<!-- Modal Logo -->
+<ng-template #classicLogo let-c="close" let-d="dismiss">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h6 class="modal-title" id="modal-title-default">Selecionar logo</h6>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="d('Cross click')">
+                <span aria-hidden="true">×</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <angular-file-uploader [config]="afuConfig" [resetUpload]=resetVar (ApiResponse)="DocUpload($event)">
+            </angular-file-uploader>
+        </div>
+    </div>
+</ng-template>
+
+<!-- Modal Imagens -->
+<ng-template #classic let-c="close" let-d="dismiss">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h6 class="modal-title" id="modal-title-default">Selecionar imagens</h6>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="d('Cross click')">
+                <span aria-hidden="true">×</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <angular-file-uploader [config]="afuConfig" [resetUpload]=resetVar (ApiResponse)="DocUpload($event)">
+            </angular-file-uploader>
+        </div>
+    </div>
+</ng-template>

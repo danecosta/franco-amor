@@ -32,6 +32,8 @@ import { ManterTelefonicoComponent } from './admin/manter-telefonico/manter-tele
 import { ManterVirtualComponent } from './admin/manter-virtual/manter-virtual.component';
 import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AngularFileUploaderModule } from 'angular-file-uploader';
+import { TextMaskModule } from 'angular2-text-mask';
 
 @NgModule({
   declarations: [
@@ -68,7 +70,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AppRoutingModule,
     HomeModule,
     NgxMaterialTimepickerModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    AngularFileUploaderModule,
+    TextMaskModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,14 +1,16 @@
 import { Component, OnInit } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import * as cep from 'cep-promise';
+import { BaseComponent } from '../base.component';
 
 @Component({
   selector: 'app-manter-instituicao',
   templateUrl: './manter-instituicao.component.html',
   styleUrls: ['./manter-instituicao.component.css']
 })
-export class ManterInstituicaoComponent implements OnInit {
+export class ManterInstituicaoComponent extends BaseComponent implements OnInit {
 
-  cpfInformado: string;
+  cepInformado: string;
 
   logradouro: string;
   bairro: string;
@@ -16,13 +18,12 @@ export class ManterInstituicaoComponent implements OnInit {
 
   dataFundacao: any;
 
-  constructor() { }
-
-  ngOnInit(): void {
+  constructor(private modalService: NgbModal) {
+    super();
   }
 
-  voltar() {
-    history.back();
+  ngOnInit(): void {
+    this.afuConfig.multiple = true;
   }
 
   salvar() { }
@@ -31,7 +32,7 @@ export class ManterInstituicaoComponent implements OnInit {
 
     this.limparCamposCep();
 
-    cep(this.cpfInformado).then(
+    cep(this.cepInformado).then(
       data => {
         this.logradouro = data.street;
         this.bairro = data.neighborhood;
@@ -45,4 +46,21 @@ export class ManterInstituicaoComponent implements OnInit {
     this.cidade = '';
   }
 
+  openModal(content) {
+    this.modalService.open(content, { centered: true }).result.then(
+      (result) => {
+        this.closeResult = 'Fechado: $result';
+      }, (reason) => {
+        this.closeResult = 'Fechado';
+      });
+  }
+
+  openModalLogo(content) {
+    this.modalService.open(content, { centered: true }).result.then(
+      (result) => {
+        this.closeResult = 'Fechado: $result';
+      }, (reason) => {
+        this.closeResult = 'Fechado';
+      });
+  }
 }

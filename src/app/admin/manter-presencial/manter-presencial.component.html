@@ -36,8 +36,8 @@
                         <div class="col-md-6">
                             <label>CEP</label>
                             <div class="input-group mb-3 campoCep">
-                                <input type="text" class="form-control" name="cep" placeholder="CEP"
-                                    [(ngModel)]="cpfInformado">
+                                <input type="text" [textMask]="{mask: cepMask}" class="form-control" name="cep"
+                                    placeholder="CEP" [(ngModel)]="cepInformado">
                                 <div class="input-group-append">
                                     <button class="btn btn-outline-primary" type="button"
                                         (click)="buscarCep()">Buscar</button>
@@ -80,7 +80,7 @@
                     </div>
 
                     <hr>
-                </div> 
+                </div>
 
                 <div class="row">
                     <div class="col-md-12">

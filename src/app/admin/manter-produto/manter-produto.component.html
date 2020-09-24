@@ -7,14 +7,71 @@
             <hr>
 
             <form>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>Nome</label>
+                            <input type="text" class="form-control" id="nome" placeholder="Nome do produto">
+                        </div>
+                    </div>
+                </div>
 
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>Descrição</label>
+                            <textarea class="form-control" id="descricao" rows="3"
+                                placeholder="Descrição do produto"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Valor</label>
+                            <input type="text" class="form-control" id="valor" placeholder="Valor (R$)">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Estoque disponível</label>
+                            <input type="number" class="form-control" id="estoque" placeholder="Estoque">
+                        </div>
+                    </div>
+                </div>
+
+                <hr>
+                <div class="row">
+                    <div class="col-md-3" style="margin: 0 auto;">
+                        <button class="btn btn-block btn-outline-primary mb-3" (click)="openModal(classic)">
+                            Selecionar imagens
+                        </button>
+                    </div>
+                </div>
+
+                <hr>
+                <div class="rodape">
+                    <button type="button" class="btn btn-outline-light btnVoltar" (click)="voltar()">Voltar</button>
+                    <button type="button" class="btn btn-outline-success btnSalvar" (click)="salvar()">Salvar</button>
+                </div>
             </form>
-
-            <hr>
-            <div class="rodape">
-                <button type="button" class="btn btn-outline-light btnVoltar" (click)="voltar()">Voltar</button>
-                <button type="button" class="btn btn-outline-success btnSalvar" (click)="salvar()">Salvar</button>
-            </div>
         </div>
     </section>
 </main>
+
+<!-- Modal Imagens -->
+<ng-template #classic let-c="close" let-d="dismiss">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h6 class="modal-title" id="modal-title-default">Selecionar imagens</h6>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="d('Cross click')">
+                <span aria-hidden="true">×</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <angular-file-uploader [config]="afuConfig" [resetUpload]=resetVar (ApiResponse)="DocUpload($event)">
+            </angular-file-uploader>
+        </div>
+    </div>
+</ng-template>
