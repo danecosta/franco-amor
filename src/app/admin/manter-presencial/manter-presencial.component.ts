@@ -9,13 +9,20 @@ import { BaseComponent } from '../base.component';
 })
 export class ManterPresencialComponent extends BaseComponent implements OnInit {
 
-  domingo = false;
-  segunda = false;
-  terca = false;
-  quarta = false;
-  quinta = false;
-  sexta = false;
-  sabado = false;
+  dataAtividade: string;
+  dataAtividadeInicio: string;
+  dataAtividadeFim: string;
+  periodicidade: string = null;
+  prazoIndefinido = false;
+  dataPrazo:string;
+  repete = false;
+  domingo = true;
+  segunda = true;
+  terca = true;
+  quarta = true;
+  quinta = true;
+  sexta = true;
+  sabado = true;
 
   valor: string;
   participacao: string;

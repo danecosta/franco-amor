@@ -62,10 +62,90 @@
                     </div>
                 </div>
 
+                <!-- Definição de datas e periodicidade -->
                 <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label>Data</label>
+                            <div class="input-group input-group-alternative">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
+                                </div>
+                                <input class="form-control datepicker" placeholder="Data" name="dp"
+                                    [(ngModel)]="dataAtividade" ngbDatepicker #d="ngbDatepicker" (click)="d.toggle()"
+                                    type="text" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-8" style="display: inline-flex;">
+                        <div class="col-md-6">
+                            <label>Horário de início</label>
+                            <input [ngxTimepicker]="picker15" [format]="24" class="form-control" placeholder="00:00"
+                                id="horarioinicio" name="horarioinicio" [(ngModel)]="dataAtividadeInicio">
+                            <ngx-material-timepicker #picker15></ngx-material-timepicker>
+                        </div>
+                        -
+                        <div class="col-md-6">
+                            <label>Horário de fim</label>
+                            <input [ngxTimepicker]="picker16" [format]="24" class="form-control" placeholder="00:00"
+                                id="horariofim" name="horariofim" [(ngModel)]="dataAtividadeFim">
+                            <ngx-material-timepicker #picker16></ngx-material-timepicker>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-4">
+                        <label>&nbsp;</label>
+                        <div class="custom-control custom-checkbox mb-3 divRepete">
+                            <input class="custom-control-input" id="repete" type="checkbox" name="chkRepete"
+                                [(ngModel)]="repete"
+                                [disabled]="!dataAtividade || !dataAtividadeInicio || !dataAtividadeFim">
+                            <label class="custom-control-label" for="repete">Se repete?</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row" *ngIf="repete">
+                    <div class="col-md-4">
+                        <label>Recorrência</label>
+                        <select class="form-control" id="periodicidade" name='periodicidade'
+                            [(ngModel)]="periodicidade">
+                            <option value=null>Selecione</option>
+                            <option value='diaria'>Diária</option>
+                            <option value='semanal'>Semanal</option>
+                            <option value='bisemanal'>Bi-semanal</option>
+                            <option value='mensal'>Mensal</option>
+                            <option value='bimestral'>Bimestral</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label>Última data</label>
+                            <div class="input-group input-group-alternative">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
+                                </div>
+                                <input class="form-control datepicker" placeholder="Data" name="dataPrazo"
+                                    [(ngModel)]="dataPrazo" ngbDatepicker #d="ngbDatepicker" (click)="d.toggle()"
+                                    type="text" [disabled]="prazoIndefinido" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <label>&nbsp;</label>
+                        <div class="custom-control custom-checkbox mb-3 divIndefinido">
+                            <input class="custom-control-input" id="prazoIndefinido" type="checkbox"
+                                name="chkIndefinido" [(ngModel)]="prazoIndefinido">
+                            <label class="custom-control-label" for="prazoIndefinido">Prazo indefinido</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row" *ngIf="repete && periodicidade == 'diaria'">
                     <div class="col-md-12">
                         <div class="form-group">
-                            <label>Horário de Atendimento</label>
+                            <label>&nbsp;</label>
                             <div class="row" style="margin-bottom: 1em;">
                                 <div class="col-md-4">
                                     <div class="custom-control custom-checkbox mb-3">
@@ -223,6 +303,7 @@
                         </div>
                     </div>
                 </div>
+                <!-- Definição de datas e periodicidade -->
 
                 <div class="row">
                     <div class="col-md-12">
