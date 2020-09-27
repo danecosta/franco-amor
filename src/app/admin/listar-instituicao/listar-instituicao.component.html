@@ -1,12 +1,45 @@
 <section class="section section-shaped bg-secondary">
     <div class="container">
-        <button type="button" class="btn btn-outline-success btnNovo" (click)="novaInstituicao()">
-            <i class="ni ni-fat-add"></i> Instituição</button>
+
+        <div class="row" style="display: flow-root;">
+            <button type="button" class="btn btn-outline-success btnNovo" (click)="novaInstituicao()">
+                <i class="ni ni-fat-add"></i> Instituição</button>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label>Nome</label>
+                    <input type="text" class="form-control" id="nome" placeholder="Nome da instituição">
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label>CNPJ</label>
+                    <input type="text" [textMask]="{mask: cnpjMask}" class="form-control" id="cnpj"
+                        placeholder="CNPJ da instituição">
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label>Cidade</label>
+                    <input type="text" class="form-control" id="cidade" placeholder="Cidade" name="cidade"
+                        [(ngModel)]="cidade">
+                </div>
+            </div>
+            <div class="col-md-1" style="padding-top: 2rem;">
+                <button class="btn btn-icon btn-2 btn-outline-light" type="button">
+                    <span class="btn-inner--icon"><i class="fa fa-search" aria-hidden="true"></i></span>
+                </button>
+            </div>
+        </div>
+
         <table class="table table-hover">
             <thead>
                 <tr>
                     <th scope="col">Nome</th>
                     <th scope="col">CNPJ</th>
+                    <th scope="col">Cidade</th>
                     <th scope="col">E-mail</th>
                     <th scope="col">Telefone</th>
                 </tr>
@@ -15,6 +48,7 @@
                 <tr *ngFor="let item of instituicoes">
                     <td>{{item?.nome}}</td>
                     <td>{{item?.cnpj}}</td>
+                    <td>{{item?.cidade}}</td>
                     <td>{{item?.email}}</td>
                     <td>{{item?.telefone}}</td>
                 </tr>

@@ -1,7 +1,31 @@
 <section class="section section-shaped bg-secondary">
     <div class="container">
-        <button type="button" class="btn btn-outline-success btnNovo" (click)="novaPostagem()">
-            <i class="ni ni-fat-add"></i> Postagem</button>
+
+        <div class="row" style="display: flow-root;">
+            <button type="button" class="btn btn-outline-success btnNovo" (click)="novaPostagem()">
+                <i class="ni ni-fat-add"></i> Postagem</button>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label>Título</label>
+                    <input type="text" class="form-control" id="nome" placeholder="Título da postagem">
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label>Autor</label>
+                    <input type="text" class="form-control" id="cnpj" placeholder="Autor da postagem">
+                </div>
+            </div>
+            <div class="col-md-1" style="padding-top: 2rem;">
+                <button class="btn btn-icon btn-2 btn-outline-light" type="button">
+                    <span class="btn-inner--icon"><i class="fa fa-search" aria-hidden="true"></i></span>
+                </button>
+            </div>
+        </div>
+
         <table class="table table-hover">
             <thead>
                 <tr>

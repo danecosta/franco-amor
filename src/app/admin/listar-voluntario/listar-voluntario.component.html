@@ -1,7 +1,39 @@
 <section class="section section-shaped bg-secondary">
     <div class="container">
-        <button type="button" class="btn btn-outline-success btnNovo" (click)="novoVoluntario()">
-            <i class="ni ni-fat-add"></i> Voluntário</button>
+
+        <div class="row" style="display: flow-root;">
+            <button type="button" class="btn btn-outline-success btnNovo" (click)="novoVoluntario()">
+                <i class="ni ni-fat-add"></i> Voluntário</button>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label>Nome</label>
+                    <input type="text" class="form-control" id="nome" placeholder="Nome do voluntário">
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label>CPF</label>
+                    <input type="text" [textMask]="{mask: cpfMask}" class="form-control" id="cpf"
+                        placeholder="CPF do voluntário">
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label>Cidade</label>
+                    <input type="text" class="form-control" id="cidade" placeholder="Cidade" name="cidade"
+                        [(ngModel)]="cidade">
+                </div>
+            </div>
+            <div class="col-md-1" style="padding-top: 2rem;">
+                <button class="btn btn-icon btn-2 btn-outline-light" type="button">
+                    <span class="btn-inner--icon"><i class="fa fa-search" aria-hidden="true"></i></span>
+                </button>
+            </div>
+        </div>
+
         <table class="table table-hover">
             <thead>
                 <tr>

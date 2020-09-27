@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 })
 export class ListarAtendimentosAtividadesComponent implements OnInit {
 
+  tipo: string = null;
   atividades: any[] = [];
 
   constructor(private router: Router) { }
