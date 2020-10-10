@@ -25,6 +25,94 @@
                     </div>
                 </div>
 
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>CPF</label>
+                            <input type="text" [textMask]="{mask: cpfMask}" class="form-control" id="cpf"
+                                placeholder="Cpf">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Data de Nascimento</label>
+                            <div class="input-group input-group-alternative">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
+                                </div>
+                                <input class="form-control datepicker" placeholder="Data de nascimento" name="dp"
+                                    [(ngModel)]="dataNascimento" ngbDatepicker #d="ngbDatepicker" (click)="d.toggle()"
+                                    type="text" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>E-mail</label>
+                            <input type="text" class="form-control" id="email" placeholder="E-mail">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Telefone</label>
+                            <input type="text" class="form-control" id="telefone" placeholder="Telefone"
+                                [textMask]="{mask: phoneMask}">
+                        </div>
+                    </div>
+                </div>
+
+                <hr>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <label>CEP</label>
+                        <div class="input-group campoCep">
+                            <input type="text" [textMask]="{mask: cepMask}" class="form-control" name="cep"
+                                placeholder="CEP" [(ngModel)]="cepInformado">
+                            <div class="input-group-append">
+                                <button class="btn btn-outline-primary" type="button"
+                                    (click)="buscarCep()">Buscar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Logradouro</label>
+                            <input type="text" class="form-control" id="logradouro" placeholder="Rua ou Av"
+                                name="logradouro" [(ngModel)]="logradouro">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Nº/Complemento</label>
+                            <input type="text" class="form-control" id="numComp" placeholder="Nº/Bloco/Apto">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Bairro</label>
+                            <input type="text" class="form-control" id="bairro" placeholder="Bairro" name="bairro"
+                                [(ngModel)]="bairro">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Cidade</label>
+                            <input type="text" class="form-control" id="cidade" placeholder="Cidade" name="cidade"
+                                [(ngModel)]="cidade">
+                        </div>
+                    </div>
+                </div>
+
                 <hr>
                 <div class="rodape">
                     <button type="button" class="btn btn-outline-light btnVoltar" (click)="voltar()">Voltar</button>

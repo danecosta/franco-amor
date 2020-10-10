@@ -34,6 +34,7 @@ import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AngularFileUploaderModule } from 'angular-file-uploader';
 import { TextMaskModule } from 'angular2-text-mask';
+import { VejaMaisComponent } from './site/veja-mais/veja-mais.component';
 
 @NgModule({
   declarations: [
@@ -60,7 +61,8 @@ import { TextMaskModule } from 'angular2-text-mask';
     ManterPresencialComponent,
     ManterVirtualComponent,
     ManterAtividadesComponent,
-    ManterEventoComponent
+    ManterEventoComponent,
+    VejaMaisComponent
   ],
   imports: [
     BrowserModule,

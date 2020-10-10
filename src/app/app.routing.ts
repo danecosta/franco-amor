@@ -26,6 +26,7 @@ import { ManterEventoComponent } from './admin/manter-evento/manter-evento.compo
 import { ManterPresencialComponent } from './admin/manter-presencial/manter-presencial.component';
 import { ManterTelefonicoComponent } from './admin/manter-telefonico/manter-telefonico.component';
 import { ManterVirtualComponent } from './admin/manter-virtual/manter-virtual.component';
+import { VejaMaisComponent } from './site/veja-mais/veja-mais.component';
 
 const routes: Routes = [
   // Site
@@ -37,6 +38,7 @@ const routes: Routes = [
   { path: 'produtos', component: ProdutosComponent },
   { path: 'procuro-ajuda', component: ProcuroAjudaComponent },
   { path: 'quero-ajudar', component: QueroAjudarComponent },
+  { path: 'veja-mais', component: VejaMaisComponent },
 
   // Blog
   { path: 'blog', component: BlogComponent },

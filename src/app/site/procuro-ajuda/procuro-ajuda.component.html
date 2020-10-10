@@ -12,6 +12,404 @@
                     </div>
                 </div>
             </div>
+
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>Nome</label>
+                        <input type="text" class="form-control" id="nome" placeholder="Nome da atividade/evento">
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>Instituição</label>
+                        <input type="text" class="form-control" id="cnpj" placeholder="Instituição responsável">
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>Cidade</label>
+                        <input type="text" class="form-control" id="cidade" placeholder="Cidade" name="cidade"
+                            [(ngModel)]="cidade">
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label>Tipo</label>
+                        <select class="form-control" id="tipo" name='tipo' [(ngModel)]="tipo">
+                            <option value=null>Selecione</option>
+                            <option value='atividade'>Atividade</option>
+                            <option value='evento'>Evento</option>
+                            <option value='presencial'>Presencial</option>
+                            <option value='telefonico'>Telefônico</option>
+                            <option value='virtual'>Virtual</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-1" style="padding-top: 2rem;">
+                    <button class="btn btn-icon btn-2 btn-outline-light" type="button">
+                        <span class="btn-inner--icon"><i class="fa fa-search" aria-hidden="true"></i></span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    Atendimento Telefônico
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title">CVV</h4>
+                                    <h5>188</h5>
+                                    <footer class="blockquote-footer"><cite
+                                            title="Source Title">https://www.cvv.org.br/</cite></footer>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title">SOS PRECES</h4>
+                                    <h5>(32) 3236-1122</h5>
+                                    <footer class="blockquote-footer"><cite title="Source Title">FEAK</cite></footer>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title">SOS PRECES</h4>
+                                    <h5>(32) 3236-1122</h5>
+                                    <footer class="blockquote-footer"><cite title="Source Title">FEAK</cite></footer>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title">SOS PRECES</h4>
+                                    <h5>(32) 3236-1122</h5>
+                                    <footer class="blockquote-footer"><cite title="Source Title">FEAK</cite></footer>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title">SOS PRECES</h4>
+                                    <h5>(32) 3236-1122</h5>
+                                    <footer class="blockquote-footer"><cite title="Source Title">FEAK</cite></footer>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    Atendimento Presencial
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <div class="card">
+                                <img class="card-img-top" src="https://picsum.photos/200?random=12"
+                                    alt="Card image cap">
+                                <span class="badge badge-primary" routerLink="../quero-ajudar">Vaga para voluntários</span>
+                                <div class="card-body">
+                                    <h5 class="card-title">Palestra A</h5>
+
+                                    <div class="text-muted">
+                                        ASCOMSER
+                                    </div> <br>
+
+                                    <p class="card-text">With supporting text below as a natural lead-in to additional
+                                        content.</p>
+                                    <button type="button" class="btn btn-outline-info btn-sm"
+                                        routerLink="../veja-mais">Saiba mais</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="card">
+                                <img class="card-img-top" src="https://picsum.photos/200?random=11"
+                                    alt="Card image cap">
+                                <div class="card-body">
+                                    <h5 class="card-title">Curso B</h5>
+
+                                    <div class="text-muted">
+                                        FEAK
+                                    </div> <br>
+
+                                    <p class="card-text">With supporting text below as a natural lead-in to additional
+                                        content.</p>
+                                    <button type="button" class="btn btn-outline-info btn-sm"
+                                        routerLink="../veja-mais">Saiba mais</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="card">
+                                <img class="card-img-top" src="https://picsum.photos/200?random=10"
+                                    alt="Card image cap">
+                                <div class="card-body">
+                                    <h5 class="card-title">Treinamento C</h5>
+
+                                    <div class="text-muted">
+                                        ASCOMSER
+                                    </div> <br>
+
+                                    <p class="card-text">With supporting text below as a natural lead-in to additional
+                                        content.</p>
+                                    <button type="button" class="btn btn-outline-info btn-sm"
+                                        routerLink="../veja-mais">Saiba mais</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="card">
+                                <img class="card-img-top" src="https://picsum.photos/200?random=9" alt="Card image cap">
+                                <span class="badge badge-primary" routerLink="../quero-ajudar">Vaga para voluntários</span>
+                                <div class="card-body">
+                                    <h5 class="card-title">Palestra D</h5>
+
+                                    <div class="text-muted">
+                                        FEAK
+                                    </div> <br>
+
+                                    <p class="card-text">With supporting text below as a natural lead-in to additional
+                                        content.</p>
+                                    <button type="button" class="btn btn-outline-info btn-sm"
+                                        routerLink="../veja-mais">Saiba mais</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="card">
+                                <img class="card-img-top" src="https://picsum.photos/200?random=13"
+                                    alt="Card image cap">
+                                <div class="card-body">
+                                    <h5 class="card-title">Curso E</h5>
+
+                                    <div class="text-muted">
+                                        FEAK
+                                    </div> <br>
+
+                                    <p class="card-text">With supporting text below as a natural lead-in to additional
+                                        content.</p>
+                                    <button type="button" class="btn btn-outline-info btn-sm"
+                                        routerLink="../veja-mais">Saiba mais</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    Atendimento Virtual
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Curso A</h5>
+
+                                    <div class="text-muted">
+                                        FEAK
+                                    </div> <br>
+
+                                    <p class="card-text">With supporting text below as a natural lead-in to additional
+                                        content.</p>
+                                    <button type="button" class="btn btn-outline-info btn-sm"
+                                        routerLink="../veja-mais">Saiba mais</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Live B</h5>
+
+                                    <div class="text-muted">
+                                        FEAK
+                                    </div> <br>
+
+                                    <p class="card-text">With supporting text below as a natural lead-in to additional
+                                        content.</p>
+                                    <button type="button" class="btn btn-outline-info btn-sm"
+                                        routerLink="../veja-mais">Saiba mais</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Palestra C</h5>
+
+                                    <div class="text-muted">
+                                        FEAK
+                                    </div> <br>
+
+                                    <p class="card-text">With supporting text below as a natural lead-in to additional
+                                        content.</p>
+                                    <button type="button" class="btn btn-outline-info btn-sm"
+                                        routerLink="../veja-mais">Saiba mais</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    Atividades
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <div class="card">
+                                <img class="card-img-top" src="https://picsum.photos/200?random=8" alt="Card image cap">
+                                <span class="badge badge-primary" routerLink="../quero-ajudar">Vaga para voluntários</span>
+                                <div class="card-body">
+                                    <h5 class="card-title">Atividade 1</h5>
+
+                                    <div class="text-muted">
+                                        FEAK
+                                    </div> <br>
+
+                                    <p class="card-text">With supporting text below as a natural lead-in to additional
+                                        content.</p>
+                                    <button type="button" class="btn btn-outline-info btn-sm"
+                                        routerLink="../veja-mais">Saiba mais</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="card">
+                                <img class="card-img-top" src="https://picsum.photos/200?random=7" alt="Card image cap">
+                                <div class="card-body">
+                                    <h5 class="card-title">Atividade 2</h5>
+
+                                    <div class="text-muted">
+                                        FEAK
+                                    </div> <br>
+
+                                    <p class="card-text">With supporting text below as a natural lead-in to additional
+                                        content.</p>
+                                    <button type="button" class="btn btn-outline-info btn-sm"
+                                        routerLink="../veja-mais">Saiba mais</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="card">
+                                <img class="card-img-top" src="https://picsum.photos/200?random=6" alt="Card image cap">
+                                <span class="badge badge-primary" routerLink="../quero-ajudar">Vaga para
+                                    voluntários</span>
+                                <div class="card-body">
+                                    <h5 class="card-title">Atividade 3</h5>
+
+                                    <div class="text-muted">
+                                        FEAK
+                                    </div> <br>
+
+                                    <p class="card-text">With supporting text below as a natural lead-in to additional
+                                        content.</p>
+                                    <button type="button" class="btn btn-outline-info btn-sm"
+                                        routerLink="../veja-mais">Saiba mais</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="card">
+                                <img class="card-img-top" src="https://picsum.photos/200?random=5" alt="Card image cap">
+                                <div class="card-body">
+                                    <h5 class="card-title">Atividade 4</h5>
+
+                                    <div class="text-muted">
+                                        FEAK
+                                    </div> <br>
+
+                                    <p class="card-text">With supporting text below as a natural lead-in to additional
+                                        content.</p>
+                                    <button type="button" class="btn btn-outline-info btn-sm"
+                                        routerLink="../veja-mais">Saiba mais</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    Eventos
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <div class="card">
+                                <img class="card-img-top" src="https://picsum.photos/200?random=1" alt="Card image cap">
+                                <div class="card-body">
+                                    <h5 class="card-title">Evento 1</h5>
+
+                                    <div class="text-muted">
+                                        FEAK
+                                    </div> <br>
+
+                                    <p class="card-text">With supporting text below as a natural lead-in to additional
+                                        content.</p>
+                                    <button type="button" class="btn btn-outline-info btn-sm"
+                                        routerLink="../veja-mais">Saiba mais</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="card">
+                                <img class="card-img-top" src="https://picsum.photos/200?random=2" alt="Card image cap">
+                                <div class="card-body">
+                                    <h5 class="card-title">Evento 2</h5>
+
+                                    <div class="text-muted">
+                                        FEAK
+                                    </div> <br>
+
+                                    <p class="card-text">With supporting text below as a natural lead-in to additional
+                                        content.</p>
+                                    <button type="button" class="btn btn-outline-info btn-sm"
+                                        routerLink="../veja-mais">Saiba mais</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="card">
+                                <img class="card-img-top" src="https://picsum.photos/200?random=3" alt="Card image cap">
+                                <div class="card-body">
+                                    <h5 class="card-title">Evento 3</h5>
+
+                                    <div class="text-muted">
+                                        FEAK
+                                    </div> <br>
+
+                                    <p class="card-text">With supporting text below as a natural lead-in to additional
+                                        content.</p>
+                                    <button type="button" class="btn btn-outline-info btn-sm"
+                                        routerLink="../veja-mais">Saiba mais</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </section>
 </main>
