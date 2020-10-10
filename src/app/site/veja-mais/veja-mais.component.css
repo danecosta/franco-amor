@@ -1,0 +1,13 @@
+.card-profile-image{
+    text-align: center;
+    margin: 2em;
+}
+
+.card-profile-actions{
+    text-align: center;
+}
+
+.btn-candidatar{
+    background-color: darkred;
+    color: white;
+}
