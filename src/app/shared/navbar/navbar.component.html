@@ -1,3 +1,20 @@
+<div class="social-medias">
+  <ul class="flex justify-end items-center px-4">
+    <li class="text-2xl mr-2"><a target="__blank" href="https://www.facebook.com/projetofrancoamor/">
+        <i class="fa fa-facebook"></i>
+      </a></li>
+
+    <li class="text-2xl mr-2"><a target="__blank" href="https://www.instagram.com/projetofrancoamor/">
+        <i class="fa fa-instagram"></i>
+      </a>
+    </li>
+
+    <li class="text-2xl"><a target="__blank" href="https://www.youtube.com/channel/UC2ZLTKtGh74ZBszfBnWwJKg">
+        <i class="fa fa-youtube"></i>
+      </a></li>
+  </ul>
+</div>
+
 <nav id="navbar-main" class="navbar navbar-main navbar-expand-lg navbar-transparent">
   <div class="container">
     <a class="navbar-brand mr-lg-5" [routerLink]="['/home']">
@@ -6,20 +23,22 @@
     <div class="navbar-collapse collapse" id="navbar_global" [ngbCollapse]="isCollapsed">
       <ul class="navbar-nav navbar-nav-hover align-items-lg-center">
         <li class="nav-item dropdown">
-          <a class="nav-link no-caret" data-toggle="dropdown" role="button" routerLink="./procuro-ajuda">
+          <a class="nav-link no-caret" data-toggle="dropdown" role="button">
             <i class="ni ni-collection d-lg-none"></i>
-            <span class="nav-link-inner--text">Procuro ajuda</span>
+            <span class="nav-link-inner--text">Quem somos</span>
           </a>
         </li>
       </ul>
+
       <ul class="navbar-nav navbar-nav-hover align-items-lg-center">
         <li class="nav-item dropdown">
-          <a class="nav-link no-caret" data-toggle="dropdown" role="button" routerLink="./quero-ajudar">
+          <a class="nav-link no-caret" data-toggle="dropdown" role="button" routerLink="./cadastre-acao">
             <i class="ni ni-collection d-lg-none"></i>
-            <span class="nav-link-inner--text">Quero ajudar</span>
+            <span class="nav-link-inner--text">Cadastre sua ação social</span>
           </a>
         </li>
       </ul>
+
       <ul class="navbar-nav navbar-nav-hover align-items-lg-center">
         <li class="nav-item dropdown">
           <a class="nav-link no-caret" data-toggle="dropdown" role="button" routerLink="./blog">
@@ -29,22 +48,22 @@
         </li>
       </ul>
 
-      <ul class="navbar-nav align-items-lg-center ml-lg-auto">
-        <li class="nav-item">
-          <a class="nav-link nav-link-icon" href="https://www.instagram.com/projetofrancoamor/" target="_blank"
-            data-toggle="tooltip" title="Follow us on Instagram">
-            <i class="fa fa-instagram"></i>
-            <span class="nav-link-inner--text d-lg-none">Instagram</span>
+      <ul class="navbar-nav navbar-nav-hover align-items-lg-center">
+        <li class="nav-item dropdown">
+          <a class="nav-link no-caret" data-toggle="dropdown" role="button" routerLink="./faq">
+            <i class="ni ni-collection d-lg-none"></i>
+            <span class="nav-link-inner--text">Ajuda</span>
           </a>
         </li>
-        <ul class="navbar-nav navbar-nav-hover align-items-lg-center">
-          <li class="nav-item dropdown">
-            <a class="nav-link no-caret" data-toggle="dropdown" role="button" routerLink="./login">
-              <i class="ni ni-collection d-lg-none"></i>
-              <span class="nav-link-inner--text"> | Entrar</span>
-            </a>
-          </li>
-        </ul>
+      </ul>
+
+      <ul class="navbar-nav navbar-nav-hover align-items-lg-center">
+        <li class="nav-item dropdown">
+          <a class="nav-link no-caret" data-toggle="dropdown" role="button" routerLink="./login">
+            <i class="ni ni-collection d-lg-none"></i>
+            <span class="nav-link-inner--text"> | Entrar</span>
+          </a>
+        </li>
       </ul>
     </div>
   </div>

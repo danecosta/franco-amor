@@ -1,18 +1,24 @@
-.icon-card-home{
-  font-size:35px;
+.icon-card-home {
+  font-size: 35px;
 }
 
-.titulo-card-home{
+.titulo-card-home {
   font-size: 18px;
 }
 
-.btn-card-home{
-  border-radius: 50px;
+.btn-card-home {
+  border-radius: 100%;
   width: 20em;
   height: 20em;
-  padding-top: 7.5em;
+  padding-top: 5em;
 
   &:not(:last-child) {
     margin-right: 3rem;
   }
+}
+
+.text-card-home {
+  white-space: break-spaces;
+  word-break: break-word;
+  font-variant-caps: all-small-caps;
 }

@@ -35,6 +35,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AngularFileUploaderModule } from 'angular-file-uploader';
 import { TextMaskModule } from 'angular2-text-mask';
 import { VejaMaisComponent } from './site/veja-mais/veja-mais.component';
+import { FaqComponent } from './site/faq/faq.component';
+import { CadastreAcaoComponent } from './site/cadastre-acao/cadastre-acao.component';
 
 @NgModule({
   declarations: [
@@ -62,7 +64,9 @@ import { VejaMaisComponent } from './site/veja-mais/veja-mais.component';
     ManterVirtualComponent,
     ManterAtividadesComponent,
     ManterEventoComponent,
-    VejaMaisComponent
+    VejaMaisComponent,
+    FaqComponent,
+    CadastreAcaoComponent
   ],
   imports: [
     BrowserModule,
