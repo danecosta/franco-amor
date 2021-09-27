@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class QueroAjudarComponent implements OnInit {
 
+  cidade: string = null;
+  
   constructor() { }
 
   ngOnInit(): void {

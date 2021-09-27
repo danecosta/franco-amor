@@ -21,7 +21,6 @@ import { DoacaoComponent } from './site/doacao/doacao.component';
 import { ProdutosComponent } from './site/produtos/produtos.component';
 import { BlogComponent } from './blog/blog.component';
 import { ListarAtendimentosAtividadesComponent } from './admin/listar-atendimentos-atividades/listar-atendimentos-atividades.component';
-import { ManterAtividadesComponent } from './admin/manter-atividades/manter-atividades.component';
 import { ManterEventoComponent } from './admin/manter-evento/manter-evento.component';
 import { ManterPresencialComponent } from './admin/manter-presencial/manter-presencial.component';
 import { ManterTelefonicoComponent } from './admin/manter-telefonico/manter-telefonico.component';
@@ -29,6 +28,7 @@ import { ManterVirtualComponent } from './admin/manter-virtual/manter-virtual.co
 import { VejaMaisComponent } from './site/veja-mais/veja-mais.component';
 import { FaqComponent } from './site/faq/faq.component';
 import { CadastreAcaoComponent } from './site/cadastre-acao/cadastre-acao.component';
+import { QuemSomosComponent } from './site/quem-somos/quem-somos.component';
 
 const routes: Routes = [
   // Site
@@ -43,6 +43,7 @@ const routes: Routes = [
   { path: 'veja-mais', component: VejaMaisComponent },
   { path: 'faq', component: FaqComponent },
   { path: 'cadastre-acao', component: CadastreAcaoComponent },
+  { path: 'quem-somos', component: QuemSomosComponent },
 
   // Blog
   { path: 'blog', component: BlogComponent },
@@ -58,7 +59,6 @@ const routes: Routes = [
   { path: 'manter-postagem', component: ManterPostagemComponent },
   { path: 'manter-produto', component: ManterProdutoComponent },
   { path: 'manter-voluntario', component: ManterVoluntarioComponent },
-  { path: 'manter-atividades', component: ManterAtividadesComponent },
   { path: 'manter-evento', component: ManterEventoComponent },
   { path: 'manter-presencial', component: ManterPresencialComponent },
   { path: 'manter-telefonico', component: ManterTelefonicoComponent },

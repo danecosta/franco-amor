@@ -17,51 +17,46 @@
 
 <nav id="navbar-main" class="navbar navbar-main navbar-expand-lg navbar-transparent">
   <div class="container">
-    <a class="navbar-brand mr-lg-5" [routerLink]="['/home']">
+    <a class="navbar-brand mr-lg-5 menu" routerLink="./home">
       <img src="../../../assets/img/francoAmor/francoamorlogo.png"> Franco Amor
     </a>
     <div class="navbar-collapse collapse" id="navbar_global" [ngbCollapse]="isCollapsed">
       <ul class="navbar-nav navbar-nav-hover align-items-lg-center">
         <li class="nav-item dropdown">
-          <a class="nav-link no-caret" data-toggle="dropdown" role="button">
-            <i class="ni ni-collection d-lg-none"></i>
-            <span class="nav-link-inner--text">Quem somos</span>
+          <a class="nav-link no-caret menu" data-toggle="dropdown" role="button" routerLink="./quem-somos">
+            Quem somos
           </a>
         </li>
       </ul>
 
       <ul class="navbar-nav navbar-nav-hover align-items-lg-center">
         <li class="nav-item dropdown">
-          <a class="nav-link no-caret" data-toggle="dropdown" role="button" routerLink="./cadastre-acao">
-            <i class="ni ni-collection d-lg-none"></i>
-            <span class="nav-link-inner--text">Cadastre sua ação social</span>
+          <a class="nav-link no-caret menu" data-toggle="dropdown" role="button" routerLink="./cadastre-acao">
+            Cadastre sua ação social
           </a>
         </li>
       </ul>
 
       <ul class="navbar-nav navbar-nav-hover align-items-lg-center">
         <li class="nav-item dropdown">
-          <a class="nav-link no-caret" data-toggle="dropdown" role="button" routerLink="./blog">
-            <i class="ni ni-collection d-lg-none"></i>
-            <span class="nav-link-inner--text">Blog</span>
+          <a class="nav-link no-caret menu" data-toggle="dropdown" role="button" routerLink="./blog">
+            Blog
           </a>
         </li>
       </ul>
 
       <ul class="navbar-nav navbar-nav-hover align-items-lg-center">
         <li class="nav-item dropdown">
-          <a class="nav-link no-caret" data-toggle="dropdown" role="button" routerLink="./faq">
-            <i class="ni ni-collection d-lg-none"></i>
-            <span class="nav-link-inner--text">Ajuda</span>
+          <a class="nav-link no-caret menu" data-toggle="dropdown" role="button" routerLink="./faq">
+            Ajuda
           </a>
         </li>
       </ul>
 
       <ul class="navbar-nav navbar-nav-hover align-items-lg-center">
         <li class="nav-item dropdown">
-          <a class="nav-link no-caret" data-toggle="dropdown" role="button" routerLink="./login">
-            <i class="ni ni-collection d-lg-none"></i>
-            <span class="nav-link-inner--text"> | Entrar</span>
+          <a class="nav-link no-caret menu" data-toggle="dropdown" role="button" routerLink="./login">
+            | Entrar
           </a>
         </li>
       </ul>

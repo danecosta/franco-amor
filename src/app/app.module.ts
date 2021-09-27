@@ -19,13 +19,11 @@ import { SignupComponent } from './auth/signup/signup.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { ContatoComponent } from './site/contato/contato.component';
-import { HomeModule } from './site/home/home.module';
 import { HomeAdminComponent } from './admin/home-admin/home-admin.component';
 import { DoacaoComponent } from './site/doacao/doacao.component';
 import { ProcuroAjudaComponent } from './site/procuro-ajuda/procuro-ajuda.component';
 import { QueroAjudarComponent } from './site/quero-ajudar/quero-ajudar.component';
 import { ListarAtendimentosAtividadesComponent } from './admin/listar-atendimentos-atividades/listar-atendimentos-atividades.component';
-import { ManterAtividadesComponent } from './admin/manter-atividades/manter-atividades.component';
 import { ManterEventoComponent } from './admin/manter-evento/manter-evento.component';
 import { ManterPresencialComponent } from './admin/manter-presencial/manter-presencial.component';
 import { ManterTelefonicoComponent } from './admin/manter-telefonico/manter-telefonico.component';
@@ -37,10 +35,13 @@ import { TextMaskModule } from 'angular2-text-mask';
 import { VejaMaisComponent } from './site/veja-mais/veja-mais.component';
 import { FaqComponent } from './site/faq/faq.component';
 import { CadastreAcaoComponent } from './site/cadastre-acao/cadastre-acao.component';
+import { QuemSomosComponent } from './site/quem-somos/quem-somos.component';
+import { HomeComponent } from './site/home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    HomeComponent,
     SignupComponent,
     NavbarComponent,
     FooterComponent,
@@ -62,11 +63,11 @@ import { CadastreAcaoComponent } from './site/cadastre-acao/cadastre-acao.compon
     ManterTelefonicoComponent,
     ManterPresencialComponent,
     ManterVirtualComponent,
-    ManterAtividadesComponent,
     ManterEventoComponent,
     VejaMaisComponent,
     FaqComponent,
-    CadastreAcaoComponent
+    CadastreAcaoComponent,
+    QuemSomosComponent
   ],
   imports: [
     BrowserModule,
@@ -74,7 +75,6 @@ import { CadastreAcaoComponent } from './site/cadastre-acao/cadastre-acao.compon
     FormsModule,
     RouterModule,
     AppRoutingModule,
-    HomeModule,
     NgxMaterialTimepickerModule,
     BrowserAnimationsModule,
     AngularFileUploaderModule,

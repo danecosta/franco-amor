@@ -20,10 +20,6 @@ export class ListarAtendimentosAtividadesComponent implements OnInit {
     this.router.navigate(['manter-evento']);
   }
 
-  novaAtividade() {
-    this.router.navigate(['manter-atividades']);
-  }
-
   novoTelefonico() {
     this.router.navigate(['manter-telefonico']);
   }
