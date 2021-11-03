@@ -1,5 +1,5 @@
 .icon-card-home {
-  font-size: 35px;
+  font-size: 40px;
 }
 
 .titulo-card-home {
@@ -8,9 +8,10 @@
 
 .btn-card-home {
   border-radius: 100%;
-  width: 20em;
-  height: 20em;
-  padding-top: 5em;
+  width: 25rem;
+  height: 25rem;
+  padding-top: 6.5em;
+  font-size: larger;
 
   &:not(:last-child) {
     margin-right: 3rem;
@@ -21,4 +22,21 @@
   white-space: break-spaces;
   word-break: break-word;
   font-variant-caps: all-small-caps;
+}
+
+.section-shaped{
+  margin-top: 50px;
+}
+
+.slogan {
+  margin-top: 50px;
+  text-align: center;
+  font-family: "Dancing Script", cursive;
+}
+
+.main-site {
+  /* Full height */
+  height: -moz-calc(100% - 80px);
+  height: -webkit-calc(100% - 80px);
+  height: calc(100% - 120px);
 }

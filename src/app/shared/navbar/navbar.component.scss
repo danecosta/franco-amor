@@ -1,29 +1,19 @@
 .social-medias {
-    height: 2.5rem !important;
     background-color: #3b5999;
+}
+
+.social-medias-icon{
+    color: white !important;
+}
+
+nav{
+    font-family: 'Quicksand', sans-serif !important;
 }
 
 a.menu{
     color:#3b5999 !important;
 }
 
-.px-4 {
-    padding-left: 1rem !important;
-    padding-right: 1rem !important;
-}
-
-.px-4 {
-    padding-left: 1rem !important;
-    padding-right: 1rem !important;
-}
-.justify-end {
-    -webkit-box-pack: end !important;
-    justify-content: flex-end !important;
-}
-.items-center {
-    -webkit-box-align: center !important;
-    align-items: center !important;
-}
 .flex {
     display: -webkit-box !important;
     display: flex !important;
@@ -36,13 +26,17 @@ ul {
 }
 
 .mr-2 {
-    margin-right: 5px;
+    margin-right: 8px;
 }
 
 .text-2xl {
     font-size: 1.5rem !important;
 }
 
-.navbar-brand {
-    padding-top: 25px;
+navbar_global{
+    padding-top: 18px;
+}
+
+.navbar-main{
+    margin-top: 30px;
 }
