@@ -30,7 +30,6 @@ import { ManterTelefonicoComponent } from './admin/manter-telefonico/manter-tele
 import { ManterVirtualComponent } from './admin/manter-virtual/manter-virtual.component';
 import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { AngularFileUploaderModule } from 'angular-file-uploader';
 import { TextMaskModule } from 'angular2-text-mask';
 import { VejaMaisComponent } from './site/veja-mais/veja-mais.component';
 import { FaqComponent } from './site/faq/faq.component';
@@ -77,7 +76,6 @@ import { HomeComponent } from './site/home/home.component';
     AppRoutingModule,
     NgxMaterialTimepickerModule,
     BrowserAnimationsModule,
-    AngularFileUploaderModule,
     TextMaskModule
   ],
   providers: [],
