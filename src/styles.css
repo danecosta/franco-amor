@@ -83,6 +83,7 @@ html,body {
     color: #3b5999;
     border-color: #fff;
     background-color: #fff;
+    cursor: pointer;
 }
 
 .btn-acao-verde {
@@ -96,4 +97,5 @@ html,body {
     color: #009688;
     border-color: #fff;
     background-color: #fff;
+    cursor: pointer;
 }
