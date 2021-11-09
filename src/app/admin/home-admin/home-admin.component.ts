@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeAdminComponent implements OnInit {
 
+  active = 1;
   constructor() { }
 
   ngOnInit(): void {

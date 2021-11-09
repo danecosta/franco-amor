@@ -50,33 +50,32 @@
                         <div class="input-group">
                             <div class="custom-control custom-radio mb-3">
                                 <input name="tipoEmpresa" class="custom-control-input" id="associacao" type="radio"
-                                    value="associacao" [(ngModel)]="tipoEmpresa">
-                                <label class="custom-control-label" for="associacao" value="associacao"
-                                    [(ngModel)]="tipoEmpresa">Associação</label>
+                                    value="associacao" name="associacao" [(ngModel)]="tipoEmpresa">
+                                <label class="custom-control-label" for="associacao" value="associacao">Associação</label>
                             </div>
                             <div class="custom-control custom-radio mb-3">
                                 <input name="tipoEmpresa" class="custom-control-input" id="mei" type="radio" value="mei"
-                                    [(ngModel)]="tipoEmpresa">
+                                    name="mei" [(ngModel)]="tipoEmpresa">
                                 <label class="custom-control-label" for="mei">MEI</label>
                             </div>
                             <div class="custom-control custom-radio mb-3">
                                 <input name="tipoEmpresa" class="custom-control-input" id="eireli" type="radio"
-                                    value="eireli" [(ngModel)]="tipoEmpresa">
+                                    name="tipoEmpresa" value="eireli" [(ngModel)]="tipoEmpresa">
                                 <label class="custom-control-label" for="eireli">EIRELI</label>
                             </div>
                             <div class="custom-control custom-radio mb-3">
                                 <input name="tipoEmpresa" class="custom-control-input" id="ltda" type="radio"
-                                    value="ltda" [(ngModel)]="tipoEmpresa">
+                                    name="tipoEmpresa" value="ltda" [(ngModel)]="tipoEmpresa">
                                 <label class="custom-control-label" for="ltda">Ltda</label>
                             </div>
                             <div class="custom-control custom-radio mb-3">
                                 <input name="tipoEmpresa" class="custom-control-input" id="fundacao" type="radio"
-                                    value="fundacao" [(ngModel)]="tipoEmpresa">
+                                    name="tipoEmpresa" value="fundacao" [(ngModel)]="tipoEmpresa">
                                 <label class="custom-control-label" for="fundacao">Fundação</label>
                             </div>
                             <div class="custom-control custom-radio mb-3">
                                 <input name="tipoEmpresa" class="custom-control-input" id="outro" type="radio"
-                                    value="outro" [(ngModel)]="tipoEmpresa">
+                                    name="tipoEmpresa" value="outro" [(ngModel)]="tipoEmpresa">
                                 <label class="custom-control-label" for="outro">Outro</label>
                             </div>
                             <div class="col-md-4" *ngIf="tipoEmpresa=== 'outro'">

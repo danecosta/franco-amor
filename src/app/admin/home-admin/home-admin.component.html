@@ -3,33 +3,39 @@
 
     <section class="section section-shaped bg-secondary">
         <div class="container">
-            <ngb-tabset [justify]="'center'" class="custom-tab-content flex-column flex-md-row" type="pills">
-                <ngb-tab title="Instituições">
-                    <ng-template ngbTabContent>
+            <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs">
+                <li [ngbNavItem]="1">
+                    <a ngbNavLink>Instituições</a>
+                    <ng-template ngbNavContent>
                         <app-listar-instituicao></app-listar-instituicao>
                     </ng-template>
-                </ngb-tab>
-                <ngb-tab title="Atendimentos/Atividades">
-                    <ng-template ngbTabContent>
+                </li>
+                <li [ngbNavItem]="2">
+                    <a ngbNavLink>Atendimentos/Atividades</a>
+                    <ng-template ngbNavContent>
                         <app-listar-atendimentos-atividades></app-listar-atendimentos-atividades>
                     </ng-template>
-                </ngb-tab>
-                <ngb-tab title="Voluntários">
-                    <ng-template ngbTabContent>
+                </li>
+                <li [ngbNavItem]="3">
+                    <a ngbNavLink>Voluntários</a>
+                    <ng-template ngbNavContent>
                         <app-listar-voluntario></app-listar-voluntario>
                     </ng-template>
-                </ngb-tab>
-                <ngb-tab title="Postagens">
-                    <ng-template ngbTabContent>
+                </li>
+                <li [ngbNavItem]="4">
+                    <a ngbNavLink>Postagens</a>
+                    <ng-template ngbNavContent>
                         <app-listar-postagem></app-listar-postagem>
                     </ng-template>
-                </ngb-tab>
-                <ngb-tab title="Produtos">
-                    <ng-template ngbTabContent>
+                </li>
+                <li [ngbNavItem]="5">
+                    <a ngbNavLink>Produtos</a>
+                    <ng-template ngbNavContent>
                         <app-listar-produto></app-listar-produto>
                     </ng-template>
-                </ngb-tab>
-            </ngb-tabset>
+                </li>
+            </ul>
+            <div [ngbNavOutlet]="nav" class="mt-2"></div>
         </div>
     </section>
 </main>

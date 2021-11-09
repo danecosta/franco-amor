@@ -17,6 +17,7 @@ export class ManterInstituicaoComponent extends BaseComponent implements OnInit 
   cidade: string;
 
   dataFundacao: any;
+  tipoEmpresa: any;
 
   constructor(private modalService: NgbModal) {
     super();
