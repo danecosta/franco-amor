@@ -1,3 +1,4 @@
+import { AngularFireAuth, AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -36,6 +37,12 @@ import { FaqComponent } from './site/faq/faq.component';
 import { CadastreAcaoComponent } from './site/cadastre-acao/cadastre-acao.component';
 import { QuemSomosComponent } from './site/quem-somos/quem-somos.component';
 import { HomeComponent } from './site/home/home.component';
+
+import { provideFirebaseApp, getApp, initializeApp } from '@angular/fire/app';
+import { getFirestore, provideFirestore } from '@angular/fire/firestore';
+import { environment } from '../environments/environment'
+import { AngularFireModule } from '@angular/fire/compat';
+
 
 @NgModule({
   declarations: [
@@ -76,7 +83,11 @@ import { HomeComponent } from './site/home/home.component';
     AppRoutingModule,
     NgxMaterialTimepickerModule,
     BrowserAnimationsModule,
-    TextMaskModule
+    TextMaskModule,
+   // provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
+    AngularFireModule.initializeApp(environment.firebaseConfig), 
+    AngularFireAuthModule,
+       
   ],
   providers: [],
   bootstrap: [AppComponent]
