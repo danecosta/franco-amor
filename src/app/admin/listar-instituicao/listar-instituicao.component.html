@@ -10,13 +10,15 @@
             <div class="col-md-4">
                 <div class="form-group">
                     <label>Nome</label>
-                    <input type="text" class="form-control" id="nome" placeholder="Nome da instituição">
+                    <input type="text" class="form-control" id="nome" name="nome"
+                    [(ngModel)]="filtro.nome" placeholder="Nome da instituição">
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="form-group">
                     <label>CNPJ</label>
-                    <input type="text" [textMask]="{mask: cnpjMask}" class="form-control" id="cnpj"
+                    <input type="text" [textMask]="{mask: cnpjMask}" class="form-control" id="cnpj" name="cnpj"
+                    [(ngModel)]="filtro.cnpj"
                         placeholder="CNPJ da instituição">
                 </div>
             </div>
@@ -24,7 +26,7 @@
                 <div class="form-group">
                     <label>Cidade</label>
                     <input type="text" class="form-control" id="cidade" placeholder="Cidade" name="cidade"
-                        [(ngModel)]="cidade">
+                        [(ngModel)]="filtro.cidade">
                 </div>
             </div>
             <div class="col-md-1" style="padding-top: 2rem;">
