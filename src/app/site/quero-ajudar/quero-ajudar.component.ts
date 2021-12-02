@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-quero-ajudar',
@@ -9,9 +10,13 @@ export class QueroAjudarComponent implements OnInit {
 
   cidade: string = null;
   
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
+  }
+
+  irParaVejaMais() {
+    this.router.navigate(['./veja-mais']);
   }
 
 }

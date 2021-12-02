@@ -11,3 +11,7 @@ a {
     color: #009688;
     font-weight: 400;
 }
+
+.bg-gradient-success {
+    background: linear-gradient(87deg, #2dce89 0, #2dcecc 100%) !important;
+}
