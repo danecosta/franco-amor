@@ -4,6 +4,11 @@ import { BaseComponent } from '../base.component';
 import axios from 'axios';
 
 
+export class Filtro {
+  nome: string;
+  cnpj: string;
+  cidade: string;
+}
 @Component({
   selector: 'app-listar-instituicao',
   templateUrl: './listar-instituicao.component.html',

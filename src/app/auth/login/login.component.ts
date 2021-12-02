@@ -35,6 +35,18 @@ export class LoginComponent implements OnInit {
       
     }
   }
+  private recuperarSenha() {
+    if(!this.email){
+        alert('Falta de campo obrigatório - Insira o e-mail para recuperação senha !')
+    } else {
+        this.auth.sendPasswordResetEmail(this.email)
+                    .then(retorno => {
+                        console.log('Sucesso ao enviar e-mail de recuperação de senha');
+                    }).catch(error => {
+                        console.log('Erro ao enviar e-mail de recuparação de senha');
+                    });
+    }
+}
 
   logout() {
     if(this.auth.currentUser){
