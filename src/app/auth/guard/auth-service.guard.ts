@@ -13,13 +13,12 @@ export class AuthGuardService implements CanActivate {
     async canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Promise<boolean> {
 
         let usuario = await this.auth.currentUser;
-        console.log(usuario.email)
             
-        if (!usuario.email)  {
+        if (!usuario || !usuario.email)  {
             this._router.navigate(['login']);
             return false;
-        } 
-        //this._router.navigate(['home-admin'])
+        }
+        
         return true;
     }
  

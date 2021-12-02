@@ -3,7 +3,6 @@ import { Router, NavigationEnd, NavigationStart } from '@angular/router';
 import { Location, PopStateEvent } from '@angular/common';
 
 import * as firebase from 'firebase/app';
-import 'firebase/compat/auth';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 
 @Component({
@@ -16,16 +15,17 @@ export class NavbarComponent implements OnInit {
     private lastPoppedUrl: string;
     private yScrollStack: number[] = [];
 
-    public status: string = '| Entrar';
+    public status: string;
 
     constructor(public location: Location, private router: Router, public auth: AngularFireAuth) {
-        
+
     }
 
     ngOnInit() {
-
-        if(this.auth.currentUser){
+        if (this.auth.currentUser) {
             this.status = '| Sair'
+        } else {
+            this.status = '| Entrar'
         }
 
         this.router.events.subscribe((event) => {
@@ -56,6 +56,7 @@ export class NavbarComponent implements OnInit {
             return false;
         }
     }
+
     isDocumentation() {
         var titlee = this.location.prepareExternalUrl(this.location.path());
         if (titlee === '#/documentation') {

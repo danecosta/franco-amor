@@ -54,15 +54,12 @@ export class ManterEventoComponent extends BaseComponent implements OnInit {
   }
 
   public instituicaoHandler($event) {
-      console.log($event);
       this.enderecosSelect = [];
       this.enderecosSelect.push($event.endereco);
       this.eventoDTO.instituicaoId = $event.id;
   }
 
   public enderecoHandler($event) {
-    console.log('endereco')
-    console.log($event);
     this.eventoDTO.enderecoId = $event.id;
   }
 
@@ -82,10 +79,8 @@ export class ManterEventoComponent extends BaseComponent implements OnInit {
 
 
   async salvar() {
-    console.log(this.eventoDTO);
     this.eventoDTO.horariosAtendimento.push(this.horaAtendimento);
     const retorno = await axios.post('http://localhost:3000/eventos', this.eventoDTO);
-    console.log(retorno.data)
    }
 
   buscarCep() {

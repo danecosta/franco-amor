@@ -21,17 +21,14 @@ export class ListarProdutoComponent implements OnInit {
   }
 
   async obterProdutos(){
-    const inst = await axios.get('https://franco-amor-api.herokuapp.com/produtos');
-    console.log(inst)
-    inst.data.forEach(element => {
-      let inst = { nome: element.nome,
+    const prod = await axios.get('https://franco-amor-api.herokuapp.com/produtos');
+    prod.data.forEach(element => {
+      let prod = { nome: element.nome,
                   valor: element.valor,
                   estoque: element.estoque,
       }
-      this.produtos.push(inst);
+      this.produtos.push(prod);
     });
-    
-    console.log(this.produtos)
   }
 
 }

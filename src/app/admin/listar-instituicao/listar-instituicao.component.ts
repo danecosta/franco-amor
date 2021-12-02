@@ -18,6 +18,7 @@ export class ListarInstituicaoComponent extends BaseComponent implements OnInit 
 
   public instituticoes: any[] = [];
   public nome;
+  public filtro = new Filtro();
 
   constructor(private router: Router) {
     super();
@@ -38,7 +39,7 @@ export class ListarInstituicaoComponent extends BaseComponent implements OnInit 
 
   async obterInstituicoes(){
     const inst = await axios.get('https://franco-amor-api.herokuapp.com/instituicoes');
-    //console.log(inst)
+
     inst.data.forEach(element => {
       let inst = { nome: element.nome,
                   email: element.email,
@@ -48,7 +49,5 @@ export class ListarInstituicaoComponent extends BaseComponent implements OnInit 
       }
       this.instituticoes.push(inst);
     });
-    this.nome = this.instituticoes[3].nome;
-    console.log(this.instituticoes)
   }
 }

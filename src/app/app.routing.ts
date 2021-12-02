@@ -35,7 +35,7 @@ const routes: Routes = [
   // Site
   { path: 'home', component: HomeComponent },
   { path: 'registro', component: SignupComponent },
-  { path: 'login', component: LoginComponent, canActivate: [AuthGuardService] },
+  { path: 'login', component: LoginComponent },
   { path: 'contato', component: ContatoComponent },
   { path: 'doacao', component: DoacaoComponent },
   { path: 'produtos', component: ProdutosComponent },
@@ -51,19 +51,19 @@ const routes: Routes = [
 
   // Admin
   { path: 'home-admin', component: HomeAdminComponent, canActivate: [AuthGuardService] },
-  { path: 'listar-instituicao', component: ListarInstituicaoComponent },
-  { path: 'listar-postagem', component: ListarPostagemComponent },
-  { path: 'listar-produto', component: ListarProdutoComponent },
-  { path: 'listar-voluntario', component: ListarVoluntarioComponent },
-  { path: 'listar-atendimentos-atividades', component: ListarAtendimentosAtividadesComponent },
-  { path: 'manter-instituicao', component: ManterInstituicaoComponent },
-  { path: 'manter-postagem', component: ManterPostagemComponent },
-  { path: 'manter-produto', component: ManterProdutoComponent },
-  { path: 'manter-voluntario', component: ManterVoluntarioComponent },
-  { path: 'manter-evento', component: ManterEventoComponent },
-  { path: 'manter-presencial', component: ManterPresencialComponent },
-  { path: 'manter-telefonico', component: ManterTelefonicoComponent },
-  { path: 'manter-virtual', component: ManterVirtualComponent },
+  { path: 'listar-instituicao', component: ListarInstituicaoComponent, canActivate: [AuthGuardService] },
+  { path: 'listar-postagem', component: ListarPostagemComponent, canActivate: [AuthGuardService] },
+  { path: 'listar-produto', component: ListarProdutoComponent, canActivate: [AuthGuardService] },
+  { path: 'listar-voluntario', component: ListarVoluntarioComponent, canActivate: [AuthGuardService] },
+  { path: 'listar-atendimentos-atividades', component: ListarAtendimentosAtividadesComponent, canActivate: [AuthGuardService] },
+  { path: 'manter-instituicao', component: ManterInstituicaoComponent, canActivate: [AuthGuardService] },
+  { path: 'manter-postagem', component: ManterPostagemComponent, canActivate: [AuthGuardService] },
+  { path: 'manter-produto', component: ManterProdutoComponent, canActivate: [AuthGuardService] },
+  { path: 'manter-voluntario', component: ManterVoluntarioComponent, canActivate: [AuthGuardService] },
+  { path: 'manter-evento', component: ManterEventoComponent, canActivate: [AuthGuardService] },
+  { path: 'manter-presencial', component: ManterPresencialComponent, canActivate: [AuthGuardService] },
+  { path: 'manter-telefonico', component: ManterTelefonicoComponent, canActivate: [AuthGuardService] },
+  { path: 'manter-virtual', component: ManterVirtualComponent, canActivate: [AuthGuardService] },
 
   { path: '', redirectTo: 'home', pathMatch: 'full' }
 ];
@@ -73,9 +73,9 @@ const routes: Routes = [
     CommonModule,
     BrowserModule,
     RouterModule.forRoot(routes, {
-    useHash: true,
-    relativeLinkResolution: 'legacy'
-})
+      useHash: true,
+      relativeLinkResolution: 'legacy'
+    })
   ],
   exports: [
   ],

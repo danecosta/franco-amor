@@ -38,9 +38,7 @@ export class ManterInstituicaoComponent extends BaseComponent implements OnInit 
   public async salvar() {
     if(this.criarRepresentanteUm && this.criarRepresentanteDois)
     this.criarInstituicao.representantes.push(this.criarRepresentanteUm, this.criarRepresentanteDois);
-    console.log(this.criarInstituicao);
     const retorno = await axios.post('https://franco-amor-api.herokuapp.com/instituicoes', this.criarInstituicao);
-    console.log(retorno.data)
    }
 
   buscarCep() {
