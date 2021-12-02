@@ -10,21 +10,21 @@
                 <div class="row" style="margin-bottom: 1em;">
                     <div class="col-md-6">
                         <label>Nome</label>
-                        <input type="text" class="form-control" id="nome" placeholder="Nome do atendimento">
+                        <input name="nome-evento" [(ngModel)]="eventoDTO.nome" type="text" class="form-control" id="nome" placeholder="Nome do atendimento">
                     </div>
                 </div>
 
                 <div class="row" style="margin-bottom: 1em;">
                     <div class="col-md-6">
                         <label>Instituição</label>
-                        <select class="form-control" id="instituicao">
-                            <option>ABC</option>
+                        <select ngModel (ngModelChange)="instituicaoHandler($event)" class="form-control" id="instituicao" name="selecsras">
+                            <option *ngFor="let value of instituicoesSelect" [ngValue]="value">{{value.nome}}</option>
                         </select>
                     </div>
                     <div class="col-md-6">
                         <label>Endereço</label>
-                        <select class="form-control" id="endereco" name='endereco' [(ngModel)]="endereco">
-                            <option value=null>Endereço 1</option>
+                        <select ngModel (ngModelChange)="enderecoHandler($event)" class="form-control" id="endereco" name='endereco' [(ngModel)]="endereco">
+                            <option *ngFor="let value of enderecosSelect" [ngValue]="value">{{value.cidade}} - {{value.logradouro}} </option>
                             <option value='outro'>Outro</option>
                         </select>
                     </div>
@@ -51,13 +51,13 @@
                             <div class="form-group">
                                 <label>Logradouro</label>
                                 <input type="text" class="form-control" id="logradouro" placeholder="Rua ou Av"
-                                    name="logradouro" [(ngModel)]="logradouro">
+                                    name="logradouro" [(ngModel)]="eventoDTO.endereco.logradouro">
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Nº/Complemento</label>
-                                <input type="text" class="form-control" id="numComp" placeholder="Nº/Bloco/Apto">
+                                <input name="complemento-evento" [(ngModel)]="eventoDTO.endereco.complemento" type="text" class="form-control" id="numComp" placeholder="Nº/Bloco/Apto">
                             </div>
                         </div>
                     </div>
@@ -67,14 +67,14 @@
                             <div class="form-group">
                                 <label>Bairro</label>
                                 <input type="text" class="form-control" id="bairro" placeholder="Bairro" name="bairro"
-                                    [(ngModel)]="bairro">
+                                    [(ngModel)]="eventoDTO.endereco.bairro">
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Cidade</label>
                                 <input type="text" class="form-control" id="cidade" placeholder="Cidade" name="cidade"
-                                    [(ngModel)]="cidade">
+                                    [(ngModel)]="eventoDTO.endereco.cidade">
                             </div>
                         </div>
                     </div>
@@ -86,7 +86,7 @@
                     <div class="col-md-12">
                         <div class="form-group">
                             <label>Breve resumo</label>
-                            <textarea class="form-control" id="resumo" rows="3"
+                            <textarea class="form-control" id="resumo" rows="3" name="resumo" [(ngModel)]="eventoDTO.resumo"
                                 placeholder="Breve resumo da atividade"></textarea>
                         </div>
                     </div>
@@ -102,16 +102,16 @@
                         <div class="input-group">
                             <div class="custom-control custom-radio mb-3">
                                 <input name="participacao" class="custom-control-input" id="livre" type="radio"
-                                    value="livre" [(ngModel)]="participacao">
+                                    value="livre" [(ngModel)]="eventoDTO.participacao">
                                 <label class="custom-control-label" for="livre">Livre</label>
                             </div>
                             <div class="custom-control custom-radio mb-3">
                                 <input name="participacao" class="custom-control-input" id="agendar" type="radio"
-                                    value="agendar" [(ngModel)]="participacao">
+                                    value="agendar" [(ngModel)]="eventoDTO.participacao">
                                 <label class="custom-control-label" for="agendar">Agendar</label>
                             </div>
                             <div class="col-md-4" *ngIf="participacao === 'agendar'">
-                                <input type="text" class="form-control" id="valor"
+                                <input type="text" class="form-control" id="valor" name="agendar" [(ngModel)]="eventoDTO.agendar"
                                     placeholder="Link, e-mail ou telefone">
                             </div>
                         </div>
@@ -128,7 +128,7 @@
                                     <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
                                 </div>
                                 <input class="form-control datepicker" placeholder="Data" name="dp"
-                                    [(ngModel)]="dataAtividade" ngbDatepicker #d="ngbDatepicker" (click)="d.toggle()"
+                                    [(ngModel)]="horaAtendimento.dataInicio" ngbDatepicker #d="ngbDatepicker" (click)="d.toggle()"
                                     type="text" />
                             </div>
                         </div>
@@ -137,14 +137,14 @@
                         <div class="col-md-6">
                             <label>Horário de início</label>
                             <input [ngxTimepicker]="picker15" [format]="24" class="form-control" placeholder="00:00"
-                                id="horarioinicio" name="horarioinicio" [(ngModel)]="dataAtividadeInicio">
+                                id="horarioinicio" name="horarioinicio" [(ngModel)]="horaAtendimento.horaInicio">
                             <ngx-material-timepicker #picker15></ngx-material-timepicker>
                         </div>
                         -
                         <div class="col-md-6">
                             <label>Horário de fim</label>
                             <input [ngxTimepicker]="picker16" [format]="24" class="form-control" placeholder="00:00"
-                                id="horariofim" name="horariofim" [(ngModel)]="dataAtividadeFim">
+                                id="horariofim" name="horariofim" [(ngModel)]="horaAtendimento.horaFim">
                             <ngx-material-timepicker #picker16></ngx-material-timepicker>
                         </div>
                     </div>
@@ -380,7 +380,7 @@
                                 <label class="custom-control-label" for="social">Pago</label>
                             </div>
                             <div class="col-md-4" *ngIf="valor === 'pago'">
-                                <input type="text" class="form-control" id="valor" placeholder="Valor (R$)">
+                                <input type="text" class="form-control" id="valor" placeholder="Valor (R$)" name="valor-evento" [(ngModel)]="eventoDTO.valor" >
                             </div>
                         </div>
                     </div>
@@ -389,11 +389,11 @@
                 <div class="row" style="margin-bottom: 1em;">
                     <div class="col-md-6">
                         <label>Nº atendentes</label>
-                        <input type="text" class="form-control" id="qtdAtendentes" placeholder="Nº de atendentes">
+                        <input type="text" class="form-control" id="qtdAtendentes" placeholder="Nº de atendentes" name="atendi-qtd" [(ngModel)]="eventoDTO.qtdAtendentes" >
                     </div>
                     <div class="col-md-6">
                         <label>Nº atendimentos mensais</label>
-                        <input type="text" class="form-control" id="qtdAtendimento"
+                        <input type="text" class="form-control" id="qtdAtendimento" name="mensais-evento" [(ngModel)]="eventoDTO.qtdAtendentimentosMensais"
                             placeholder="Nº de atendimentos/mês">
                     </div>
                 </div>
@@ -402,7 +402,7 @@
                     <div class="col-md-12">
                         <div class="form-group">
                             <label>Observação</label>
-                            <textarea class="form-control" id="obs" rows="3" placeholder="Observação"></textarea>
+                            <textarea class="form-control" id="obs" rows="3" placeholder="Observação" name="obs-evento" [(ngModel)]="eventoDTO.observacao"  ></textarea>
                         </div>
                     </div>
                 </div>

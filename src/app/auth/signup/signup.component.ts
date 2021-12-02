@@ -1,4 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Component, ComponentFactoryResolver, OnInit } from '@angular/core';
+import { environment } from '../../../environments/environment'
+ import * as firebase from 'firebase/app';
+import 'firebase/compat/auth';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
 
 @Component({
     selector: 'app-signup',
@@ -10,7 +15,42 @@ export class SignupComponent implements OnInit {
     focus;
     focus1;
     focus2;
-    constructor() { }
+
+    email: string;
+    password: string;
+    constructor(public auth: AngularFireAuth, private router: Router ) { }
 
     ngOnInit() {}
+
+    public firebaseSignup(): void{
+        if(this.email && this.password){
+            this.auth
+            .createUserWithEmailAndPassword(this.email,this.password)
+            .then(data=> {
+                
+                this.enviarEmailConfirmacao(data);
+                console.log('Usuário criado com sucesso',data);
+                this.router.navigate(['home-admin']);
+
+                }).catch(function(error) {
+                                        console.log('Erro ao criar usuário',error);
+                                        var errorCode = error.code;
+                                        var errorMessage = error.message;
+                });     
+        } else {
+            alert('Falta de campos obrigatórios');
+        }       
+    }
+
+
+    private enviarEmailConfirmacao(data) {
+        data.user.sendEmailVerification()
+            .then(retorno => {
+                console.log('sucesso ao enviar e-mail de confirmação');
+            })
+            .catch(e => {
+                console.log('falhar ao enviar email de confirmação');
+            });
+    }
+        
 }

@@ -10,8 +10,7 @@
             <div class="col-md-4">
                 <div class="form-group">
                     <label>Nome</label>
-                    <input type="text" class="form-control" id="nome" name="nome"
-                    [(ngModel)]="filtro.nome" placeholder="Nome da instituição">
+                    <input type="text" [(ngModel)]="nome" class="form-control" id="nome" placeholder="Nome da instituição">
                 </div>
             </div>
             <div class="col-md-3">
@@ -36,9 +35,11 @@
             </div>
         </div>
 
+        <div class="row">
         <table class="table table-hover">
             <thead>
                 <tr>
+                    <th scope="col">Id</th>
                     <th scope="col">Nome</th>
                     <th scope="col">CNPJ</th>
                     <th scope="col">Cidade</th>
@@ -46,15 +47,17 @@
                     <th scope="col">Telefone</th>
                 </tr>
             </thead>
-            <tbody>
-                <tr *ngFor="let item of instituicoes">
-                    <td>{{item?.nome}}</td>
-                    <td>{{item?.cnpj}}</td>
-                    <td>{{item?.cidade}}</td>
-                    <td>{{item?.email}}</td>
-                    <td>{{item?.telefone}}</td>
+            <tbody style="height: 30em !important;">
+                <tr id="{{i}}" *ngFor="let item of instituticoes; let i = index ">
+                    <td>{{ i }}</td>
+                    <td>{{ item?.nome }}</td>
+                    <td>{{ item?.cnpj }}</td>
+                    <td>{{ item?.cidade }}</td>
+                    <td>{{ item?.email }}</td>
+                    <td>{{ item?.telefone }}</td>
                 </tr>
             </tbody>
         </table>
+        </div>
     </div>
 </section>

@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { BaseComponent } from '../base.component';
-import  axios  from "axios";
+import axios from 'axios';
+
 
 export class Filtro {
   nome: string;
@@ -15,24 +16,29 @@ export class Filtro {
 })
 export class ListarInstituicaoComponent extends BaseComponent implements OnInit {
 
-  filtro: Filtro = new Filtro();
-  instituicoes: any[] = [];
+  public instituticoes: any[] = [];
+  public nome;
 
   constructor(private router: Router) {
     super();
   }
 
-  ngOnInit(): void {
-    this.buscarInstituicoes();
+  ngOnInit() {
+    let inst = {nome: 'OLAAAA', email: 'aprima@instituti.com.br', cidade: 'PORTO', cnpj: '99534696000101', telefone: '55 555 555'}
+    this.instituticoes.push(inst)
+    this.obterInstituicoes();
   }
 
+  ngAfterViewInit() {
+    
+  }
   novaInstituicao() {
     this.router.navigate(['manter-instituicao']);
   }
 
-  async buscarInstituicoes(){
+  async obterInstituicoes(){
     const inst = await axios.get('https://franco-amor-api.herokuapp.com/instituicoes');
-
+    //console.log(inst)
     inst.data.forEach(element => {
       let inst = { nome: element.nome,
                   email: element.email,
@@ -40,7 +46,9 @@ export class ListarInstituicaoComponent extends BaseComponent implements OnInit 
                   cnpj: element.cnpj,
                   telefone: element.telefone
       }
-      this.instituicoes.push(inst);
+      this.instituticoes.push(inst);
     });
+    this.nome = this.instituticoes[3].nome;
+    console.log(this.instituticoes)
   }
 }

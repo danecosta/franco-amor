@@ -20,7 +20,7 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="ni ni-email-83"></i></span>
                     </div>
-                    <input class="form-control" placeholder="E-mail" type="email" (focus)="focus1=true"
+                    <input id="email" name="email" class="form-control" [(ngModel)]="email" placeholder="E-mail" type="email" (focus)="focus1=true"
                       (blur)="focus1=false">
                   </div>
                 </div>
@@ -29,7 +29,7 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
                     </div>
-                    <input class="form-control" placeholder="Senha" type="password" (focus)="focus2=true"
+                    <input id="senha" name="pass" class="form-control" [(ngModel)]="password" placeholder="Senha" type="password" (focus)="focus2=true"
                       (blur)="focus2=false">
                   </div>
                 </div>
@@ -46,7 +46,7 @@
                   </div>
                 </div>
                 <div class="text-center">
-                  <button type="button" class="btn btn-primary mt-4">Criar conta</button>
+                  <button type="button" class="btn btn-primary mt-4" (click)="firebaseSignup()">Criar conta</button>
                 </div>
               </form>
             </div>

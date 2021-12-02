@@ -1,0 +1,6 @@
+{
+    "/": {
+      "target": "https://franco-amor-api.herokuapp.com/",
+      "secure": false
+    }
+  }
