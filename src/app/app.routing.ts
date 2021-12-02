@@ -1,3 +1,4 @@
+import { AuthGuardService } from './auth/guard/auth-service.guard';
 import { NgModule } from '@angular/core';
 import { CommonModule, } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
@@ -34,7 +35,7 @@ const routes: Routes = [
   // Site
   { path: 'home', component: HomeComponent },
   { path: 'registro', component: SignupComponent },
-  { path: 'login', component: LoginComponent },
+  { path: 'login', component: LoginComponent, canActivate: [AuthGuardService] },
   { path: 'contato', component: ContatoComponent },
   { path: 'doacao', component: DoacaoComponent },
   { path: 'produtos', component: ProdutosComponent },
@@ -49,7 +50,7 @@ const routes: Routes = [
   { path: 'blog', component: BlogComponent },
 
   // Admin
-  { path: 'home-admin', component: HomeAdminComponent },
+  { path: 'home-admin', component: HomeAdminComponent, canActivate: [AuthGuardService] },
   { path: 'listar-instituicao', component: ListarInstituicaoComponent },
   { path: 'listar-postagem', component: ListarPostagemComponent },
   { path: 'listar-produto', component: ListarProdutoComponent },
@@ -78,5 +79,6 @@ const routes: Routes = [
   ],
   exports: [
   ],
+  providers: [AuthGuardService]
 })
 export class AppRoutingModule { }

@@ -1,7 +1,10 @@
+import { CriarRepresentanteDTO } from './../shared/dto/criar-representante.dto';
+import { CriarInstituicaoDTO } from './../shared/dto/criar-instituicao.dto';
 import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import * as cep from 'cep-promise';
 import { BaseComponent } from '../base.component';
+import axios from 'axios';
 
 @Component({
   selector: 'app-manter-instituicao',
@@ -19,6 +22,11 @@ export class ManterInstituicaoComponent extends BaseComponent implements OnInit 
   dataFundacao: any;
   tipoEmpresa: any;
 
+  criarInstituicao = new CriarInstituicaoDTO();
+
+  criarRepresentanteUm = new CriarRepresentanteDTO();
+  criarRepresentanteDois = new CriarRepresentanteDTO();
+
   constructor(private modalService: NgbModal) {
     super();
   }
@@ -27,7 +35,13 @@ export class ManterInstituicaoComponent extends BaseComponent implements OnInit 
     this.afuConfig.multiple = true;
   }
 
-  salvar() { }
+  public async salvar() {
+    if(this.criarRepresentanteUm && this.criarRepresentanteDois)
+    this.criarInstituicao.representantes.push(this.criarRepresentanteUm, this.criarRepresentanteDois);
+    console.log(this.criarInstituicao);
+    const retorno = await axios.post('https://franco-amor-api.herokuapp.com/instituicoes', this.criarInstituicao);
+    console.log(retorno.data)
+   }
 
   buscarCep() {
 

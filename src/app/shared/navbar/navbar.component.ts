@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Router, NavigationEnd, NavigationStart } from '@angular/router';
 import { Location, PopStateEvent } from '@angular/common';
 
+import * as firebase from 'firebase/app';
+import 'firebase/compat/auth';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
+
 @Component({
     selector: 'app-navbar',
     templateUrl: './navbar.component.html',
@@ -12,10 +16,18 @@ export class NavbarComponent implements OnInit {
     private lastPoppedUrl: string;
     private yScrollStack: number[] = [];
 
-    constructor(public location: Location, private router: Router) {
+    public status: string = '| Entrar';
+
+    constructor(public location: Location, private router: Router, public auth: AngularFireAuth) {
+        
     }
 
     ngOnInit() {
+
+        if(this.auth.currentUser){
+            this.status = '| Sair'
+        }
+
         this.router.events.subscribe((event) => {
             this.isCollapsed = true;
             if (event instanceof NavigationStart) {
@@ -51,6 +63,19 @@ export class NavbarComponent implements OnInit {
         }
         else {
             return false;
+        }
+    }
+
+    logout() {
+        if(this.auth.currentUser) {
+            this.auth.signOut().then(retorno => {
+            this.router.navigate(['home']);
+            this.status = '| Entrar'
+            }).catch(error => {
+                console.log('Erro ao deslogar')
+            })
+        } else {
+            this.router.navigate(['login']);
         }
     }
 }

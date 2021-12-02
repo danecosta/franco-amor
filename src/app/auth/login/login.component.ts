@@ -35,7 +35,18 @@ export class LoginComponent implements OnInit {
       
     }
   }
-  private recuperarSenha() {
+
+  logout() {
+    if(this.auth.currentUser){
+      this.auth.signOut().then(retorno => {
+        this.router.navigate(['home']);
+      }).catch(error => {
+          console.log('Erro ao deslogar')
+      })
+    }
+  }
+
+  public recuperarSenha() {
     if(!this.email){
         alert('Falta de campo obrigatório - Insira o e-mail para recuperação senha !')
     } else {

@@ -1,7 +1,10 @@
+import { CriarHoraAtendimentoDTO } from './../shared/dto/criar-horario-atendimento.dto';
+import { CriarEventoDTO } from './../shared/dto/criar-evento.dto';
 import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { BaseComponent } from '../base.component';
 import * as cep from 'cep-promise';
+import axios from 'axios';
 
 @Component({
   selector: 'app-manter-evento',
@@ -34,15 +37,56 @@ export class ManterEventoComponent extends BaseComponent implements OnInit {
   bairro: string;
   cidade: string;
 
+  instituicoesSelect = [];
+  enderecosSelect = []; 
+
+  public eventoDTO = new CriarEventoDTO();
+
+  horaAtendimento: CriarHoraAtendimentoDTO = new CriarHoraAtendimentoDTO();
+
   constructor(private modalService: NgbModal) {
     super();
   }
 
   ngOnInit(): void {
     this.afuConfig.multiple = true;
+    this.obterInstituicoes();
   }
 
-  salvar() { }
+  public instituicaoHandler($event) {
+      console.log($event);
+      this.enderecosSelect = [];
+      this.enderecosSelect.push($event.endereco);
+      this.eventoDTO.instituicaoId = $event.id;
+  }
+
+  public enderecoHandler($event) {
+    console.log('endereco')
+    console.log($event);
+    this.eventoDTO.enderecoId = $event.id;
+  }
+
+  private async obterInstituicoes() {
+    const instituicoes = await (await axios.get('https://franco-amor-api.herokuapp.com/instituicoes')).data;
+    if(instituicoes) {
+      instituicoes.forEach(element => {
+          let select = {
+            id: element.id,
+            nome: element.nome,
+            endereco : element.endereco
+          } 
+          this.instituicoesSelect.push(select);
+      });
+    }
+  }
+
+
+  async salvar() {
+    console.log(this.eventoDTO);
+    this.eventoDTO.horariosAtendimento.push(this.horaAtendimento);
+    const retorno = await axios.post('http://localhost:3000/eventos', this.eventoDTO);
+    console.log(retorno.data)
+   }
 
   buscarCep() {
 

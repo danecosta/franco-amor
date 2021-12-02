@@ -42,6 +42,8 @@ import { provideFirebaseApp, getApp, initializeApp } from '@angular/fire/app';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { environment } from '../environments/environment'
 import { AngularFireModule } from '@angular/fire/compat';
+import { CommonModule } from "@angular/common";
+
 
 
 @NgModule({
@@ -87,7 +89,7 @@ import { AngularFireModule } from '@angular/fire/compat';
    // provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
     AngularFireModule.initializeApp(environment.firebaseConfig), 
     AngularFireAuthModule,
-       
+    CommonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
