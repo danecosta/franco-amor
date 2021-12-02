@@ -11,7 +11,7 @@
                     <div class="col-md-12">
                         <div class="form-group">
                             <label>Título</label>
-                            <input type="text" class="form-control" id="titulo" placeholder="Título da postagem">
+                            <input name="titulo-postagem" [(ngModel)]="criarPostagemDTO.titulo" type="text" class="form-control" id="titulo" placeholder="Título da postagem">
                         </div>
                     </div>
                 </div>
@@ -20,13 +20,13 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label>Autor</label>
-                            <input type="text" class="form-control" id="autor" placeholder="Autor da postagem">
+                            <input name="auto-postagem" [(ngModel)]="criarPostagemDTO.autor" type="text" class="form-control" id="autor" placeholder="Autor da postagem">
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
                             <label>Link para Autor</label>
-                            <input type="text" class="form-control" id="link"
+                            <input type="text" class="form-control" id="link" name="link-autor-postagem" [(ngModel)]="criarPostagemDTO.linkAutor"
                                 placeholder="Instagram, Facebook, LinkedIn ou outro">
                         </div>
                     </div>
@@ -36,11 +36,11 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label>Categoria</label>
-                            <select class="form-control" id="categoria" name='categoria' [(ngModel)]="categoria">
+                            <select class="form-control" id="categoria" name='categoria' [(ngModel)]="criarPostagemDTO.categoriaID">
                                 <option value=null>Selecione</option>
-                                <option value='autoconhecimenot'>Autoconhecimento</option>
-                                <option value='cultura'>Cultura</option>
-                                <option value='meioambiente'>Meio Ambiente</option>
+                                <option value='1'>Autoconhecimento</option>
+                                <option value='2'>Cultura</option>
+                                <option value='3'>Meio Ambiente</option>
                             </select>
                         </div>
                     </div>
@@ -50,7 +50,7 @@
                     <div class="col-md-12">
                         <div class="form-group">
                             <label>Conteúdo da postagem</label>
-                            <textarea class="form-control" id="corpo" rows="10"
+                            <textarea class="form-control" id="corpo" rows="10" name="conteudo-postagem" [(ngModel)]="criarPostagemDTO.conteudo"
                                 placeholder="Conteúdo da postagem"></textarea>
                         </div>
                     </div>
