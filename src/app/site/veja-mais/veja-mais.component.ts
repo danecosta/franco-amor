@@ -12,4 +12,14 @@ export class VejaMaisComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  copiarLink(){
+    const url = window.location.href;
+    navigator.clipboard.writeText(url).then().catch(e => console.error(e));
+  }
+
+  enviarWhatsapp(){
+    const url = window.location.href;
+    const message = "Oii! Vi essa atividade e lembrei de você: " + url;
+    window.open("https://api.whatsapp.com/send?text="+message, "_blank");    
+  }
 }

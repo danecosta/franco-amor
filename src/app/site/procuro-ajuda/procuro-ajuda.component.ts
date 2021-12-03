@@ -12,29 +12,64 @@ export class ProcuroAjudaComponent implements OnInit {
   cidade: string = null;
   tipo: string = null;
 
-  atividades=[];
+  telefonicos=[];
+  presenciais=[];
+  virtuais=[];
+  eventos=[];
 
   constructor(private router: Router) { }
 
   ngOnInit(): void {
-    this.buscarAtividades();
+    this.buscarAtendimentos();
   }
 
   irParaVejaMais() {
     this.router.navigate(['./veja-mais']);
   }
 
-  async buscarAtividades(){
-    const atv = await axios.get('https://franco-amor-api.herokuapp.com/atendimentos/presencial');
-
-    atv.data.forEach(element => {
-      let atv = { nome: element.nome,
+  async buscarAtendimentos(){
+    const atdTelefonico = await axios.get('https://franco-amor-api.herokuapp.com/atendimentos/telefonico');
+    atdTelefonico.data.forEach(element => {
+      let atd = { nome: element.nome,
                   email: element.email,
-                  cidade: element.endereco.cidade,
                   cnpj: element.cnpj,
-                  telefone: element.telefone
+                  telefone: element.telefone,
+                  observacao: element.observacao
       }
-      this.atividades.push(atv);
+      this.telefonicos.push(atd);
+    });
+
+    const atdPresencial = await axios.get('https://franco-amor-api.herokuapp.com/atendimentos/presencial');
+    atdPresencial.data.forEach(element => {
+      let atd = { nome: element.nome,
+                  email: element.email,
+                  cnpj: element.cnpj,
+                  telefone: element.telefone,
+                  observacao: element.observacao
+      }
+      this.presenciais.push(atd);
+    });
+
+    const atdVirtuais = await axios.get('https://franco-amor-api.herokuapp.com/atendimentos/virtual');
+    atdVirtuais.data.forEach(element => {
+      let atd = { nome: element.nome,
+                  email: element.email,
+                  cnpj: element.cnpj,
+                  telefone: element.telefone,
+                  observacao: element.observacao
+      }
+      this.virtuais.push(atd);
+    });
+
+    const atdEventos = await axios.get('https://franco-amor-api.herokuapp.com/eventos');
+    atdEventos.data.forEach(element => {
+      let atd = { nome: element.nome,
+                  email: element.email,
+                  cnpj: element.cnpj,
+                  telefone: element.telefone,
+                  observacao: element.observacao
+      }
+      this.eventos.push(atd);
     });
   }
 
