@@ -39,73 +39,21 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-4" *ngFor="let item of vagas; let i = index">
                     <div class="flip-card" (click)="irParaVejaMais()">
                         <div class="flip-card-inner">
                             <div class="flip-card-front">
-                                <img class="card-img-top" src="https://picsum.photos/200?random=5">
+                                <img class="card-img-top" src="https://picsum.photos/200?random={{i}}">
                                 <!-- <span class="badge badge-primary" routerLink="../quero-ajudar">Vaga para
                                     voluntários</span> -->
-                                <h4>Caçadores do Leão</h4>
+                                    <h4>{{item.nome}}</h4>
                                 <h5>Juiz de Fora</h5>
                             </div>
                             <div class="flip-card-back">
                                 <h5>Horario:</h5>
-                                <h6>Seg: 08:00 - 19:00</h6>
-                                <h6>Qua: 08:00 - 19:00</h6>
-                                <h6>Sex: 08:00 - 19:00</h6>
-                                <h6>Sab: 10:00 - 21:00</h6>
-                                <p class="resumo-card">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam
-                                    aliquam nunc dui, ac
-                                    laoreet mauris ullamcorper eu. Pellentesque sagittis neque ac nisi pharetra, vitae
-                                    posuere augue malesuada. Nullam id sapien in lacus placerat porttitor nec at nibh.
-                                    Suspendisse eget nunc auctor, accumsan nisi a, condimentum lectus.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="flip-card" (click)="irParaVejaMais()">
-                        <div class="flip-card-inner">
-                            <div class="flip-card-front">
-                                <img class="card-img-top" src="https://picsum.photos/200?random=6">
-                                <h4>Caçadores do Leão</h4>
-                                <h5>São Paulo</h5>
-                            </div>
-                            <div class="flip-card-back">
-                                <h5>Horario:</h5>
-                                <h6>Seg: 08:00 - 19:00</h6>
-                                <h6>Qua: 08:00 - 19:00</h6>
-                                <h6>Sex: 08:00 - 19:00</h6>
-                                <h6>Sab: 10:00 - 21:00</h6>
-                                <p class="resumo-card">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam
-                                    aliquam nunc dui, ac
-                                    laoreet mauris ullamcorper eu. Pellentesque sagittis neque ac nisi pharetra, vitae
-                                    posuere augue malesuada. Nullam id sapien in lacus placerat porttitor nec at nibh.
-                                    Suspendisse eget nunc auctor, accumsan nisi a, condimentum lectus.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="flip-card" (click)="irParaVejaMais()">
-                        <div class="flip-card-inner">
-                            <div class="flip-card-front">
-                                <img class="card-img-top" src="https://picsum.photos/200?random=7">
-                                <h4>Caçadores do Leão</h4>
-                                <h5>São Paulo</h5>
-                            </div>
-                            <div class="flip-card-back">
-                                <h5>Horario:</h5>
-                                <h6>Seg: 08:00 - 19:00</h6>
-                                <h6>Qua: 08:00 - 19:00</h6>
-                                <h6>Sex: 08:00 - 19:00</h6>
-                                <h6>Sab: 10:00 - 21:00</h6>
-                                <p class="resumo-card">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam
-                                    aliquam nunc dui, ac
-                                    laoreet mauris ullamcorper eu. Pellentesque sagittis neque ac nisi pharetra, vitae
-                                    posuere augue malesuada. Nullam id sapien in lacus placerat porttitor nec at nibh.
-                                    Suspendisse eget nunc auctor, accumsan nisi a, condimentum lectus.</p>
+                                <h6 *ngFor="let hr of item.horaAtendimento">{{hr.diaSemana}}: {{hr.horaInicio}} -
+                                    {{hr.horaFim}}</h6>
+                                <p class="resumo-card">{{item.observacao}}</p>
                             </div>
                         </div>
                     </div>

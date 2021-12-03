@@ -110,7 +110,7 @@
                                     value="agendar" [(ngModel)]="eventoDTO.participacao">
                                 <label class="custom-control-label" for="agendar">Agendar</label>
                             </div>
-                            <div class="col-md-4" *ngIf="participacao === 'agendar'">
+                            <div class="col-md-4" *ngIf="eventoDTO.participacao === 'agendar'">
                                 <input type="text" class="form-control" id="valor" name="agendar" [(ngModel)]="eventoDTO.agendar"
                                     placeholder="Link, e-mail ou telefone">
                             </div>
@@ -156,7 +156,7 @@
                         <div class="custom-control custom-checkbox mb-3 divRepete">
                             <input class="custom-control-input" id="repete" type="checkbox" name="chkRepete"
                                 [(ngModel)]="repete"
-                                [disabled]="!dataAtividade || !dataAtividadeInicio || !dataAtividadeFim">
+                                [disabled]="!horaAtendimento.dataInicio || !horaAtendimento.horaInicio || !horaAtendimento.horaFim">
                             <label class="custom-control-label" for="repete">Se repete?</label>
                         </div>
                     </div>

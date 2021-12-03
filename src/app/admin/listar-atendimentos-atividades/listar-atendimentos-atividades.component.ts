@@ -11,6 +11,11 @@ export class ListarAtendimentosAtividadesComponent implements OnInit {
   tipo: string = null;
   atividades: any[] = [];
 
+  tooltipEvento = "Cursos, workshops, seminários, aulas, palestras na área da saúde mental voltados para público em geral seja presencial ou virtual";
+  tooltipTelefonico = "Serviço de acolhimento emocional por telefone.";
+  tooltipVirtual = "Apoio e atividades afins que acontecem virtualmente através de plataformas de videoconferência, chat, redes sociais, mensagens via aplicativo etc.";
+  tooltipPresencial = "Reuniões de apoio, atendimento terapêutico e atividades similares que acontecem de forma presencial em grupo ou individualmente.";
+
   constructor(private router: Router) { }
 
   ngOnInit(): void {

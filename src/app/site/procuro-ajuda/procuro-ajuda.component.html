@@ -48,330 +48,116 @@
                 </div>
             </div>
 
-            <div class="row">
-                <div class="col-md-12">
-                    <h4 class="header">
-                        ATENDIMENTO TELEFÔNICO
-                    </h4>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-3">
-                    <div class="flip-card" (click)="irParaVejaMais()">
-                        <div class="flip-card-inner">
-                            <div class="flip-card-front">
-                                <img class="card-img-top" src="https://picsum.photos/200?random=1">
-                                <h4>CVV</h4>
-                                <h5>188</h5>
-                            </div>
-                            <div class="flip-card-back">
-                                <h5>Horario:</h5>
-                                <h6>Seg: 08:00 - 19:00</h6>
-                                <h6>Qua: 08:00 - 19:00</h6>
-                                <h6>Sex: 08:00 - 19:00</h6>
-                                <h6>Sab: 10:00 - 21:00</h6>
-                                <p class="resumo-card">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam
-                                    aliquam nunc dui, ac
-                                    laoreet mauris ullamcorper eu. Pellentesque sagittis neque ac nisi pharetra, vitae
-                                    posuere augue malesuada. Nullam id sapien in lacus placerat porttitor nec at nibh.
-                                    Suspendisse eget nunc auctor, accumsan nisi a, condimentum lectus.</p>
-                            </div>
-                        </div>
+            <div *ngIf="telefonicos.length>0">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h4 class="header">
+                            ATENDIMENTO TELEFÔNICO
+                        </h4>
                     </div>
                 </div>
-                <div class="col-md-3">
-                    <div class="flip-card" (click)="irParaVejaMais()">
-                        <div class="flip-card-inner">
-                            <div class="flip-card-front">
-                                <img class="card-img-top" src="https://picsum.photos/200?random=2">
-                                <h4>CVV</h4>
-                                <h5>188</h5>
-                            </div>
-                            <div class="flip-card-back">
-                                <h5>Horario:</h5>
-                                <h6>Seg: 08:00 - 19:00</h6>
-                                <h6>Qua: 08:00 - 19:00</h6>
-                                <p class="resumo-card">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam
-                                    aliquam nunc dui, ac
-                                    laoreet mauris ullamcorper eu. Pellentesque sagittis neque ac nisi pharetra, vitae
-                                    posuere augue malesuada. Nullam id sapien in lacus placerat porttitor nec at nibh.
-                                    Suspendisse eget nunc auctor, accumsan nisi a, condimentum lectus.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="flip-card" (click)="irParaVejaMais()">
-                        <div class="flip-card-inner">
-                            <div class="flip-card-front">
-                                <img class="card-img-top" src="https://picsum.photos/200?random=3">
-                                <h4>CVV</h4>
-                                <h5>188</h5>
-                            </div>
-                            <div class="flip-card-back">
-                                <h5>Horario:</h5>
-                                <h6>Sex: 08:00 - 19:00</h6>
-                                <h6>Sab: 10:00 - 21:00</h6>
-                                <p class="resumo-card">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam
-                                    aliquam nunc dui, ac
-                                    laoreet mauris ullamcorper eu. Pellentesque sagittis neque ac nisi pharetra, vitae
-                                    posuere augue malesuada. Nullam id sapien in lacus placerat porttitor nec at nibh.
-                                    Suspendisse eget nunc auctor, accumsan nisi a, condimentum lectus.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="flip-card" (click)="irParaVejaMais()">
-                        <div class="flip-card-inner">
-                            <div class="flip-card-front">
-                                <img class="card-img-top" src="https://picsum.photos/200?random=4">
-                                <h4>CVV</h4>
-                                <h5>188</h5>
-                            </div>
-                            <div class="flip-card-back">
-                                <h5>Horario:</h5>
-                                <h6>Seg: 08:00 - 19:00</h6>
-                                <h6>Qua: 08:00 - 19:00</h6>
-                                <h6>Sex: 08:00 - 19:00</h6>
-                                <h6>Sab: 10:00 - 21:00</h6>
-                                <p class="resumo-card">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam
-                                    aliquam nunc dui, ac
-                                    laoreet mauris ullamcorper eu. Pellentesque sagittis neque ac nisi pharetra, vitae
-                                    posuere augue malesuada. Nullam id sapien in lacus placerat porttitor nec at nibh.
-                                    Suspendisse eget nunc auctor, accumsan nisi a, condimentum lectus.</p>
+                <div class="row">
+                    <div class="col-md-4" *ngFor="let item of telefonicos; let i = index">
+                        <div class="flip-card" (click)="irParaVejaMais()">
+                            <div class="flip-card-inner">
+                                <div class="flip-card-front">
+                                    <img class="card-img-top" src="https://picsum.photos/200?random={{i}}">
+                                    <h4>{{item.nome}}</h4>
+                                    <h5>{{item.telefone}}</h5>
+                                </div>
+                                <div class="flip-card-back">
+                                    <h5>Horario:</h5>
+                                    <h6 *ngFor="let hr of item.horaAtendimento">{{hr.diaSemana}}: {{hr.horaInicio}} -
+                                        {{hr.horaFim}}</h6>
+                                    <p class="resumo-card">{{item.observacao}}</p>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="row">
-                <div class="col-md-12">
-                    <h4 class="header">
-                        ATENDIMENTO PRESENCIAL
-                    </h4>
+            <div *ngIf="presenciais.length>0">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h4 class="header">
+                            ATENDIMENTO PRESENCIAL
+                        </h4>
+                    </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="flip-card" (click)="irParaVejaMais()">
-                        <div class="flip-card-inner">
-                            <div class="flip-card-front">
-                                <img class="card-img-top" src="https://picsum.photos/200?random=5">
-                                <!-- <span class="badge badge-primary" routerLink="../quero-ajudar">Vaga para
+                <div class="row">
+                    <div class="col-md-4" *ngFor="let item of presenciais; let i = index">
+                        <div class="flip-card" (click)="irParaVejaMais()">
+                            <div class="flip-card-inner">
+                                <div class="flip-card-front">
+                                    <img class="card-img-top" src="https://picsum.photos/200?random={{i}}">
+                                    <!-- <span class="badge badge-primary" routerLink="../quero-ajudar">Vaga para
                                     voluntários</span> -->
-                                    <h4>Caçadores do Leão</h4>
-                                    <h5>Juiz de Fora</h5> 
-                            </div>
-                            <div class="flip-card-back">
-                                <h5>Horario:</h5>
-                                <h6>Seg: 08:00 - 19:00</h6>
-                                <h6>Qua: 08:00 - 19:00</h6>
-                                <h6>Sex: 08:00 - 19:00</h6>
-                                <h6>Sab: 10:00 - 21:00</h6>
-                                <p class="resumo-card">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam
-                                    aliquam nunc dui, ac
-                                    laoreet mauris ullamcorper eu. Pellentesque sagittis neque ac nisi pharetra, vitae
-                                    posuere augue malesuada. Nullam id sapien in lacus placerat porttitor nec at nibh.
-                                    Suspendisse eget nunc auctor, accumsan nisi a, condimentum lectus.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="flip-card" (click)="irParaVejaMais()">
-                        <div class="flip-card-inner">
-                            <div class="flip-card-front">
-                                <img class="card-img-top" src="https://picsum.photos/200?random=6">
-                                <h4>Caçadores do Leão</h4>
-                                <h5>São Paulo</h5> 
-                            </div>
-                            <div class="flip-card-back">
-                                <h5>Horario:</h5>
-                                <h6>Seg: 08:00 - 19:00</h6>
-                                <h6>Qua: 08:00 - 19:00</h6>
-                                <h6>Sex: 08:00 - 19:00</h6>
-                                <h6>Sab: 10:00 - 21:00</h6>
-                                <p class="resumo-card">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam
-                                    aliquam nunc dui, ac
-                                    laoreet mauris ullamcorper eu. Pellentesque sagittis neque ac nisi pharetra, vitae
-                                    posuere augue malesuada. Nullam id sapien in lacus placerat porttitor nec at nibh.
-                                    Suspendisse eget nunc auctor, accumsan nisi a, condimentum lectus.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="flip-card" (click)="irParaVejaMais()">
-                        <div class="flip-card-inner">
-                            <div class="flip-card-front">
-                                <img class="card-img-top" src="https://picsum.photos/200?random=7">
-                                <h4>Caçadores do Leão</h4>
-                                <h5>São Paulo</h5> 
-                            </div>
-                            <div class="flip-card-back">
-                                <h5>Horario:</h5>
-                                <h6>Seg: 08:00 - 19:00</h6>
-                                <h6>Qua: 08:00 - 19:00</h6>
-                                <h6>Sex: 08:00 - 19:00</h6>
-                                <h6>Sab: 10:00 - 21:00</h6>
-                                <p class="resumo-card">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam
-                                    aliquam nunc dui, ac
-                                    laoreet mauris ullamcorper eu. Pellentesque sagittis neque ac nisi pharetra, vitae
-                                    posuere augue malesuada. Nullam id sapien in lacus placerat porttitor nec at nibh.
-                                    Suspendisse eget nunc auctor, accumsan nisi a, condimentum lectus.</p>
+                                    <h4>{{item.nome}}</h4>
+                                    <h5>Juiz de Fora</h5>
+                                </div>
+                                <div class="flip-card-back">
+                                    <h5>Horario:</h5>
+                                    <h6 *ngFor="let hr of item.horaAtendimento">{{hr.diaSemana}}: {{hr.horaInicio}} -
+                                        {{hr.horaFim}}</h6>
+                                    <p class="resumo-card">{{item.observacao}}</p>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="row">
-                <div class="col-md-12">
-                    <h4 class="header">
-                        ATENDIMENTO VIRTUAL
-                    </h4>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="flip-card" (click)="irParaVejaMais()">
-                        <div class="flip-card-inner">
-                            <div class="flip-card-front">
-                                <img class="card-img-top" src="https://picsum.photos/200?random=8">
-                                <h4>Caçadores do Leão</h4>
-                                <h5>ASCOMSER</h5>
-                            </div>
-                            <div class="flip-card-back">
-                                <h5>Horario:</h5>
-                                <h6>Seg: 08:00 - 19:00</h6>
-                                <h6>Qua: 08:00 - 19:00</h6>
-                                <h6>Sex: 08:00 - 19:00</h6>
-                                <h6>Sab: 10:00 - 21:00</h6>
-                                <p class="resumo-card">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam
-                                    aliquam nunc dui, ac
-                                    laoreet mauris ullamcorper eu. Pellentesque sagittis neque ac nisi pharetra, vitae
-                                    posuere augue malesuada. Nullam id sapien in lacus placerat porttitor nec at nibh.
-                                    Suspendisse eget nunc auctor, accumsan nisi a, condimentum lectus.</p>
-                            </div>
-                        </div>
+            <div *ngIf="virtuais.length>0">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h4 class="header">
+                            ATENDIMENTO VIRTUAL
+                        </h4>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="flip-card" (click)="irParaVejaMais()">
-                        <div class="flip-card-inner">
-                            <div class="flip-card-front">
-                                <img class="card-img-top" src="https://picsum.photos/200?random=9">
-                                <h4>Caçadores do Leão</h4>
-                                <h5>ASCOMSER</h5>
-                            </div>
-                            <div class="flip-card-back">
-                                <h5>Horario:</h5>
-                                <h6>Seg: 08:00 - 19:00</h6>
-                                <h6>Qua: 08:00 - 19:00</h6>
-                                <h6>Sex: 08:00 - 19:00</h6>
-                                <h6>Sab: 10:00 - 21:00</h6>
-                                <p class="resumo-card">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam
-                                    aliquam nunc dui, ac
-                                    laoreet mauris ullamcorper eu. Pellentesque sagittis neque ac nisi pharetra, vitae
-                                    posuere augue malesuada. Nullam id sapien in lacus placerat porttitor nec at nibh.
-                                    Suspendisse eget nunc auctor, accumsan nisi a, condimentum lectus.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="flip-card" (click)="irParaVejaMais()">
-                        <div class="flip-card-inner">
-                            <div class="flip-card-front">
-                                <img class="card-img-top" src="https://picsum.photos/200?random=10">
-                                <!-- <span class="badge badge-primary" routerLink="../quero-ajudar">Vaga para
-                                    voluntários</span> -->
-                                <h4>Caçadores do Leão</h4>
-                                <h5>ASCOMSER</h5>
-                            </div>
-                            <div class="flip-card-back">
-                                <h5>Horario:</h5>
-                                <h6>Seg: 08:00 - 19:00</h6>
-                                <h6>Qua: 08:00 - 19:00</h6>
-                                <h6>Sex: 08:00 - 19:00</h6>
-                                <h6>Sab: 10:00 - 21:00</h6>
-                                <p class="resumo-card">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam
-                                    aliquam nunc dui, ac
-                                    laoreet mauris ullamcorper eu. Pellentesque sagittis neque ac nisi pharetra, vitae
-                                    posuere augue malesuada. Nullam id sapien in lacus placerat porttitor nec at nibh.
-                                    Suspendisse eget nunc auctor, accumsan nisi a, condimentum lectus.</p>
+                <div class="row">
+                    <div class="col-md-4" *ngFor="let item of virtuais; let i = index">
+                        <div class="flip-card" (click)="irParaVejaMais()">
+                            <div class="flip-card-inner">
+                                <div class="flip-card-front">
+                                    <img class="card-img-top" src="https://picsum.photos/200?random={{i}}">
+                                    <h4>{{item.nome}}</h4>
+                                    <h5>ASCOMSER</h5>
+                                </div>
+                                <div class="flip-card-back">
+                                    <h5>Horario:</h5>
+                                    <h6 *ngFor="let hr of item.horaAtendimento">{{hr.diaSemana}}: {{hr.horaInicio}} -
+                                        {{hr.horaFim}}</h6>
+                                    <p class="resumo-card">{{item.observacao}}</p>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="row">
-                <div class="col-md-12">
-                    <h4 class="header">
-                        EVENTOS
-                    </h4>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="flip-card" (click)="irParaVejaMais()">
-                        <div class="flip-card-inner">
-                            <div class="flip-card-front">
-                                <img class="card-img-top" src="https://picsum.photos/200?random=11">
-                                <h4>Caçadores do Leão</h4>
-                                <h5>São Paulo</h5> 
-                                <h6>10/11/2021 - 19:00</h6>
-                            </div>
-                            <div class="flip-card-back">                                                          
-                                <p class="resumo-card">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam
-                                    aliquam nunc dui, ac
-                                    laoreet mauris ullamcorper eu. Pellentesque sagittis neque ac nisi pharetra, vitae
-                                    posuere augue malesuada. Nullam id sapien in lacus placerat porttitor nec at nibh.
-                                    Suspendisse eget nunc auctor, accumsan nisi a, condimentum lectus.</p>
-                            </div>
-                        </div>
+            <div *ngIf="eventos.length>0">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h4 class="header">
+                            EVENTOS
+                        </h4>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="flip-card" (click)="irParaVejaMais()">
-                        <div class="flip-card-inner">
-                            <div class="flip-card-front">
-                                <img class="card-img-top" src="https://picsum.photos/200?random=12">
-                                <!-- <span class="badge badge-primary" routerLink="../quero-ajudar">Vaga para
-                                    voluntários</span> -->
-                                <h4>Caçadores do Leão</h4>
-                                <h5>Juiz de Fora</h5>
-                                <h6>13/12/2021 - 10:00</h6>
-                            </div>
-                            <div class="flip-card-back">
-                                
-                                <p class="resumo-card">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam
-                                    aliquam nunc dui, ac
-                                    laoreet mauris ullamcorper eu. Pellentesque sagittis neque ac nisi pharetra, vitae
-                                    posuere augue malesuada. Nullam id sapien in lacus placerat porttitor nec at nibh.
-                                    Suspendisse eget nunc auctor, accumsan nisi a, condimentum lectus.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="flip-card" (click)="irParaVejaMais()">
-                        <div class="flip-card-inner">
-                            <div class="flip-card-front">
-                                <img class="card-img-top" src="https://picsum.photos/200?random=13">
-                                <h4>Caçadores do Leão</h4>
-                                <h5>Juiz de Fora</h5>
-                                <h6>13/12/2021 - 10:00</h6>
-                            </div>
-                            <div class="flip-card-back">                                
-                                <p class="resumo-card">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam
-                                    aliquam nunc dui, ac
-                                    laoreet mauris ullamcorper eu. Pellentesque sagittis neque ac nisi pharetra, vitae
-                                    posuere augue malesuada. Nullam id sapien in lacus placerat porttitor nec at nibh.
-                                    Suspendisse eget nunc auctor, accumsan nisi a, condimentum lectus.</p>
+                <div class="row">
+                    <div class="col-md-4" *ngFor="let item of eventos; let i = index">
+                        <div class="flip-card" (click)="irParaVejaMais()">
+                            <div class="flip-card-inner">
+                                <div class="flip-card-front">
+                                    <img class="card-img-top" src="https://picsum.photos/200?random={{i}}">
+                                    <h4>{{item.nome}}</h4>
+                                    <h5>São Paulo</h5>
+                                    <h6>10/11/2021 - 19:00</h6>
+                                </div>
+                                <div class="flip-card-back">
+                                    <p class="resumo-card">{{item.observacao}}</p>
+                                </div>
                             </div>
                         </div>
                     </div>

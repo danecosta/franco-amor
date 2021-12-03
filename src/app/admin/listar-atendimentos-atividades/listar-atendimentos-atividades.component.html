@@ -2,13 +2,13 @@
     <div class="container">
 
         <div class="row" style="display: flow-root;">
-            <button type="button" class="btn btn-outline-success btnNovo" (click)="novoEvento()">
+            <button type="button" class="btn btn-outline-success btnNovo" (click)="novoEvento()" [ngbTooltip]="tooltipEvento">
                 <i class="ni ni-fat-add"></i> Evento</button>
-            <button type="button" class="btn btn-outline-success btnNovo" (click)="novoTelefonico()">
+            <button type="button" class="btn btn-outline-success btnNovo" (click)="novoTelefonico()" [ngbTooltip]="tooltipTelefonico">
                 <i class="ni ni-fat-add"></i> Telefônico</button>
-            <button type="button" class="btn btn-outline-success btnNovo" (click)="novoVirtual()">
+            <button type="button" class="btn btn-outline-success btnNovo" (click)="novoVirtual()" [ngbTooltip]="tooltipVirtual">
                 <i class="ni ni-fat-add"></i> Virtual</button>
-            <button type="button" class="btn btn-outline-success btnNovo" (click)="novoPresencial()">
+            <button type="button" class="btn btn-outline-success btnNovo" (click)="novoPresencial()" [ngbTooltip]="tooltipPresencial">
                 <i class="ni ni-fat-add"></i> Presencial</button>
         </div>
 
