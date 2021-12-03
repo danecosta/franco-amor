@@ -13,7 +13,7 @@ export class ListarProdutoComponent implements OnInit {
   constructor(private router: Router) { }
 
   ngOnInit(): void {
-    //this.obterProdutos();
+    this.obterProdutos();
   }
 
   novoProduto() {

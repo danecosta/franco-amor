@@ -1,7 +1,9 @@
+import { Router } from '@angular/router';
+import { CriarProdutoDTO } from './dto/criar-produto.dto';
 import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { BaseComponent } from '../base.component';
-
+import axios from 'axios';
 @Component({
   selector: 'app-manter-produto',
   templateUrl: './manter-produto.component.html',
@@ -9,7 +11,9 @@ import { BaseComponent } from '../base.component';
 })
 export class ManterProdutoComponent extends BaseComponent implements OnInit {
 
-  constructor(private modalService: NgbModal) {
+  criarProdutoDTO = new CriarProdutoDTO();
+
+  constructor(private modalService: NgbModal, private router: Router) {
     super();
   }
 
@@ -17,7 +21,15 @@ export class ManterProdutoComponent extends BaseComponent implements OnInit {
     this.afuConfig.multiple = true;
   }
 
-  salvar() { }
+  async salvar() {
+    if(this.criarProdutoDTO.nome){
+      await axios.post('https://franco-amor-api.herokuapp.com/produtos', this.criarProdutoDTO);
+      this.router.navigate(['listar-produto'])
+    } else {
+      alert('Erro ao registrar produto')
+    }
+
+   }
 
   openModal(content) {
     this.modalService.open(content, { centered: true }).result.then(
