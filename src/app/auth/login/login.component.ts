@@ -21,7 +21,8 @@ export class LoginComponent implements OnInit {
     if (this.email && this.password) {
       this.auth.signInWithEmailAndPassword(this.email, this.password)
         .then(retorno => {
-          console.log(retorno.user.displayName)
+          console.log(retorno.user.email)
+          localStorage.setItem('ativo', 'true')
           this.router.navigate(['home-admin']);
         }).catch(retorno => {
 
@@ -47,6 +48,7 @@ export class LoginComponent implements OnInit {
     if (this.auth.currentUser) {
       this.auth.signOut().then(retorno => {
         this.router.navigate(['home']);
+        localStorage.setItem('ativo', 'false')
       }).catch(error => {
         console.log('Erro ao deslogar')
       })

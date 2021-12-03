@@ -13,8 +13,13 @@ export class AuthGuardService implements CanActivate {
     async canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Promise<boolean> {
 
         let usuario = await this.auth.currentUser;
-            
-        if (!usuario || !usuario.email)  {
+        const result = localStorage.getItem('ativo');
+            console.log(usuario)
+        // if (!usuario || !usuario.email)  {
+        //     this._router.navigate(['login']);
+        //     return false;
+        // }
+        if(result === "false") {
             this._router.navigate(['login']);
             return false;
         }
