@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
@@ -31,6 +32,22 @@ export class LoginComponent implements OnInit {
     }
   }
 
+  public async loginProprio(){
+    const retorno = await axios.post('http://localhost:3000/usuarios/auth/login', {
+      "username": this.email,
+      "password": this.password
+    });
+
+    if(retorno.data) localStorage.setItem('fr-log-trace-id', retorno.data.access_token);
+    const profile = await axios.get(`http://localhost:3000/usuarios/perfil/${retorno.data.uuid}`, {
+      headers: {
+        Authorization: 'Bearer ' + retorno.data.access_token
+      }
+     });
+
+     localStorage.setItem('fr-user-data', profile.data);
+     this.router.navigate(['home-admin']);
+  }
   public recuperarSenha() {
     if (!this.email) {
       alert('Falta de campo obrigatório - Insira o e-mail para recuperação senha !')

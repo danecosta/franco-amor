@@ -55,9 +55,8 @@
 
       <ul class="navbar-nav navbar-nav-hover align-items-lg-center">
         <li class="nav-item dropdown">
-          <a class="nav-link no-caret menu" data-toggle="dropdown" role="button" routerLink="./login"  >
-            <!-- {{ status }} -->
-            | Login
+          <a class="nav-link no-caret menu" data-toggle="dropdown" role="button" (click)="logoutProprio()"  >
+            {{ status }}
           </a>
         </li>
       </ul>

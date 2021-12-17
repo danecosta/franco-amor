@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { CriarHoraAtendimentoDTO } from './../shared/dto/criar-horario-atendimento.dto';
 import { CriarEventoDTO } from './../shared/dto/criar-evento.dto';
 import { Component, OnInit } from '@angular/core';
@@ -44,7 +45,7 @@ export class ManterEventoComponent extends BaseComponent implements OnInit {
 
   horaAtendimento: CriarHoraAtendimentoDTO = new CriarHoraAtendimentoDTO();
 
-  constructor(private modalService: NgbModal) {
+  constructor(private modalService: NgbModal, private router: Router) {
     super();
   }
 
@@ -80,7 +81,9 @@ export class ManterEventoComponent extends BaseComponent implements OnInit {
 
   async salvar() {
     this.eventoDTO.horariosAtendimento.push(this.horaAtendimento);
-    const retorno = await axios.post('http://localhost:3000/eventos', this.eventoDTO);
+    console.log(this.eventoDTO)
+    const retorno = await axios.post('https://franco-amor-api.herokuapp.com/eventos', this.eventoDTO);
+    this.router.navigate(['procuro-ajuda'])
    }
 
   buscarCep() {

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewChecked, Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { Router, NavigationEnd, NavigationStart } from '@angular/router';
 import { Location, PopStateEvent } from '@angular/common';
 
@@ -10,7 +10,7 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
     templateUrl: './navbar.component.html',
     styleUrls: ['./navbar.component.scss']
 })
-export class NavbarComponent implements OnInit {
+export class NavbarComponent implements OnInit, AfterViewChecked {
     public isCollapsed = true;
     private lastPoppedUrl: string;
     private yScrollStack: number[] = [];
@@ -20,12 +20,21 @@ export class NavbarComponent implements OnInit {
     constructor(public location: Location, private router: Router, public auth: AngularFireAuth) {
 
     }
-
+    ngAfterViewChecked(): void {
+       const result = localStorage.getItem('fr-log-trace-id');
+       if(result) {
+            this.status = '| Sair';
+            return;
+        } 
+            this.status = '| Entrar';
+    }
+ 
     ngOnInit() {
-        if (this.auth.currentUser) {
-            this.status = '| Sair'
+        const result = localStorage.getItem('fr-log-trace-id');
+        if(result) {
+            this.status = '| Sair';
         } else {
-            this.status = '| Entrar'
+            this.status = '| Entrar';
         }
 
         this.router.events.subscribe((event) => {
@@ -67,16 +76,11 @@ export class NavbarComponent implements OnInit {
         }
     }
 
-    logout() {
-        if(this.auth.currentUser) {
-            this.auth.signOut().then(retorno => {
-            this.router.navigate(['home']);
-            this.status = '| Entrar'
-            }).catch(error => {
-                console.log('Erro ao deslogar')
-            })
-        } else {
-            this.router.navigate(['login']);
-        }
+    public logoutProprio() {
+        localStorage.removeItem('fr-log-trace-id');
+        localStorage.removeItem('fr-user-data');
+        this.status = '| Entrar';
+        this.router.navigate(['login']);   
     }
+
 }
