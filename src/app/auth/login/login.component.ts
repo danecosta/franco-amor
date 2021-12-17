@@ -33,13 +33,13 @@ export class LoginComponent implements OnInit {
   }
 
   public async loginProprio(){
-    const retorno = await axios.post('http://localhost:3000/usuarios/auth/login', {
+    const retorno = await axios.post('https://franco-amor-api.herokuapp.com/usuarios/auth/login', {
       "username": this.email,
       "password": this.password
     });
 
     if(retorno.data) localStorage.setItem('fr-log-trace-id', retorno.data.access_token);
-    const profile = await axios.get(`http://localhost:3000/usuarios/perfil/${retorno.data.uuid}`, {
+    const profile = await axios.get(`https://franco-amor-api.herokuapp.com/usuarios/perfil/${retorno.data.uuid}`, {
       headers: {
         Authorization: 'Bearer ' + retorno.data.access_token
       }
