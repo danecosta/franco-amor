@@ -3,7 +3,7 @@
 
     <section class="section section-shaped bg-secondary">
         <div class="container pt-lg-md">
-            <h3>Manter Instituição</h3>
+            <h3>Cadastrar Instituição</h3>
             <hr>
             <form>
                 <div class="row">
@@ -74,12 +74,9 @@
                                 <label class="custom-control-label" for="fundacao">Fundação</label>
                             </div>
                             <div class="custom-control custom-radio mb-3">
-                                <input name="tipoEmpresa" class="custom-control-input" id="outro" type="radio"
-                                    name="tipoEmpresa" value="outro" [(ngModel)]="criarInstituicao.tipoEmpresa">
-                                <label class="custom-control-label" for="outro">Outro</label>
-                            </div>
-                            <div class="col-md-4" *ngIf="tipoEmpresa=== 'outro'">
-                                <input type="text" name="outro" [(ngModel)]="criarInstituicao.tipoEmpresa" class="form-control" id="valor" placeholder="Outro">
+                                <input name="tipoEmpresa" class="custom-control-input" id="pessoaFisica" type="radio"
+                                    name="tipoEmpresa" value="pessoaFisica" [(ngModel)]="criarInstituicao.tipoEmpresa">
+                                <label class="custom-control-label" for="pessoaFisica">Pessoa Física</label>
                             </div>
                         </div>
                     </div>
@@ -88,9 +85,9 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label>CNPJ</label>
+                            <label>CNPJ/CPF</label>
                             <input type="text" name="cnpj" [(ngModel)]="criarInstituicao.cnpj" [textMask]="{mask: cnpjMask}" class="form-control" id="cnpj"
-                                placeholder="CNPJ da instituição">
+                                placeholder="CNPJ/CPF da instituição">
                         </div>
                     </div>
                     <div class="col-md-6">
@@ -319,7 +316,7 @@
                 <hr>
                 <div class="rodape">
                     <button type="button" class="btn btn-outline-light btnVoltar" (click)="voltar()">Voltar</button>
-                    <button type="button" name="salvar" class="btn btn-outline-success btnSalvar" (click)="salvar()">Salvar</button>
+                    <button type="button" name="salvar" class="btn btn-outline-success btnSalvar" (click)="salvar()">SALVAR E {{acao}} AÇÃO SOCIAL</button>
                 </div>
             </form>
         </div>

@@ -13,6 +13,8 @@ import axios from 'axios';
 })
 export class ManterInstituicaoComponent extends BaseComponent implements OnInit {
 
+  acao:string='CADASTRAR';
+  
   cepInformado: string;
 
   logradouro: string;

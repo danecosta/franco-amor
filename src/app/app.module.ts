@@ -9,11 +9,9 @@ import { AppComponent } from './app.component';
 import { ListarInstituicaoComponent } from './admin/listar-instituicao/listar-instituicao.component';
 import { ListarPostagemComponent } from './admin/listar-postagem/listar-postagem.component';
 import { ListarProdutoComponent } from './admin/listar-produto/listar-produto.component';
-import { ListarVoluntarioComponent } from './admin/listar-voluntario/listar-voluntario.component';
 import { ManterInstituicaoComponent } from './admin/manter-instituicao/manter-instituicao.component';
 import { ManterPostagemComponent } from './admin/manter-postagem/manter-postagem.component';
 import { ManterProdutoComponent } from './admin/manter-produto/manter-produto.component';
-import { ManterVoluntarioComponent } from './admin/manter-voluntario/manter-voluntario.component';
 import { LoginComponent } from './auth/login/login.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { FooterComponent } from './shared/footer/footer.component';
@@ -57,10 +55,8 @@ import { FormsModule } from '@angular/forms';
     ContatoComponent,
     ManterInstituicaoComponent,
     ManterPostagemComponent,
-    ManterVoluntarioComponent,
     ManterProdutoComponent,
     ListarProdutoComponent,
-    ListarVoluntarioComponent,
     ListarPostagemComponent,
     ListarInstituicaoComponent,
     HomeAdminComponent,

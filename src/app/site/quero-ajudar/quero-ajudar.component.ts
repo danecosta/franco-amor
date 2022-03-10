@@ -24,13 +24,15 @@ export class QueroAjudarComponent implements OnInit {
   }
 
   irParaVejaMais(item) {
-    this.router.navigate(['./veja-mais', item.type, item.nome ]);
+    this.router.navigate(['./veja-mais', item.type, item.id ]);
   }
 
   async buscarVagas(){
     const atdTelefonico = await axios.get('https://franco-amor-api.herokuapp.com/atendimentos/telefonico', { params: { vagas: true } });
     atdTelefonico.data.forEach(element => {
-      let atd = { nome: element.nome,
+      let atd = { 
+        id:element.id,
+        nome: element.nome,
                   email: element.email,
                   cnpj: element.cnpj,
                   telefone: element.telefone,
@@ -42,7 +44,8 @@ export class QueroAjudarComponent implements OnInit {
 
     const atdPresencial = await axios.get('https://franco-amor-api.herokuapp.com/atendimentos/presencial', { params: { vagas: true } });
     atdPresencial.data.forEach(element => {
-      let atd = { nome: element.nome,
+      let atd = { id:element.id,
+        nome: element.nome,
                   email: element.email,
                   cnpj: element.cnpj,
                   telefone: element.telefone,
@@ -54,7 +57,8 @@ export class QueroAjudarComponent implements OnInit {
 
     const atdVirtuais = await axios.get('https://franco-amor-api.herokuapp.com/atendimentos/virtual', { params: { vagas: true } });
     atdVirtuais.data.forEach(element => {
-      let atd = { nome: element.nome,
+      let atd = { id:element.id,
+        nome: element.nome,
                   email: element.email,
                   cnpj: element.cnpj,
                   telefone: element.telefone,
@@ -66,7 +70,8 @@ export class QueroAjudarComponent implements OnInit {
 
     const atdEventos = await axios.get('https://franco-amor-api.herokuapp.com/eventos', { params: { vagas: true } });
     atdEventos.data.forEach(element => {
-      let atd = { nome: element.nome,
+      let atd = { id:element.id,
+        nome: element.nome,
                   email: element.email,
                   cnpj: element.cnpj,
                   telefone: element.telefone,

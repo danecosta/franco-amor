@@ -13,8 +13,6 @@ import { ListarProdutoComponent } from './admin/listar-produto/listar-produto.co
 import { ManterInstituicaoComponent } from './admin/manter-instituicao/manter-instituicao.component';
 import { ManterPostagemComponent } from './admin/manter-postagem/manter-postagem.component';
 import { ManterProdutoComponent } from './admin/manter-produto/manter-produto.component';
-import { ManterVoluntarioComponent } from './admin/manter-voluntario/manter-voluntario.component';
-import { ListarVoluntarioComponent } from './admin/listar-voluntario/listar-voluntario.component';
 import { HomeAdminComponent } from './admin/home-admin/home-admin.component';
 import { ProcuroAjudaComponent } from './site/procuro-ajuda/procuro-ajuda.component';
 import { QueroAjudarComponent } from './site/quero-ajudar/quero-ajudar.component';
@@ -54,12 +52,10 @@ const routes: Routes = [
   { path: 'listar-instituicao', component: ListarInstituicaoComponent, canActivate: [AuthGuardService] },
   { path: 'listar-postagem', component: ListarPostagemComponent, canActivate: [AuthGuardService] },
   { path: 'listar-produto', component: ListarProdutoComponent, canActivate: [AuthGuardService] },
-  { path: 'listar-voluntario', component: ListarVoluntarioComponent, canActivate: [AuthGuardService] },
   { path: 'listar-atendimentos-atividades', component: ListarAtendimentosAtividadesComponent, canActivate: [AuthGuardService] },
   { path: 'manter-instituicao', component: ManterInstituicaoComponent, canActivate: [AuthGuardService] },
   { path: 'manter-postagem', component: ManterPostagemComponent, canActivate: [AuthGuardService] },
   { path: 'manter-produto', component: ManterProdutoComponent, canActivate: [AuthGuardService] },
-  { path: 'manter-voluntario', component: ManterVoluntarioComponent, canActivate: [AuthGuardService] },
   { path: 'manter-evento', component: ManterEventoComponent, canActivate: [AuthGuardService] },
   { path: 'manter-presencial', component: ManterPresencialComponent, canActivate: [AuthGuardService] },
   { path: 'manter-telefonico', component: ManterTelefonicoComponent, canActivate: [AuthGuardService] },

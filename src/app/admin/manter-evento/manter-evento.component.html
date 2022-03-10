@@ -3,14 +3,14 @@
 
     <section class="section section-shaped bg-secondary">
         <div class="container pt-lg-md">
-            <h3>Manter Evento</h3>
+            <h3>Cadastrar Evento</h3>
             <hr>
 
             <form>
                 <div class="row" style="margin-bottom: 1em;">
                     <div class="col-md-6">
-                        <label>Nome</label>
-                        <input name="nome-evento" [(ngModel)]="eventoDTO.nome" type="text" class="form-control" id="nome" placeholder="Nome do atendimento">
+                        <label>Nome do Evento</label>
+                        <input name="nome-evento" [(ngModel)]="eventoDTO.nome" type="text" class="form-control" id="nome" placeholder="Nome do evento">
                     </div>
                 </div>
 
@@ -157,7 +157,7 @@
                             <input class="custom-control-input" id="repete" type="checkbox" name="chkRepete"
                                 [(ngModel)]="repete"
                                 [disabled]="!horaAtendimento.dataInicio || !horaAtendimento.horaInicio || !horaAtendimento.horaFim">
-                            <label class="custom-control-label" for="repete">Se repete?</label>
+                            <label class="custom-control-label" for="repete">EVENTO RECORRENTE</label>
                         </div>
                     </div>
                 </div>

@@ -24,16 +24,16 @@ export class ProcuroAjudaComponent implements OnInit {
   }
 
   irParaVejaMais(item) {
-    this.router.navigate(['./veja-mais', item.type, item.nome ]);
+    this.router.navigate(['./veja-mais', item.type, item.id ]);
   }
 
   async buscarAtendimentos() {
     const atdTelefonico = await axios.get('https://franco-amor-api.herokuapp.com/atendimentos/telefonico');
     atdTelefonico.data.forEach(element => {
       let atd = {
+        id:element.id,
         nome: element.nome as string,
         email: element.email,
-        cnpj: element.cnpj,
         telefone: element.telefone,
         observacao: element.observacao,
         type: 'telefonico'
@@ -44,9 +44,9 @@ export class ProcuroAjudaComponent implements OnInit {
     const atdPresencial = await axios.get('https://franco-amor-api.herokuapp.com/atendimentos/presencial');
     atdPresencial.data.forEach(element => {
       let atd = {
+        id:element.id,
         nome: element.nome,
         email: element.email,
-        cnpj: element.cnpj,
         telefone: element.telefone,
         observacao: element.observacao,
         type: 'presencial'
@@ -57,9 +57,9 @@ export class ProcuroAjudaComponent implements OnInit {
     const atdVirtuais = await axios.get('https://franco-amor-api.herokuapp.com/atendimentos/virtual');
     atdVirtuais.data.forEach(element => {
       let atd = {
+        id:element.id,
         nome: element.nome,
         email: element.email,
-        cnpj: element.cnpj,
         telefone: element.telefone,
         observacao: element.observacao,
         type: 'virtual'
@@ -70,9 +70,9 @@ export class ProcuroAjudaComponent implements OnInit {
     const atdEventos = await axios.get('https://franco-amor-api.herokuapp.com/eventos');
     atdEventos.data.forEach(element => {
       let atd = {
+        id:element.id,
         nome: element.nome,
         email: element.email,
-        cnpj: element.cnpj,
         telefone: element.telefone,
         observacao: element.observacao,
         type: 'evento'
