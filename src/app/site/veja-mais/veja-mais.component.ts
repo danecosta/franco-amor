@@ -19,7 +19,7 @@ export class VejaMaisComponent implements OnInit {
 
   enviarWhatsapp(){
     const url = window.location.href;
-    const message = "Oii! Vi essa atividade e lembrei de você: " + url;
+    const message = "Oi! Vi essa atividade e lembrei de você: " + url;
     window.open("https://api.whatsapp.com/send?text="+message, "_blank");    
   }
 }

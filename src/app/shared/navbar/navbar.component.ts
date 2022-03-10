@@ -46,27 +46,6 @@ export class NavbarComponent implements OnInit {
         });
     }
 
-    isHome() {
-        var titlee = this.location.prepareExternalUrl(this.location.path());
-
-        if (titlee === '#/home') {
-            return true;
-        }
-        else {
-            return false;
-        }
-    }
-
-    isDocumentation() {
-        var titlee = this.location.prepareExternalUrl(this.location.path());
-        if (titlee === '#/documentation') {
-            return true;
-        }
-        else {
-            return false;
-        }
-    }
-
     logout() {
         if(this.auth.currentUser) {
             this.auth.signOut().then(retorno => {
@@ -77,6 +56,27 @@ export class NavbarComponent implements OnInit {
             })
         } else {
             this.router.navigate(['login']);
+        }
+    }
+
+    isHome() {
+        var titlee = this.location.prepareExternalUrl(this.location.path());
+
+        if( titlee === '#/home' ) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+    isDocumentation() {
+        var titlee = this.location.prepareExternalUrl(this.location.path());
+        if( titlee === '#/documentation' ) {
+            return true;
+        }
+        else {
+            return false;
         }
     }
 }

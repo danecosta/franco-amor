@@ -20,7 +20,7 @@ import { FooterComponent } from './shared/footer/footer.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { ContatoComponent } from './site/contato/contato.component';
 import { HomeAdminComponent } from './admin/home-admin/home-admin.component';
-import { DoacaoComponent } from './site/doacao/doacao.component';
+import { ApoiarComponent } from './site/apoiar/apoiar.component';
 import { ProcuroAjudaComponent } from './site/procuro-ajuda/procuro-ajuda.component';
 import { QueroAjudarComponent } from './site/quero-ajudar/quero-ajudar.component';
 import { ListarAtendimentosAtividadesComponent } from './admin/listar-atendimentos-atividades/listar-atendimentos-atividades.component';
@@ -66,7 +66,7 @@ import { FormsModule } from '@angular/forms';
     HomeAdminComponent,
     QueroAjudarComponent,
     ProcuroAjudaComponent,
-    DoacaoComponent,
+    ApoiarComponent,
     ListarAtendimentosAtividadesComponent,
     ManterTelefonicoComponent,
     ManterPresencialComponent,

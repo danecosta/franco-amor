@@ -1,63 +1,77 @@
-<div class="social-medias">
-  <ul class="flex justify-content-end px-4">
-    <li class="text-2xl mr-2"><a class="social-medias-icon"  target="__blank" href="https://www.facebook.com/projetofrancoamor/">
-        <i class="fa fa-facebook"></i>
-      </a></li>
-
-    <li class="text-2xl mr-2"><a class="social-medias-icon" target="__blank" href="https://www.instagram.com/projetofrancoamor/">
-        <i class="fa fa-instagram"></i>
-      </a>
-    </li>
-
-    <li class="text-2xl"><a class="social-medias-icon" target="__blank" href="https://www.youtube.com/channel/UC2ZLTKtGh74ZBszfBnWwJKg">
-        <i class="fa fa-youtube"></i>
-      </a></li>
-  </ul>
-</div>
-
-<nav id="navbar-main" class="navbar navbar-main navbar-expand-lg navbar-transparent">
+<nav id="navbar-main"
+  class="navbar navbar-main navbar-expand-lg navbar-transparent navbar-light headroom headroom--top headroom--pinned">
   <div class="container">
-    <a class="navbar-brand mr-lg-5 menu" routerLink="./home">
-      <img src="../../../assets/img/francoAmor/francoamorlogo.png"> Franco Amor
+    <a class="navbar-brand mr-lg-5" [routerLink]="['/home']">
+      <img src="./assets/img/francoAmor/francoamorlogo.png"> Franco Amor
     </a>
+    <button class="navbar-toggler" type="button" (click)="isCollapsed = !isCollapsed"
+      [attr.aria-expanded]="!isCollapsed" aria-controls="navbar_global">
+      <span class="navbar-toggler-icon"></span>
+    </button>
     <div class="navbar-collapse collapse" id="navbar_global" [ngbCollapse]="isCollapsed">
+      <div class="navbar-collapse-header">
+        <div class="row">
+          <div class="col-6 collapse-brand">
+            <a [routerLink]="['/home']">
+              <img src="./assets/img/francoAmor/francoamorlogo.png"> Franco Amor
+            </a>
+          </div>
+          <div class="col-6 collapse-close">
+            <button type="button" class="navbar-toggler" (click)="isCollapsed = !isCollapsed"
+              [attr.aria-expanded]="!isCollapsed" aria-controls="navbar_global">
+              <span></span>
+              <span></span>
+            </button>
+          </div>
+        </div>
+      </div>
       <ul class="navbar-nav navbar-nav-hover align-items-lg-center">
-        <li class="nav-item dropdown">
-          <a class="nav-link no-caret menu" data-toggle="dropdown" role="button" routerLink="./quem-somos">
-            Quem somos
+        <li class="nav-item">
+          <a class="nav-link no-caret" routerLink="./quem-somos">
+            <i class="ni ni-ui-04 d-lg-none"></i>
+            <span class="nav-link-inner--text">Quem somos</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link no-caret" routerLink="./cadastre-acao">
+            <i class="ni ni-collection d-lg-none"></i>
+            <span class="nav-link-inner--text">Cadastre sua ação social</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link no-caret" routerLink="./blog">
+            <i class="ni ni-collection d-lg-none"></i>
+            <span class="nav-link-inner--text">Blog</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link no-caret" routerLink="./login">
+            <i class="ni ni-collection d-lg-none"></i>
+            <span class="nav-link-inner--text">Entrar</span>
           </a>
         </li>
       </ul>
-
-      <ul class="navbar-nav navbar-nav-hover align-items-lg-center">
-        <li class="nav-item dropdown">
-          <a class="nav-link no-caret menu" data-toggle="dropdown" role="button" routerLink="./cadastre-acao">
-            Cadastre sua ação social
+      <ul class="navbar-nav align-items-lg-center ml-lg-auto">
+        <li class="nav-item">
+          <a class="nav-link nav-link-icon" target="__blank" href="https://www.facebook.com/projetofrancoamor/"
+            data-toggle="tooltip" title="Like us on Facebook">
+            <i class="fa fa-facebook-square"></i>
+            <span class="nav-link-inner--text d-lg-none">Facebook</span>
           </a>
         </li>
-      </ul>
-
-      <ul class="navbar-nav navbar-nav-hover align-items-lg-center">
-        <li class="nav-item dropdown">
-          <a class="nav-link no-caret menu" data-toggle="dropdown" role="button" routerLink="./blog">
-            Blog
+        <li class="nav-item">
+          <a class="nav-link nav-link-icon" target="__blank" href="https://www.instagram.com/projetofrancoamor/"
+            data-toggle="tooltip" title="Follow us on Instagram">
+            <i class="fa fa-instagram"></i>
+            <span class="nav-link-inner--text d-lg-none">Instagram</span>
           </a>
         </li>
-      </ul>
-
-      <ul class="navbar-nav navbar-nav-hover align-items-lg-center">
-        <li class="nav-item dropdown">
-          <a class="nav-link no-caret menu" data-toggle="dropdown" role="button" routerLink="./faq">
-            Ajuda
-          </a>
-        </li>
-      </ul>
-
-      <ul class="navbar-nav navbar-nav-hover align-items-lg-center">
-        <li class="nav-item dropdown">
-          <a class="nav-link no-caret menu" data-toggle="dropdown" role="button" routerLink="./login"  >
-            <!-- {{ status }} -->
-            | Login
+        <li class="nav-item">
+          <a class="nav-link nav-link-icon" target="__blank"
+            href="https://www.youtube.com/channel/UC2ZLTKtGh74ZBszfBnWwJKg" data-toggle="tooltip"
+            title="Follow us on Youtube">
+            <i class="fa fa-youtube"></i>
+            <span class="nav-link-inner--text d-lg-none">Youtube</span>
           </a>
         </li>
       </ul>

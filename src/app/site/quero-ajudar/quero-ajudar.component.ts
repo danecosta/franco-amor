@@ -23,8 +23,8 @@ export class QueroAjudarComponent implements OnInit {
     this.buscarVagas();
   }
 
-  irParaVejaMais() {
-    this.router.navigate(['./veja-mais']);
+  irParaVejaMais(item) {
+    this.router.navigate(['./veja-mais', item.type, item.nome ]);
   }
 
   async buscarVagas(){
@@ -34,7 +34,8 @@ export class QueroAjudarComponent implements OnInit {
                   email: element.email,
                   cnpj: element.cnpj,
                   telefone: element.telefone,
-                  observacao: element.observacao
+                  observacao: element.observacao,
+                  type: 'telefonico'
       }
       this.vagas.push(atd);
     });
@@ -45,7 +46,8 @@ export class QueroAjudarComponent implements OnInit {
                   email: element.email,
                   cnpj: element.cnpj,
                   telefone: element.telefone,
-                  observacao: element.observacao
+                  observacao: element.observacao,
+                  type: 'presencial'
       }
       this.vagas.push(atd);
     });
@@ -56,7 +58,8 @@ export class QueroAjudarComponent implements OnInit {
                   email: element.email,
                   cnpj: element.cnpj,
                   telefone: element.telefone,
-                  observacao: element.observacao
+                  observacao: element.observacao,
+                  type: 'virtual'
       }
       this.vagas.push(atd);
     });
@@ -67,7 +70,8 @@ export class QueroAjudarComponent implements OnInit {
                   email: element.email,
                   cnpj: element.cnpj,
                   telefone: element.telefone,
-                  observacao: element.observacao
+                  observacao: element.observacao,
+                  type: 'evento'
       }
       this.vagas.push(atd);
     });

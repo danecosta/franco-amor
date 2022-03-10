@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-login',
@@ -8,11 +9,17 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  focus;
+  focus1;
 
   email: string;
   password: string;
 
-  constructor(private router: Router, public auth: AngularFireAuth) { }
+  closeResult: string;
+
+  constructor(private router: Router,
+    public auth: AngularFireAuth,
+    private modalService: NgbModal) { }
 
   ngOnInit() {
   }
@@ -50,6 +57,28 @@ export class LoginComponent implements OnInit {
       }).catch(error => {
         console.log('Erro ao deslogar')
       })
+    }
+  }
+
+  open(content, type, modalDimension) {
+    if (modalDimension === 'sm' && type === 'modal_mini') {
+      this.modalService.open(content, { windowClass: 'modal-mini', size: 'sm', centered: true }).result.then((result) => {
+        this.closeResult = 'Closed with: $result';
+      }, (reason) => {
+        this.closeResult = 'Dismissed $this.getDismissReason(reason)';
+      });
+    } else if (modalDimension === '' && type === 'Notification') {
+      this.modalService.open(content, { windowClass: 'modal-danger', centered: true }).result.then((result) => {
+        this.closeResult = 'Closed with: $result';
+      }, (reason) => {
+        this.closeResult = 'Dismissed $this.getDismissReason(reason)';
+      });
+    } else {
+      this.modalService.open(content, { centered: true }).result.then((result) => {
+        this.closeResult = 'Closed with: $result';
+      }, (reason) => {
+        this.closeResult = 'Dismissed $this.getDismissReason(reason)';
+      });
     }
   }
 

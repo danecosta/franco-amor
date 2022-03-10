@@ -18,7 +18,7 @@ import { ListarVoluntarioComponent } from './admin/listar-voluntario/listar-volu
 import { HomeAdminComponent } from './admin/home-admin/home-admin.component';
 import { ProcuroAjudaComponent } from './site/procuro-ajuda/procuro-ajuda.component';
 import { QueroAjudarComponent } from './site/quero-ajudar/quero-ajudar.component';
-import { DoacaoComponent } from './site/doacao/doacao.component';
+import { ApoiarComponent } from './site/apoiar/apoiar.component';
 import { ProdutosComponent } from './site/produtos/produtos.component';
 import { BlogComponent } from './blog/blog.component';
 import { ListarAtendimentosAtividadesComponent } from './admin/listar-atendimentos-atividades/listar-atendimentos-atividades.component';
@@ -37,11 +37,11 @@ const routes: Routes = [
   { path: 'registro', component: SignupComponent },
   { path: 'login', component: LoginComponent },
   { path: 'contato', component: ContatoComponent },
-  { path: 'doacao', component: DoacaoComponent },
+  { path: 'apoiar', component: ApoiarComponent },
   { path: 'produtos', component: ProdutosComponent },
   { path: 'procuro-ajuda', component: ProcuroAjudaComponent },
   { path: 'quero-ajudar', component: QueroAjudarComponent },
-  { path: 'veja-mais', component: VejaMaisComponent },
+  { path: 'veja-mais/:type/:id', component: VejaMaisComponent },
   { path: 'faq', component: FaqComponent },
   { path: 'cadastre-acao', component: CadastreAcaoComponent },
   { path: 'quem-somos', component: QuemSomosComponent },

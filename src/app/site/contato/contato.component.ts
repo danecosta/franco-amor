@@ -7,6 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ContatoComponent implements OnInit {
 
+  nome:string;
+  email:string;
+  
   constructor() { }
 
   ngOnInit(): void {

@@ -1,47 +1,88 @@
-<main class="main-site">
-    <div class="position-relative">
-        <section class="section section-shaped section-lg">
-            <div class="container pt-lg-md">
-                <div class="row justify-content-center">
-                    <div class="col-lg-10">
-                        <div class="card bg-secondary shadow border-0 rounded-50px">
-                            <div class="card-body">
-                                <h4 class="mb-1">Contato</h4>
-                                <p class="mt-0">Sugestões, reclamações, elogios e dúvidas.</p>
-                                <div class="form-group mt-5">
+<main>
+    <section class="section section-shaped section-lg">
+        <div class="shape shape-style-1 bg-gradient-default">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="container pt-lg-md">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="card bg-secondary shadow border-0">
+                        <div class="card-body px-lg-5 py-lg-5">
+                            <div class="text-center mb-6">
+                                <h4>Contato</h4>
+                                <p>Sugestões, reclamações, elogios e dúvidas.</p>
+                            </div>
+                            <form role="form">
+                                <div class="form-group mb-3">
                                     <div class="input-group input-group-alternative">
                                         <div class="input-group-prepend">
-                                            <span class="input-group-text"><i class="ni ni-user-run"></i></span>
+                                            <span class="input-group-text"><i class="ni ni-email-83"></i></span>
                                         </div>
-                                        <input class="form-control" placeholder="Nome" type="text">
+                                        <input class="form-control" placeholder="Nome" type="text" name="nome"
+                                            [(ngModel)]="nome">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <div class="input-group input-group-alternative">
                                         <div class="input-group-prepend">
-                                            <span class="input-group-text"><i class="ni ni-email-83"></i></span>
+                                            <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
                                         </div>
-                                        <input class="form-control" placeholder="E-mail" type="email">
+                                        <input class="form-control" placeholder="E-mail" type="text" name="email"
+                                            [(ngModel)]="email">
                                     </div>
                                 </div>
                                 <div class="form-group mb-4">
                                     <textarea class="form-control form-control-alternative" name="name" rows="4"
                                         cols="80" placeholder="Mensagem"></textarea>
                                 </div>
-                                <div>
-                                    <button type="button" class="btn btn-success btn-round btn-block btn-lg">Enviar
+                                <div class="text-center">
+                                    <button type="submit" class="btn btn-success my-4">Enviar
                                         mensagem</button>
                                 </div>
-                                <div class="text-center">
-                                    <br>
-                                    <p>OU</p>
-                                    <p>envie um e-mail para <b>eufrancoamor@gmail.com</b></p>
-                                </div>
+                            </form>
+
+                            <div class="text-center">
+                                <br>
+                                <p>OU</p>
+                                <p>envie um e-mail para <b>eufrancoamor@gmail.com</b></p>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
-    </div>
+        </div>
+    </section>
+
+    <ng-template #classic1 let-c="close" let-d="dismiss">
+        <div class="modal-content">
+            <div class="modal-body p-0">
+                <div class="card bg-secondary shadow border-0">
+                    <div class="card-body px-lg-5 py-lg-5">
+                        <form role="form">
+                            <div class="form-group mb-3">
+                                <div class="input-group input-group-alternative">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="ni ni-email-83"></i></span>
+                                    </div>
+                                    <input class="form-control" name="email" [(ngModel)]="email" placeholder="E-mail"
+                                        type="email">
+                                </div>
+                            </div>
+                            <div class="text-center">
+                                <button type="button" class="btn btn-primary my-4" (click)="recuperarSenha()">Recuperar
+                                    senha</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ng-template>
 </main>
