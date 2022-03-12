@@ -44,10 +44,9 @@
             <span class="nav-link-inner--text">Blog</span>
           </a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link no-caret" routerLink="./login">
-            <i class="ni ni-collection d-lg-none"></i>
-            <span class="nav-link-inner--text">Entrar</span>
+        <li class="nav-item dropdown">
+          <a class="nav-link no-caret menu" data-toggle="dropdown" role="button" (click)="logoutProprio()"  >
+            {{ status }}
           </a>
         </li>
       </ul>

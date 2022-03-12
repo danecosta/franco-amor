@@ -12,12 +12,11 @@ export class AuthGuardService implements CanActivate {
  
     async canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Promise<boolean> {
 
-        let usuario = await this.auth.currentUser;
-            
-        if (!usuario || !usuario.email)  {
-            this._router.navigate(['login']);
-            return false;
-        }
+        const result = localStorage.getItem('fr-log-trace-id');
+            if(!result) {
+                this._router.navigate(['login']);
+                return false;
+            }
         
         return true;
     }
