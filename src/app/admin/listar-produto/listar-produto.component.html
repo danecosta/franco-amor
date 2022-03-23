@@ -26,6 +26,7 @@
                     <th scope="col">Produto</th>
                     <th scope="col">Valor</th>
                     <th scope="col">Estoque</th>
+                    <th scope="col">Editar</th>
                 </tr>
             </thead>
             <tbody>
@@ -33,6 +34,7 @@
                     <td>{{item?.nome}}</td>
                     <td>{{item?.valor}}</td>
                     <td>{{item?.estoque}}</td>
+                    <td class="btn-editar"><a (click)="irParaManterProduto(item)"><i class="ni ni-settings-gear-65"></i></a></td>
                 </tr>
             </tbody>
         </table>

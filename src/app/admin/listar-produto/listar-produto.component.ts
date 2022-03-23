@@ -16,16 +16,22 @@ export class ListarProdutoComponent implements OnInit {
     this.obterProdutos();
   }
 
+  irParaManterProduto(item) {
+    this.router.navigate(['manter-produto', item.id]);
+  }
+
   novoProduto() {
     this.router.navigate(['manter-produto']);
   }
 
-  async obterProdutos(){
+  async obterProdutos() {
     const prod = await axios.get('https://franco-amor-api.herokuapp.com/produtos');
     prod.data.forEach(element => {
-      let prod = { nome: element.nome,
-                  valor: element.valor,
-                  estoque: element.estoque,
+      let prod = {
+        id: element.id,
+        nome: element.nome,
+        valor: element.valor,
+        estoque: element.estoque,
       }
       this.produtos.push(prod);
     });

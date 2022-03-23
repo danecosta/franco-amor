@@ -5,6 +5,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import * as cep from 'cep-promise';
 import { BaseComponent } from '../base.component';
 import axios from 'axios';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-manter-instituicao',
@@ -25,16 +26,23 @@ export class ManterInstituicaoComponent extends BaseComponent implements OnInit 
   tipoEmpresa: any;
 
   criarInstituicao = new CriarInstituicaoDTO();
-
   criarRepresentanteUm = new CriarRepresentanteDTO();
   criarRepresentanteDois = new CriarRepresentanteDTO();
 
-  constructor(private modalService: NgbModal) {
+  constructor(private modalService: NgbModal, private route: ActivatedRoute) {
     super();
   }
 
   ngOnInit(): void {
     this.afuConfig.multiple = true;
+
+    this.buscarInstituicao();
+  }
+
+  async buscarInstituicao(){
+    let id = this.route.snapshot.paramMap.get('id');
+
+    this.criarInstituicao = await (await axios.get('https://franco-amor-api.herokuapp.com/instituicoes/' + id)).data;
   }
 
   public async salvar() {
@@ -44,7 +52,6 @@ export class ManterInstituicaoComponent extends BaseComponent implements OnInit 
    }
 
   buscarCep() {
-
     this.limparCamposCep();
 
     cep(this.cepInformado).then(

@@ -1,41 +1,53 @@
-<main class="main-admin">
-    <section class="section section-shaped"> </section>
+<main>
+    <div class="position-relative">
+        <section class="section section-shaped">
 
-    <section class="section section-shaped bg-secondary">
-        <div class="container">
-            <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs">
-                <li [ngbNavItem]="1">
-                    <a ngbNavLink>Instituições</a>
-                    <ng-template ngbNavContent>
-                        <app-listar-instituicao></app-listar-instituicao>
-                    </ng-template>
-                </li>
-                <li [ngbNavItem]="2">
-                    <a ngbNavLink>Atendimentos/Atividades</a>
-                    <ng-template ngbNavContent>
-                        <app-listar-atendimentos-atividades></app-listar-atendimentos-atividades>
-                    </ng-template>
-                </li>
-                <li [ngbNavItem]="3">
-                    <a ngbNavLink>Voluntários</a>
-                    <ng-template ngbNavContent>
-                        <app-listar-voluntario></app-listar-voluntario>
-                    </ng-template>
-                </li>
-                <li [ngbNavItem]="4">
-                    <a ngbNavLink>Postagens</a>
-                    <ng-template ngbNavContent>
-                        <app-listar-postagem></app-listar-postagem>
-                    </ng-template>
-                </li>
-                <li [ngbNavItem]="5">
-                    <a ngbNavLink>Produtos</a>
-                    <ng-template ngbNavContent>
-                        <app-listar-produto></app-listar-produto>
-                    </ng-template>
-                </li>
-            </ul>
-            <div [ngbNavOutlet]="nav" class="mt-2"></div>
-        </div>
-    </section>
+            <div class="shape shape-style-1 shape-primary">
+                <span class="span-150"></span>
+                <span class="span-50"></span>
+                <span class="span-50"></span>
+                <span class="span-75"></span>
+                <span class="span-100"></span>
+                <span class="span-75"></span>
+                <span class="span-50"></span>
+                <span class="span-100"></span>
+                <span class="span-50"></span>
+                <span class="span-100"></span>
+            </div>
+
+            <div class="container"></div>
+        </section>
+
+        <section class="section section-shaped bg-secondary">
+            <div class="container">
+                <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs">
+                    <li [ngbNavItem]="1">
+                        <a ngbNavLink>Instituições</a>
+                        <ng-template ngbNavContent>
+                            <app-listar-instituicao></app-listar-instituicao>
+                        </ng-template>
+                    </li>
+                    <li [ngbNavItem]="2">
+                        <a ngbNavLink>Atendimentos/Atividades</a>
+                        <ng-template ngbNavContent>
+                            <app-listar-atendimentos-atividades></app-listar-atendimentos-atividades>
+                        </ng-template>
+                    </li>
+                    <li [ngbNavItem]="3">
+                        <a ngbNavLink>Postagens</a>
+                        <ng-template ngbNavContent>
+                            <app-listar-postagem></app-listar-postagem>
+                        </ng-template>
+                    </li>
+                    <li [ngbNavItem]="4">
+                        <a ngbNavLink>Produtos</a>
+                        <ng-template ngbNavContent>
+                            <app-listar-produto></app-listar-produto>
+                        </ng-template>
+                    </li>
+                </ul>
+                <div [ngbNavOutlet]="nav" class="mt-2"></div>
+            </div>
+        </section>
+    </div>
 </main>

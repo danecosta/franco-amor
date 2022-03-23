@@ -9,3 +9,11 @@ html,body {
 .bg-gradient-default {
     background: linear-gradient(87deg, #074d86 0, #4ae2e7 100%)!important
 }
+
+.btn-editar{
+    cursor: pointer;
+}
+
+.tela-cheia{
+    min-height: calc(100vh-30px) !important;
+}

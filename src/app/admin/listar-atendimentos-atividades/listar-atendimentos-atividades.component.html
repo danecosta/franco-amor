@@ -1,14 +1,14 @@
 <section class="section section-shaped bg-secondary">
     <div class="container">
 
-        <div class="row" style="display: flow-root;">
-            <button type="button" class="btn btn-outline-success btnNovo" (click)="novoEvento()" [ngbTooltip]="tooltipEvento">
+        <div class="row">
+            <button type="button" class="btn btn-outline-success" (click)="novoEvento()" [ngbTooltip]="tooltipEvento">
                 <i class="ni ni-fat-add"></i> Evento</button>
-            <button type="button" class="btn btn-outline-success btnNovo" (click)="novoTelefonico()" [ngbTooltip]="tooltipTelefonico">
+            <button type="button" class="btn btn-outline-success" (click)="novoTelefonico()" [ngbTooltip]="tooltipTelefonico">
                 <i class="ni ni-fat-add"></i> Telefônico</button>
-            <button type="button" class="btn btn-outline-success btnNovo" (click)="novoVirtual()" [ngbTooltip]="tooltipVirtual">
+            <button type="button" class="btn btn-outline-success" (click)="novoVirtual()" [ngbTooltip]="tooltipVirtual">
                 <i class="ni ni-fat-add"></i> Virtual</button>
-            <button type="button" class="btn btn-outline-success btnNovo" (click)="novoPresencial()" [ngbTooltip]="tooltipPresencial">
+            <button type="button" class="btn btn-outline-success" (click)="novoPresencial()" [ngbTooltip]="tooltipPresencial">
                 <i class="ni ni-fat-add"></i> Presencial</button>
         </div>
 
@@ -36,7 +36,7 @@
                 <div class="form-group">
                     <label>Tipo</label>
                     <select class="form-control" id="tipo" name='tipo' [(ngModel)]="tipo">
-                        <option value=null>Selecione</option>
+                        <option value=null>Todos</option>
                         <option value='atividade'>Atividade</option>
                         <option value='evento'>Evento</option>
                         <option value='presencial'>Presencial</option>
@@ -57,16 +57,18 @@
                 <tr>
                     <th scope="col">Nome</th>
                     <th scope="col">Instituição</th>
-                    <th scope="col">Cidade</th>
+                    <th scope="col">Abrangencia/Cidade</th>
                     <th scope="col">Tipo</th>
+                    <th scope="col">Editar</th>
                 </tr>
             </thead>
             <tbody>
                 <tr *ngFor="let item of atividades">
                     <td>{{item?.nome}}</td>
                     <td>{{item?.instituicao}}</td>
-                    <td>{{item?.cidade}}</td>
+                    <td>{{item?.local}}</td>
                     <td>{{item?.tipo}}</td>
+                    <td class="btn-editar"><a (click)="irParaManterAtendimentos(item)"><i class="ni ni-settings-gear-65"></i></a></td>
                 </tr>
             </tbody>
         </table>

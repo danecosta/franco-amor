@@ -1,4 +1,4 @@
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CriarPostagemDTO } from './../shared/dto/criar-postagem.dto';
 import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
@@ -13,18 +13,26 @@ export class ManterPostagemComponent extends BaseComponent implements OnInit {
 
   categoria: string = null;
 
-  criarPostagemDTO = new CriarPostagemDTO(); 
+  criarPostagemDTO = new CriarPostagemDTO();
 
-  constructor(private modalService: NgbModal, private router: Router) {
+  constructor(private modalService: NgbModal,
+    private router: Router,
+    private route: ActivatedRoute) {
     super();
   }
 
   ngOnInit(): void {
+    this.buscarPostagem();
   }
 
-  async  salvar() {
-    if(this.criarPostagemDTO.autor)
-    await axios.post('https://franco-amor-api.herokuapp.com/postagens', this.criarPostagemDTO);
+  async buscarPostagem() {
+    let id = this.route.snapshot.paramMap.get('id');
+    this.criarPostagemDTO = await (await axios.get('https://franco-amor-api.herokuapp.com/postagens/' + id)).data;
+  }
+
+  async salvar() {
+    if (this.criarPostagemDTO.autor)
+      await axios.post('https://franco-amor-api.herokuapp.com/postagens', this.criarPostagemDTO);
     this.router.navigate(['listar-postagem']);
   }
 

@@ -16,13 +16,19 @@ export class ListarPostagemComponent implements OnInit {
     this.obterPostagens();
   }
 
+  irParaManterPostagem(item) {
+    this.router.navigate(['manter-postagem', item.id]);
+  }
+
   async obterPostagens() {
     const inst = await axios.get('https://franco-amor-api.herokuapp.com/postagens');
 
     inst.data.forEach(element => {
-      let inst = {  titulo: element.titulo,
-                    autor: element.autor,
-                   data: element.dt_insercao
+      let inst = {
+        id: element.id,
+        titulo: element.titulo,
+        autor: element.autor,
+        data: element.dt_insercao
       }
       this.postagens.push(inst);
     });

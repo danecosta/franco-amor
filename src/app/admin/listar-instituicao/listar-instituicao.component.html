@@ -1,4 +1,4 @@
-<section class="section section-shaped bg-secondary">
+<section class="section g-secondary">
     <div class="container">
 
         <div class="row" style="display: flow-root;">
@@ -10,15 +10,15 @@
             <div class="col-md-4">
                 <div class="form-group">
                     <label>Nome</label>
-                    <input type="text" [(ngModel)]="nome" class="form-control" id="nome" placeholder="Nome da instituição">
+                    <input type="text" [(ngModel)]="filtro.nome" class="form-control" id="nome"
+                        placeholder="Nome da instituição">
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="form-group">
                     <label>CNPJ</label>
                     <input type="text" [textMask]="{mask: cnpjMask}" class="form-control" id="cnpj" name="cnpj"
-                    [(ngModel)]="filtro.cnpj"
-                        placeholder="CNPJ da instituição">
+                        [(ngModel)]="filtro.cnpj" placeholder="CNPJ da instituição">
                 </div>
             </div>
             <div class="col-md-4">
@@ -29,35 +29,35 @@
                 </div>
             </div>
             <div class="col-md-1" style="padding-top: 2rem;">
-                <button class="btn btn-icon btn-2 btn-outline-light" type="button">
+                <button class="btn btn-icon btn-2 btn-outline-light" type="button" (click)="filtrar()">
                     <span class="btn-inner--icon"><i class="fa fa-search" aria-hidden="true"></i></span>
                 </button>
             </div>
         </div>
 
         <div class="row">
-        <table class="table table-hover">
-            <thead>
-                <tr>
-                    <th scope="col">Id</th>
-                    <th scope="col">Nome</th>
-                    <th scope="col">CNPJ</th>
-                    <th scope="col">Cidade</th>
-                    <th scope="col">E-mail</th>
-                    <th scope="col">Telefone</th>
-                </tr>
-            </thead>
-            <tbody style="height: 30em !important;">
-                <tr id="{{i}}" *ngFor="let item of instituticoes; let i = index ">
-                    <td>{{ i }}</td>
-                    <td>{{ item?.nome }}</td>
-                    <td>{{ item?.cnpj }}</td>
-                    <td>{{ item?.cidade }}</td>
-                    <td>{{ item?.email }}</td>
-                    <td>{{ item?.telefone }}</td>
-                </tr>
-            </tbody>
-        </table>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">Nome</th>
+                        <th scope="col">CNPJ</th>
+                        <th scope="col">Cidade</th>
+                        <th scope="col">E-mail</th>
+                        <th scope="col">Telefone</th>
+                        <th scope="col">Editar</th>
+                    </tr>
+                </thead>
+                <tbody style="height: 30em !important;">
+                    <tr *ngFor="let item of instituticoes">
+                        <td>{{ item?.nome }}</td>
+                        <td>{{ item?.cnpj }}</td>
+                        <td>{{ item?.cidade }}</td>
+                        <td>{{ item?.email }}</td>
+                        <td>{{ item?.telefone }}</td>
+                        <td class="btn-editar"><a (click)="irParaManterInst(item)"><i class="ni ni-settings-gear-65"></i></a></td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 </section>

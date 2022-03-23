@@ -54,12 +54,19 @@ const routes: Routes = [
   { path: 'listar-produto', component: ListarProdutoComponent, canActivate: [AuthGuardService] },
   { path: 'listar-atendimentos-atividades', component: ListarAtendimentosAtividadesComponent, canActivate: [AuthGuardService] },
   { path: 'manter-instituicao', component: ManterInstituicaoComponent, canActivate: [AuthGuardService] },
+  { path: 'manter-instituicao/:id', component: ManterInstituicaoComponent, canActivate: [AuthGuardService] },
   { path: 'manter-postagem', component: ManterPostagemComponent, canActivate: [AuthGuardService] },
+  { path: 'manter-postagem/:id', component: ManterPostagemComponent, canActivate: [AuthGuardService] },
   { path: 'manter-produto', component: ManterProdutoComponent, canActivate: [AuthGuardService] },
+  { path: 'manter-produto/:id', component: ManterProdutoComponent, canActivate: [AuthGuardService] },
   { path: 'manter-evento', component: ManterEventoComponent, canActivate: [AuthGuardService] },
+  { path: 'manter-evento/:id', component: ManterEventoComponent, canActivate: [AuthGuardService] },
   { path: 'manter-presencial', component: ManterPresencialComponent, canActivate: [AuthGuardService] },
+  { path: 'manter-presencial/:id', component: ManterPresencialComponent, canActivate: [AuthGuardService] },
   { path: 'manter-telefonico', component: ManterTelefonicoComponent, canActivate: [AuthGuardService] },
+  { path: 'manter-telefonico/:id', component: ManterTelefonicoComponent, canActivate: [AuthGuardService] },
   { path: 'manter-virtual', component: ManterVirtualComponent, canActivate: [AuthGuardService] },
+  { path: 'manter-virtual/:id', component: ManterVirtualComponent, canActivate: [AuthGuardService] },
 
   { path: '', redirectTo: 'home', pathMatch: 'full' }
 ];

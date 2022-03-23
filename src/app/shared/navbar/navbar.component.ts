@@ -15,6 +15,9 @@ export class NavbarComponent implements OnInit, AfterViewChecked {
     private lastPoppedUrl: string;
     private yScrollStack: number[] = [];
 
+    statusOn = 'Sair';
+    statusOff = 'Entrar';
+
     public status: string;
 
     constructor(public location: Location, private router: Router, public auth: AngularFireAuth) {
@@ -23,18 +26,18 @@ export class NavbarComponent implements OnInit, AfterViewChecked {
     ngAfterViewChecked(): void {
        const result = localStorage.getItem('fr-log-trace-id');
        if(result) {
-            this.status = '| Sair';
+            this.status = this.statusOn;
             return;
         } 
-            this.status = '| Entrar';
+            this.status = this.statusOff;
     }
  
     ngOnInit() {
         const result = localStorage.getItem('fr-log-trace-id');
         if(result) {
-            this.status = '| Sair';
+            this.status = this.statusOn;
         } else {
-            this.status = '| Entrar';
+            this.status = this.statusOff;
         }
 
         this.router.events.subscribe((event) => {
@@ -59,7 +62,7 @@ export class NavbarComponent implements OnInit, AfterViewChecked {
         if(this.auth.currentUser) {
             this.auth.signOut().then(retorno => {
             this.router.navigate(['home']);
-            this.status = '| Entrar'
+            this.status = this.statusOff
             }).catch(error => {
                 console.log('Erro ao deslogar')
             })
@@ -92,7 +95,7 @@ export class NavbarComponent implements OnInit, AfterViewChecked {
     public logoutProprio() {
         localStorage.removeItem('fr-log-trace-id');
         localStorage.removeItem('fr-user-data');
-        this.status = '| Entrar';
+        this.status = this.statusOff;
         this.router.navigate(['login']);   
     }
 

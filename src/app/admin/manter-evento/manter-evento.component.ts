@@ -1,4 +1,4 @@
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CriarHoraAtendimentoDTO } from './../shared/dto/criar-horario-atendimento.dto';
 import { CriarEventoDTO } from './../shared/dto/criar-evento.dto';
 import { Component, OnInit } from '@angular/core';
@@ -45,13 +45,22 @@ export class ManterEventoComponent extends BaseComponent implements OnInit {
 
   horaAtendimento: CriarHoraAtendimentoDTO = new CriarHoraAtendimentoDTO();
 
-  constructor(private modalService: NgbModal, private router: Router) {
+  constructor(private modalService: NgbModal, 
+    private router: Router,
+    private route: ActivatedRoute) {
     super();
   }
 
   ngOnInit(): void {
     this.afuConfig.multiple = true;
     this.obterInstituicoes();
+    this.buscarEvento();
+  }
+
+  async buscarEvento() {
+    let id = this.route.snapshot.paramMap.get('id');
+    this.eventoDTO = await (await axios.get('https://franco-amor-api.herokuapp.com/eventos/' + id)).data;
+    console.log(this.eventoDTO);
   }
 
   public instituicaoHandler($event) {

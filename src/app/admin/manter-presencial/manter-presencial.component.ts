@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import axios from 'axios';
 import * as cep from 'cep-promise';
 import { BaseComponent } from '../base.component';
 
@@ -14,7 +16,7 @@ export class ManterPresencialComponent extends BaseComponent implements OnInit {
   dataAtividadeFim: string;
   periodicidade: string = null;
   prazoIndefinido = false;
-  dataPrazo:string;
+  dataPrazo: string;
   repete = false;
   domingo = true;
   segunda = true;
@@ -34,11 +36,20 @@ export class ManterPresencialComponent extends BaseComponent implements OnInit {
   bairro: string;
   cidade: string;
 
-  constructor() {
+  atendimento: any;
+
+  constructor(private route: ActivatedRoute) {
     super();
   }
 
   ngOnInit(): void {
+    this.buscarAtividade();
+  }
+
+  async buscarAtividade() {
+    let id = this.route.snapshot.paramMap.get('id');
+    this.atendimento = await (await axios.get('https://franco-amor-api.herokuapp.com/atendimentos/presencial/' + id)).data;
+    console.log(this.atendimento);
   }
 
   voltar() {

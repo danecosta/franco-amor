@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import axios from 'axios';
 
 @Component({
   selector: 'app-listar-atendimentos-atividades',
@@ -19,6 +20,58 @@ export class ListarAtendimentosAtividadesComponent implements OnInit {
   constructor(private router: Router) { }
 
   ngOnInit(): void {
+    this.obterAtendimentos();
+  }
+
+  async obterAtendimentos() {
+    const inst = await axios.get('https://franco-amor-api.herokuapp.com/instituicoes');
+
+    const atdTelefonico = await axios.get('https://franco-amor-api.herokuapp.com/atendimentos/telefonico');
+    atdTelefonico.data.forEach(element => {
+      let atd = {
+        id: element.id,
+        nome: element.nome,
+        tipo: 'telefonico',
+        local: element.abrangencia,
+        instituicao: element.instuicao?.nome
+      }
+      this.atividades.push(atd);
+    });
+
+    const atdPresencial = await axios.get('https://franco-amor-api.herokuapp.com/atendimentos/presencial');
+    atdPresencial.data.forEach(element => {
+      let atd = {
+        id: element.id,
+        nome: element.nome,
+        tipo: 'presencial',
+        instituicao: element.instuicao?.nome,
+        local: element.endereco.cidade
+      }
+      this.atividades.push(atd);
+    });
+
+    const atdVirtuais = await axios.get('https://franco-amor-api.herokuapp.com/atendimentos/virtual');
+    atdVirtuais.data.forEach(element => {
+      let atd = {
+        id: element.id,
+        nome: element.nome,
+        tipo: 'virtual',
+        instituicao: element.instuicao?.nome
+      }
+      this.atividades.push(atd);
+    });
+
+    const atdEventos = await axios.get('https://franco-amor-api.herokuapp.com/eventos');
+    console.log(atdEventos.data)
+    atdEventos.data.forEach(element => {
+      let atd = {
+        id: element.id,
+        nome: element.nome,
+        tipo: 'evento',
+        instituicao: element.instituicao?.nome
+      }
+      this.atividades.push(atd);
+    });
   }
 
   novoEvento() {
@@ -37,4 +90,7 @@ export class ListarAtendimentosAtividadesComponent implements OnInit {
     this.router.navigate(['manter-presencial']);
   }
 
+  irParaManterAtendimentos(item) {
+    this.router.navigate(['./manter-' + item.tipo, item.id]);
+  }
 }

@@ -26,7 +26,6 @@ export class VejaMaisComponent implements OnInit {
     } else {
       this.atendimento = await (await axios.get('https://franco-amor-api.herokuapp.com/atendimentos/' + type + '/' + id)).data;
     }
-    console.log(this.atendimento)
   }
 
   copiarLink() {

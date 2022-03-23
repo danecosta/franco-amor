@@ -17,7 +17,6 @@ export class Filtro {
 export class ListarInstituicaoComponent extends BaseComponent implements OnInit {
 
   public instituticoes: any[] = [];
-  public nome;
   public filtro = new Filtro();
 
   constructor(private router: Router) {
@@ -25,29 +24,36 @@ export class ListarInstituicaoComponent extends BaseComponent implements OnInit 
   }
 
   ngOnInit() {
-    let inst = {nome: 'OLAAAA', email: 'aprima@instituti.com.br', cidade: 'PORTO', cnpj: '99534696000101', telefone: '55 555 555'}
-    this.instituticoes.push(inst)
     this.obterInstituicoes();
   }
 
-  ngAfterViewInit() {
-    
-  }
   novaInstituicao() {
     this.router.navigate(['manter-instituicao']);
   }
 
-  async obterInstituicoes(){
+  irParaManterInst(item) {
+    this.router.navigate(['manter-instituicao', item.id]);
+  }
+
+  async obterInstituicoes() {
     const inst = await axios.get('https://franco-amor-api.herokuapp.com/instituicoes');
 
     inst.data.forEach(element => {
-      let inst = { nome: element.nome,
-                  email: element.email,
-                  cidade: element.endereco.cidade,
-                  cnpj: element.cnpj,
-                  telefone: element.telefone
+      let inst = {
+        id: element.id,
+        nome: element.nome,
+        email: element.email,
+        cidade: element.endereco.cidade,
+        cnpj: element.cnpj,
+        telefone: element.telefone
       }
       this.instituticoes.push(inst);
     });
+  }
+
+  filtrar() {
+    if (this.filtro.nome) {
+      this.instituticoes = this.instituticoes.filter(x => x.nome.toUpperCase().indexOf(this.filtro.nome.toUpperCase()) > -1);
+    }
   }
 }
