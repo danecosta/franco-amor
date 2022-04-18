@@ -6,8 +6,7 @@ export class CriarEnderecoDTO {
 
     cidade: string;
 
-    complmento: string;
+    complemento: string;
 
     cep: string;
-
 }

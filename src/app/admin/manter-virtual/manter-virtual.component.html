@@ -20,13 +20,14 @@
 
         <section class="section section-shaped bg-secondary">
             <div class="container pt-lg-md">
-                <h3>Cadastrar Serviço Virtual</h3>
+                <h3>{{acao}} Serviço Virtual</h3>
+                <small>Os campos assinalados com <span class="required">*</span> são obrigatórios.</small>
                 <hr>
 
-                <form>
+                <form #myForm="ngForm">
                     <div class="row" style="margin-bottom: 1em;">
                         <div class="col-md-6">
-                            <label>Serviço</label>
+                            <label>Serviço <span class="required">*</span></label>
                             <input type="text" class="form-control" id="nome"
                                 placeholder="Nome da atividade/atendimento">
                         </div>
@@ -40,35 +41,35 @@
                             </select>
                         </div>
                         <div class="col-md-6">
-                            <label>Endereço virtual</label>
+                            <label>Endereço virtual <span class="required">*</span></label>
                             <input type="text" class="form-control" id="site" placeholder="Site de atendimento">
                         </div>
                     </div>
 
                     <div class="row">
                         <div class="col-md-12">
-                            <label>Tipo</label>
+                            <label>Tipo <span class="required">*</span></label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-12">
                             <div class="input-group">
-                                <div class="custom-control custom-radio mb-3">
+                                <div class="custom-control custom-radio mb-3 col-md-2">
                                     <input name="tipoPlataforma" class="custom-control-input" id="aplicativo"
                                         type="radio" value="aplicativo" [(ngModel)]="tipoPlataforma">
                                     <label class="custom-control-label" for="aplicativo">Aplicativo</label>
                                 </div>
-                                <div class="custom-control custom-radio mb-3">
+                                <div class="custom-control custom-radio mb-3 col-md-2">
                                     <input name="tipoPlataforma" class="custom-control-input" id="chat" type="radio"
                                         value="chat" [(ngModel)]="tipoPlataforma">
                                     <label class="custom-control-label" for="chat">Chat</label>
                                 </div>
-                                <div class="custom-control custom-radio mb-3">
+                                <div class="custom-control custom-radio mb-3 col-md-2">
                                     <input name="tipoPlataforma" class="custom-control-input" id="site" type="radio"
                                         value="site" [(ngModel)]="tipoPlataforma">
                                     <label class="custom-control-label" for="site">Site</label>
                                 </div>
-                                <div class="custom-control custom-radio mb-3">
+                                <div class="custom-control custom-radio mb-3 col-md-2">
                                     <input name="tipoPlataforma" class="custom-control-input" id="outro" type="radio"
                                         value="outro" [(ngModel)]="tipoPlataforma">
                                     <label class="custom-control-label" for="outro">Outro</label>
@@ -124,7 +125,7 @@
                         </div>
                     </div>
 
-                    <div class="row" *ngIf="repete">
+                    <div class="row" *ngIf="repete && periodicidade != 'outro'">
                         <div class="col-md-4">
                             <label>Recorrência</label>
                             <select class="form-control" id="periodicidade" name='periodicidade'
@@ -135,6 +136,7 @@
                                 <option value='bisemanal'>Bi-semanal</option>
                                 <option value='mensal'>Mensal</option>
                                 <option value='bimestral'>Bimestral</option>
+                                <option value='outro'>Outro</option>
                             </select>
                         </div>
                         <div class="col-md-4">
@@ -321,25 +323,36 @@
                             </div>
                         </div>
                     </div>
+
+                    <div class="row" *ngIf="repete && periodicidade == 'outro'">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Periodicidade
+                                </label>
+                                <textarea class="form-control" id="obs" rows="3"></textarea>
+                            </div>
+                        </div>
+                    </div>
                     <!-- Definição de datas e periodicidade -->
 
                     <div class="row">
                         <div class="col-md-12">
-                            <label>Valor</label>
+                            <label>Valor <span class="required">*</span></label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-12">
                             <div class="input-group">
-                                <div class="custom-control custom-radio mb-3">
+                                <div class="custom-control custom-radio mb-3 col-md-2">
                                     <input name="chkValor" class="custom-control-input" id="gratuito" type="radio"
                                         value="gratuito" [(ngModel)]="valor">
                                     <label class="custom-control-label" for="gratuito">Gratuito</label>
                                 </div>
-                                <div class="custom-control custom-radio mb-3">
+                                <div class="custom-control custom-radio mb-3 col-md-2">
                                     <input name="chkValor" class="custom-control-input" id="social" type="radio"
                                         value="social" [(ngModel)]="valor">
-                                    <label class="custom-control-label" for="social">Social</label>
+                                    <label class="custom-control-label" for="social"
+                                        [ngbTooltip]="tooltipValorSocial">Social</label>
                                 </div>
                                 <div class="col-md-4" *ngIf="valor === 'social'">
                                     <input type="text" class="form-control" id="valor" placeholder="Valor (R$)">
@@ -350,30 +363,65 @@
 
                     <div class="row" style="margin-bottom: 1em;">
                         <div class="col-md-6">
-                            <label>Nº atendentes</label>
-                            <input type="text" class="form-control" id="qtdAtendentes" placeholder="Nº de atendentes">
-                        </div>
-                        <div class="col-md-6">
-                            <label>Nº atendimentos mensais</label>
-                            <input type="text" class="form-control" id="qtdAtendimento"
-                                placeholder="Nº de atendimentos/mês">
+                            <label>A quem se destina</label>
+                            <input type="text" class="form-control" id="aQuemSeDestina"
+                                placeholder="A quem se destina o serviço">
                         </div>
                     </div>
 
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
-                                <label>Observação</label>
-                                <textarea class="form-control" id="obs" rows="3" placeholder="Observação"></textarea>
+                                <label>Breve resumo ou descrição do serviço
+                                </label>
+                                <textarea class="form-control" id="obs" rows="3"
+                                    placeholder="Resumo ou descrição"></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Ao cadastrar essa atividade, você fica ciente que: </label>
+                                <div>
+                                    <input type="checkbox" id="check1" name="check1" required>
+                                    <label for="check1">Deve manter atualizadas as informações do cadastro. <span
+                                            class="required">*</span>
+                                    </label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" id="check2" name="check2" required>
+                                    <label for="check2">Deve manter atualizadas as informações das atividades divulgadas
+                                        das que ofereço, tais como: data, horário, valor, formato da atividade, entre
+                                        outras. <span class="required">*</span>
+                                    </label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" id="check3" name="check3" required>
+                                    <label for="check3">Deve excluir a divulgação se o atendimento/atividade for
+                                        cancelado, não estiver mais disponível e quando as vagas destinadas à ação
+                                        social forem preenchidas. <span class="required">*</span>
+                                    </label>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </form>
 
                 <hr>
-                <div class="rodape">
-                    <button type="button" class="btn btn-outline-light btnVoltar" (click)="voltar()">Voltar</button>
-                    <button type="button" class="btn btn-outline-success btnSalvar" (click)="salvar()">Salvar</button>
+                <div class="row">
+                    <div class="col-md-12">
+                        <button type="button" class="btn btn-outline-light"
+                            (click)="voltarParaTab('atendimentos')">Voltar</button>
+
+                        <button type="button" class="btn btn-outline-warning"
+                            (click)="relatarProblema('Cadastrar Serviço Virtual')">Relatar problema ou
+                            dúvida</button>
+
+                        <button type="button" class="btn btn-outline-success" (click)="salvar()"
+                            [disabled]="!myForm.form.valid">Salvar</button>
+                    </div>
                 </div>
             </div>
         </section>

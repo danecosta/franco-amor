@@ -21,25 +21,25 @@
         <section class="section section-shaped bg-secondary">
             <div class="container">
                 <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs">
-                    <li [ngbNavItem]="1">
+                    <li [ngbNavItem]="'instituicoes'">
                         <a ngbNavLink>Instituições</a>
                         <ng-template ngbNavContent>
                             <app-listar-instituicao></app-listar-instituicao>
                         </ng-template>
                     </li>
-                    <li [ngbNavItem]="2">
+                    <li [ngbNavItem]="'atendimentos'">
                         <a ngbNavLink>Atendimentos/Atividades</a>
                         <ng-template ngbNavContent>
                             <app-listar-atendimentos-atividades></app-listar-atendimentos-atividades>
                         </ng-template>
                     </li>
-                    <li [ngbNavItem]="3">
+                    <li [ngbNavItem]="'postagens'">
                         <a ngbNavLink>Postagens</a>
                         <ng-template ngbNavContent>
                             <app-listar-postagem></app-listar-postagem>
                         </ng-template>
                     </li>
-                    <li [ngbNavItem]="4">
+                    <li [ngbNavItem]="'produtos'">
                         <a ngbNavLink>Produtos</a>
                         <ng-template ngbNavContent>
                             <app-listar-produto></app-listar-produto>

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import axios from 'axios';
 import { BaseComponent } from '../base.component';
 
@@ -10,12 +10,15 @@ import { BaseComponent } from '../base.component';
 })
 export class ManterVirtualComponent extends BaseComponent implements OnInit {
 
+  acao: string = 'Cadastrar';
+  tooltipValorSocial = 'O valor não será divulgado pelo site, mas é obrigatória a apresentação dessa informação para conhecimento e preservação da legitimidade das atividades divulgadas pelo Franco Amor.';
+
   dataAtividade: string;
   dataAtividadeInicio: string;
   dataAtividadeFim: string;
   periodicidade: string = null;
   prazoIndefinido = false;
-  dataPrazo:string;
+  dataPrazo: string;
   repete = false;
   domingo = true;
   segunda = true;
@@ -28,10 +31,11 @@ export class ManterVirtualComponent extends BaseComponent implements OnInit {
   valor: string;
   tipoPlataforma: string;
 
-  atendimento:any;
+  atendimento: any;
 
-  constructor(private route: ActivatedRoute) {
-    super();
+  constructor(private route: ActivatedRoute,
+    public router: Router) {
+    super(router);
   }
 
   ngOnInit(): void {
@@ -40,8 +44,8 @@ export class ManterVirtualComponent extends BaseComponent implements OnInit {
 
   async buscarAtividade() {
     let id = this.route.snapshot.paramMap.get('id');
-    this.atendimento = await (await axios.get('https://franco-amor-api.herokuapp.com/atendimentos/virtual/' + id)).data;
-    console.log(this.atendimento);
+    if (id)
+      this.atendimento = await (await axios.get('https://franco-amor-api.herokuapp.com/atendimentos/virtual/' + id)).data;
   }
 
   voltar() {

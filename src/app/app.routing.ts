@@ -35,6 +35,7 @@ const routes: Routes = [
   { path: 'registro', component: SignupComponent },
   { path: 'login', component: LoginComponent },
   { path: 'contato', component: ContatoComponent },
+  { path: 'contato/:page', component: ContatoComponent },
   { path: 'apoiar', component: ApoiarComponent },
   { path: 'produtos', component: ProdutosComponent },
   { path: 'procuro-ajuda', component: ProcuroAjudaComponent },
@@ -49,6 +50,7 @@ const routes: Routes = [
 
   // Admin
   { path: 'home-admin', component: HomeAdminComponent, canActivate: [AuthGuardService] },
+  { path: 'home-admin/:tab', component: HomeAdminComponent, canActivate: [AuthGuardService] },
   { path: 'listar-instituicao', component: ListarInstituicaoComponent, canActivate: [AuthGuardService] },
   { path: 'listar-postagem', component: ListarPostagemComponent, canActivate: [AuthGuardService] },
   { path: 'listar-produto', component: ListarProdutoComponent, canActivate: [AuthGuardService] },

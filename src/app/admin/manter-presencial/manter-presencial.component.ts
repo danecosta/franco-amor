@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import axios from 'axios';
 import * as cep from 'cep-promise';
 import { BaseComponent } from '../base.component';
@@ -38,8 +38,9 @@ export class ManterPresencialComponent extends BaseComponent implements OnInit {
 
   atendimento: any;
 
-  constructor(private route: ActivatedRoute) {
-    super();
+  constructor(private route: ActivatedRoute,
+    public router: Router) {
+    super(router);
   }
 
   ngOnInit(): void {

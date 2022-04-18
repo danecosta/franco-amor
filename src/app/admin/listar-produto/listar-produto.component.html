@@ -26,14 +26,23 @@
                     <th scope="col">Produto</th>
                     <th scope="col">Valor</th>
                     <th scope="col">Estoque</th>
+                    <th scope="col"></th>
                     <th scope="col">Editar</th>
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let item of produtos">
+                <tr *ngFor="let item of produtos; let i = index">
                     <td>{{item?.nome}}</td>
                     <td>{{item?.valor}}</td>
                     <td>{{item?.estoque}}</td>
+                    <td>
+                        <div class="custom-control custom-switch">
+                            <input type="checkbox" class="custom-control-input" id="ativoSwitch{{i}}"
+                                [(ngModel)]="item.ativo">
+                            <label class="custom-control-label" for="ativoSwitch{{i}}">{{item.ativo?
+                                'Ativo':'Inativo'}}</label>
+                        </div>
+                    </td>
                     <td class="btn-editar"><a (click)="irParaManterProduto(item)"><i class="ni ni-settings-gear-65"></i></a></td>
                 </tr>
             </tbody>

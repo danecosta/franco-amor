@@ -19,7 +19,7 @@ export class CriarInstituicaoDTO {
     instagram: string;
     objetivo: string;
     historia: string;
-    endereco = new CriarEnderecoDTO();
+    endereco: CriarEnderecoDTO = new CriarEnderecoDTO();
     representantes: CriarRepresentanteDTO[] = [];
     tipoEmpresa: string;
 

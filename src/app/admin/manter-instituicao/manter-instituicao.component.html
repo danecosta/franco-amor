@@ -20,15 +20,16 @@
 
         <section class="section section-shaped bg-secondary">
             <div class="container pt-lg-md">
-                <h3>Cadastrar Instituição</h3>
+                <h3>{{acao}} Instituição</h3>
+                <small>Os campos assinalados com <span class="required">*</span> são obrigatórios.</small>
                 <hr>
-                <form>
+                <form #myForm="ngForm">
                     <div class="row">
                         <div class="col-md-10">
                             <div class="form-group">
-                                <label>Nome</label>
+                                <label>Nome <span class="required">*</span></label>
                                 <input type="text" name="nome" [(ngModel)]="criarInstituicao.nome" class="form-control"
-                                    id="nome" placeholder="Nome da instituição">
+                                    id="nome" placeholder="Nome da instituição" required>
                             </div>
                         </div>
 
@@ -45,17 +46,17 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label>Telefone</label>
+                                <label>Telefone <span class="required">*</span></label>
                                 <input type="text" name="telefone" [(ngModel)]="criarInstituicao.telefone"
                                     class="form-control" id="telefone" placeholder="Telefone de contato"
-                                    [textMask]="{mask: phoneMask}">
+                                    [textMask]="{mask: phoneMask}" required>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label>E-mail</label>
+                                <label>E-mail <span class="required">*</span></label>
                                 <input type="text" name="email" [(ngModel)]="criarInstituicao.email"
-                                    class="form-control" id="email" placeholder="E-mail de contato">
+                                    class="form-control" id="email" placeholder="E-mail de contato" required>
                             </div>
                         </div>
                     </div>
@@ -107,10 +108,10 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label>CNPJ/CPF</label>
+                                <label>CNPJ/CPF <span class="required">*</span></label>
                                 <input type="text" name="cnpj" [(ngModel)]="criarInstituicao.cnpj"
                                     [textMask]="{mask: cnpjMask}" class="form-control" id="cnpj"
-                                    placeholder="CNPJ/CPF da instituição">
+                                    placeholder="CNPJ/CPF da instituição" required>
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -121,7 +122,7 @@
                                         <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
                                     </div>
                                     <input class="form-control datepicker" placeholder="Data de fundação" name="dp"
-                                        [(ngModel)]="criarInstituicao.dataFundacao" ngbDatepicker #d="ngbDatepicker"
+                                        [(ngModel)]="criarInstituicao.dtFundacao" ngbDatepicker #d="ngbDatepicker"
                                         (click)="d.toggle()" type="text" />
                                 </div>
                             </div>
@@ -132,14 +133,14 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>CRP</label>
-                                <input type="text" [(ngModel)]="criarInstituicao.crp" class="form-control" id="crp"
-                                    placeholder="CRP, caso possua">
+                                <input type="text" name="crp" [(ngModel)]="criarInstituicao.crp" class="form-control"
+                                    id="crp" placeholder="CRP, caso possua">
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Serviços que atende</label>
-                                <input type="text" name="servicos" [(ngModel)]="criarInstituicao.servicos"
+                                <input type="text" name="servicos" [(ngModel)]="criarInstituicao.servico"
                                     class="form-control" id="servicos" placeholder="Serviços que atende">
                             </div>
                         </div>
@@ -339,7 +340,7 @@
                             <div class="form-group">
                                 <label>Breve história da fundação</label>
                                 <textarea class="form-control" id="historia" rows="3" name="resumo"
-                                    [(ngModel)]="criarInstituicao.resumo"
+                                    [(ngModel)]="criarInstituicao.historia"
                                     placeholder="Breve história da fundação"></textarea>
                             </div>
                         </div>
@@ -353,12 +354,50 @@
                             </button>
                         </div>
                     </div>
-
                     <hr>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Ao cadastrar essa atividade, você fica ciente que: </label>
+                                <div>
+                                    <input type="checkbox" id="check1" name="check1" required>
+                                    <label for="check1">Deve manter atualizadas as informações do cadastro. <span
+                                            class="required">*</span>
+                                    </label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" id="check2" name="check2" required>
+                                    <label for="check2">Deve manter atualizadas as informações das atividades divulgadas
+                                        das que ofereço, tais como: data, horário, valor, formato da atividade, entre
+                                        outras. <span class="required">*</span>
+                                    </label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" id="check3" name="check3" required>
+                                    <label for="check3">Deve excluir a divulgação se o atendimento/atividade for
+                                        cancelado, não estiver mais disponível e quando as vagas destinadas à ação
+                                        social forem preenchidas. <span class="required">*</span>
+                                    </label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" id="check4" name="check4" required>
+                                    <label for="check4">Este site está destinado aos serviços gratuitos e com preço
+                                        social que promovam a saúde mental e qualidade de vida. <span
+                                            class="required">*</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
                     <div class="rodape">
-                        <button type="button" class="btn btn-outline-light btnVoltar" (click)="voltar()">Voltar</button>
-                        <button type="button" name="salvar" class="btn btn-outline-success btnSalvar"
-                            (click)="salvar()">SALVAR E {{acao}} AÇÃO SOCIAL</button>
+                        <button type="button" class="btn btn-outline-light btnVoltar"
+                            (click)="voltarParaTab('instituicoes')">Voltar</button>
+                        <button type="button" name="salvar" [disabled]="!myForm.form.valid"
+                            class="btn btn-outline-success btnSalvar" (click)="salvar()">Salvar e {{acao}} ação
+                            social</button>
                     </div>
                 </form>
             </div>

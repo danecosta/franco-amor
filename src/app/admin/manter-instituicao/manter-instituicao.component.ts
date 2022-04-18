@@ -5,7 +5,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import * as cep from 'cep-promise';
 import { BaseComponent } from '../base.component';
 import axios from 'axios';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-manter-instituicao',
@@ -14,8 +14,8 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ManterInstituicaoComponent extends BaseComponent implements OnInit {
 
-  acao:string='CADASTRAR';
-  
+  acao: string = 'Cadastrar';
+
   cepInformado: string;
 
   logradouro: string;
@@ -29,8 +29,10 @@ export class ManterInstituicaoComponent extends BaseComponent implements OnInit 
   criarRepresentanteUm = new CriarRepresentanteDTO();
   criarRepresentanteDois = new CriarRepresentanteDTO();
 
-  constructor(private modalService: NgbModal, private route: ActivatedRoute) {
-    super();
+  constructor(private modalService: NgbModal,
+    private route: ActivatedRoute,
+    public router: Router) {
+    super(router);
   }
 
   ngOnInit(): void {
@@ -39,17 +41,29 @@ export class ManterInstituicaoComponent extends BaseComponent implements OnInit 
     this.buscarInstituicao();
   }
 
-  async buscarInstituicao(){
+  async buscarInstituicao() {
     let id = this.route.snapshot.paramMap.get('id');
 
-    this.criarInstituicao = await (await axios.get('https://franco-amor-api.herokuapp.com/instituicoes/' + id)).data;
+    if (id) {
+      this.criarInstituicao = await (await axios.get('https://franco-amor-api.herokuapp.com/instituicoes/' + id)).data;
+      this.acao = 'Editar';
+    }
   }
 
   public async salvar() {
-    if(this.criarRepresentanteUm && this.criarRepresentanteDois)
-    this.criarInstituicao.representantes.push(this.criarRepresentanteUm, this.criarRepresentanteDois);
-    const retorno = await axios.post('https://franco-amor-api.herokuapp.com/instituicoes', this.criarInstituicao);
-   }
+    //Preenche representantes
+    if (this.criarRepresentanteUm && this.criarRepresentanteDois)
+      this.criarInstituicao.representantes.push(this.criarRepresentanteUm, this.criarRepresentanteDois);
+
+    // Persiste
+    if (this.acao == 'Cadastrar') {
+      await axios.post('https://franco-amor-api.herokuapp.com/instituicoes', this.criarInstituicao);
+    } else {
+      await axios.put('https://franco-amor-api.herokuapp.com/instituicoes', this.criarInstituicao);
+    }
+
+    this.voltarParaTab('atendimentos')
+  }
 
   buscarCep() {
     this.limparCamposCep();

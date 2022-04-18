@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-contato',
@@ -7,12 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ContatoComponent implements OnInit {
 
-  nome:string;
-  email:string;
-  
-  constructor() { }
+  nome: string;
+  email: string;
+  page: string;
+  mensagem: string;
+
+  constructor(private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    let page = this.route.snapshot.paramMap.get('page');
+    if (page) {
+      this.page = page;
+    }
   }
 
 }

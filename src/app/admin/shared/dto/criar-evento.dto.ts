@@ -2,30 +2,32 @@ import { CriarHoraAtendimentoDTO } from './criar-horario-atendimento.dto';
 import { CriarEnderecoDTO } from './criar-endereco.dto';
 
 export class CriarEventoDTO {
-    nome: string;
+  nome: string;
 
-    resumo: string;
+  resumo: string;
 
-    valor: number;
+  valor: number;
 
-    qtdAtendentes: number;
+  qtdAtendentes: number;
 
-    qtdAtendentimentosMensais: number;
+  qtdAtendentimentosMensais: number;
 
-    observacao: string;
+  observacao: string;
 
-    dtInicio: Date;
+  dtInicio: Date;
 
-    dtFim: Date;
+  dtFim: Date;
 
-    endereco: CriarEnderecoDTO = new CriarEnderecoDTO();
+  endereco: CriarEnderecoDTO = new CriarEnderecoDTO();
 
-    instituicaoId: number;
+  instituicaoId: number;
 
-    enderecoId: number;
+  enderecoId: number;
 
-    agendar: string;
+  agendar: string;
 
-    horariosAtendimento: CriarHoraAtendimentoDTO[] = [];
-    
-  }
+  participacao: string;
+
+  horariosAtendimento: CriarHoraAtendimentoDTO[] = [];
+
+}

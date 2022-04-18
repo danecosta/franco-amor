@@ -44,17 +44,27 @@
                         <th scope="col">Cidade</th>
                         <th scope="col">E-mail</th>
                         <th scope="col">Telefone</th>
+                        <th scope="col"></th>
                         <th scope="col">Editar</th>
                     </tr>
                 </thead>
                 <tbody style="height: 30em !important;">
-                    <tr *ngFor="let item of instituticoes">
+                    <tr *ngFor="let item of instituticoes; let i = index">
                         <td>{{ item?.nome }}</td>
                         <td>{{ item?.cnpj }}</td>
                         <td>{{ item?.cidade }}</td>
                         <td>{{ item?.email }}</td>
                         <td>{{ item?.telefone }}</td>
-                        <td class="btn-editar"><a (click)="irParaManterInst(item)"><i class="ni ni-settings-gear-65"></i></a></td>
+                        <td>
+                            <div class="custom-control custom-switch">
+                                <input type="checkbox" class="custom-control-input" id="ativoSwitch{{i}}"
+                                    [(ngModel)]="item.ativo">
+                                <label class="custom-control-label" for="ativoSwitch{{i}}">{{item.ativo?
+                                    'Ativo':'Inativo'}}</label>
+                            </div>
+                        </td>
+                        <td class="btn-editar"><a (click)="irParaManterInst(item)"><i
+                                    class="ni ni-settings-gear-65"></i></a></td>
                     </tr>
                 </tbody>
             </table>

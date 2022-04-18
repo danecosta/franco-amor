@@ -16,9 +16,9 @@ export class ManterPostagemComponent extends BaseComponent implements OnInit {
   criarPostagemDTO = new CriarPostagemDTO();
 
   constructor(private modalService: NgbModal,
-    private router: Router,
+    public router: Router,
     private route: ActivatedRoute) {
-    super();
+    super(router);
   }
 
   ngOnInit(): void {

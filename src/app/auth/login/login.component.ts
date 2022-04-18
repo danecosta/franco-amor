@@ -45,6 +45,7 @@ export class LoginComponent implements OnInit {
       "password": this.password
     });
 
+    console.log(retorno.data)
     if(retorno.data) localStorage.setItem('fr-log-trace-id', retorno.data.access_token);
     const profile = await axios.get(`https://franco-amor-api.herokuapp.com/usuarios/perfil/${retorno.data.uuid}`, {
       headers: {

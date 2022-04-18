@@ -19,8 +19,8 @@ export class ListarInstituicaoComponent extends BaseComponent implements OnInit 
   public instituticoes: any[] = [];
   public filtro = new Filtro();
 
-  constructor(private router: Router) {
-    super();
+  constructor(public router: Router) {
+    super(router);
   }
 
   ngOnInit() {
@@ -49,6 +49,9 @@ export class ListarInstituicaoComponent extends BaseComponent implements OnInit 
       }
       this.instituticoes.push(inst);
     });
+
+    //TODO: Ordenar instituicoes por nome
+    //TODO: Incluir paginacao
   }
 
   filtrar() {

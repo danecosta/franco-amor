@@ -10,12 +10,16 @@ import  axios  from "axios";
 export class QueroAjudarComponent implements OnInit {
 
   cidade: string = null;
+  tipo: string = null;
+  
   vagas = [];
 
   telefonicos=[];
   presenciais=[];
   virtuais=[];
   eventos=[];
+
+  cidades: string[] = ["Juiz de Fora", "Rio de Janeiro"]
   
   constructor(private router: Router) { }
 
@@ -27,59 +31,68 @@ export class QueroAjudarComponent implements OnInit {
     this.router.navigate(['./veja-mais', item.type, item.id ]);
   }
 
-  async buscarVagas(){
+  async buscarVagas() {
+    //TODO: Recuperar somente os ativos!!
     const atdTelefonico = await axios.get('https://franco-amor-api.herokuapp.com/atendimentos/telefonico', { params: { vagas: true } });
     atdTelefonico.data.forEach(element => {
-      let atd = { 
+      let atd = {
         id:element.id,
-        nome: element.nome,
-                  email: element.email,
-                  cnpj: element.cnpj,
-                  telefone: element.telefone,
-                  observacao: element.observacao,
-                  type: 'telefonico'
+        nome: element.nome as string,
+        telefone: element.telefone,
+        observacao: element.observacao,
+        abrangencia: element.abrangencia,
+        instituicao: element.instituicao.nome,
+        type: 'telefonico'
       }
-      this.vagas.push(atd);
+      this.telefonicos.push(atd);
     });
 
     const atdPresencial = await axios.get('https://franco-amor-api.herokuapp.com/atendimentos/presencial', { params: { vagas: true } });
     atdPresencial.data.forEach(element => {
-      let atd = { id:element.id,
-        nome: element.nome,
-                  email: element.email,
-                  cnpj: element.cnpj,
-                  telefone: element.telefone,
-                  observacao: element.observacao,
-                  type: 'presencial'
+      let atd = {
+        id:element.id,
+        nome: element.nome as string,
+        cidade: element.endereco.cidade,
+        telefone: element.telefone,
+        observacao: element.observacao,
+        instituicao: element.instituicao.nome,
+        type: 'presencial'
       }
-      this.vagas.push(atd);
+      this.presenciais.push(atd);
     });
 
     const atdVirtuais = await axios.get('https://franco-amor-api.herokuapp.com/atendimentos/virtual', { params: { vagas: true } });
     atdVirtuais.data.forEach(element => {
-      let atd = { id:element.id,
-        nome: element.nome,
-                  email: element.email,
-                  cnpj: element.cnpj,
-                  telefone: element.telefone,
-                  observacao: element.observacao,
-                  type: 'virtual'
+      let atd = {
+        id:element.id,
+        nome: element.nome as string,
+        telefone: element.telefone,
+        observacao: element.observacao,
+        endVirtual : element.enderecoVirtual,
+        instituicao: element.instituicao.nome,
+        type: 'virtual'
       }
-      this.vagas.push(atd);
+      this.virtuais.push(atd);
     });
 
     const atdEventos = await axios.get('https://franco-amor-api.herokuapp.com/eventos', { params: { vagas: true } });
     atdEventos.data.forEach(element => {
-      let atd = { id:element.id,
-        nome: element.nome,
-                  email: element.email,
-                  cnpj: element.cnpj,
-                  telefone: element.telefone,
-                  observacao: element.observacao,
-                  type: 'evento'
+      console.log(element)
+      let atd = {
+        id:element.id,
+        nome: element.nome as string,
+        cidade: element.endereco.cidade,
+        telefone: element.telefone,
+        observacao: element.observacao,
+        // instituicao: element.instituicao.nome,
+        type: 'evento'
       }
-      this.vagas.push(atd);
+      this.eventos.push(atd);
     });
+  }
+
+  filtrarCidade(cidade){
+
   }
 
 }

@@ -1,6 +1,10 @@
-import { OnInit } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
+import { Router } from "@angular/router";
 
-export class BaseComponent implements OnInit {
+@Component({
+    template: ''
+})
+export abstract class BaseComponent implements OnInit {
 
     // Máscaras
     phoneMask = ['(', /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
@@ -42,12 +46,20 @@ export class BaseComponent implements OnInit {
     };
     closeResult: string;
 
-    constructor() {
+    constructor(public router: Router) {
     }
 
     ngOnInit(): void { }
 
     voltar() {
         history.back();
+    }
+
+    public voltarParaTab(tab) {
+        this.router.navigate(['home-admin', tab], { skipLocationChange: true });
+    }
+
+    public relatarProblema(page) {
+        this.router.navigate(['contato', page], { skipLocationChange: true });
     }
 }

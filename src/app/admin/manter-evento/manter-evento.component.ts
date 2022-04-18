@@ -28,7 +28,7 @@ export class ManterEventoComponent extends BaseComponent implements OnInit {
   quinta = true;
   sexta = true;
   sabado = true;
-  
+
   valor: string;
   participacao: string;
   endereco: string = null;
@@ -39,16 +39,16 @@ export class ManterEventoComponent extends BaseComponent implements OnInit {
   cidade: string;
 
   instituicoesSelect = [];
-  enderecosSelect = []; 
+  enderecosSelect = [];
 
   public eventoDTO = new CriarEventoDTO();
 
   horaAtendimento: CriarHoraAtendimentoDTO = new CriarHoraAtendimentoDTO();
 
-  constructor(private modalService: NgbModal, 
-    private router: Router,
+  constructor(private modalService: NgbModal,
+    public router: Router,
     private route: ActivatedRoute) {
-    super();
+    super(router);
   }
 
   ngOnInit(): void {
@@ -64,9 +64,9 @@ export class ManterEventoComponent extends BaseComponent implements OnInit {
   }
 
   public instituicaoHandler($event) {
-      this.enderecosSelect = [];
-      this.enderecosSelect.push($event.endereco);
-      this.eventoDTO.instituicaoId = $event.id;
+    this.enderecosSelect = [];
+    this.enderecosSelect.push($event.endereco);
+    this.eventoDTO.instituicaoId = $event.id;
   }
 
   public enderecoHandler($event) {
@@ -75,14 +75,14 @@ export class ManterEventoComponent extends BaseComponent implements OnInit {
 
   private async obterInstituicoes() {
     const instituicoes = await (await axios.get('https://franco-amor-api.herokuapp.com/instituicoes')).data;
-    if(instituicoes) {
+    if (instituicoes) {
       instituicoes.forEach(element => {
-          let select = {
-            id: element.id,
-            nome: element.nome,
-            endereco : element.endereco
-          } 
-          this.instituicoesSelect.push(select);
+        let select = {
+          id: element.id,
+          nome: element.nome,
+          endereco: element.endereco
+        }
+        this.instituicoesSelect.push(select);
       });
     }
   }
@@ -93,7 +93,7 @@ export class ManterEventoComponent extends BaseComponent implements OnInit {
     console.log(this.eventoDTO)
     const retorno = await axios.post('https://franco-amor-api.herokuapp.com/eventos', this.eventoDTO);
     this.router.navigate(['procuro-ajuda'])
-   }
+  }
 
   buscarCep() {
 

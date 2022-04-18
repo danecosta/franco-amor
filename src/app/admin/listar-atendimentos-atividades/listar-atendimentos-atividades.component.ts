@@ -9,6 +9,7 @@ import axios from 'axios';
 })
 export class ListarAtendimentosAtividadesComponent implements OnInit {
 
+  cidade: any;
   tipo: string = null;
   atividades: any[] = [];
 

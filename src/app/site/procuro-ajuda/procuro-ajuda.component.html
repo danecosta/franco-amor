@@ -27,7 +27,18 @@
                 <div class="row">
                     <div class="col-md-2">
                         <div class="form-group">
-                            <label>Tipo</label>
+                            <label>Onde</label>
+                            <select class="form-control" id="cidade" name='cidade' [(ngModel)]="cidade"
+                                (change)="filtrarCidade(cidade)">
+                                <option value=null>Selecione</option>
+                                <option value='nacional'>Nacional</option>
+                                <option *ngFor="let cidade of cidades" [ngValue]="cidade">{{cidade}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>Atendimento/Atividade</label>
                             <select class="form-control" id="tipo" name='tipo' [(ngModel)]="tipo">
                                 <option value=null>Selecione</option>
                                 <option value='evento'>Evento</option>
@@ -39,23 +50,17 @@
                     </div>
                     <div class="col-md-3">
                         <div class="form-group">
-                            <label>Nome</label>
+                            <label>Serviço</label>
                             <input type="text" class="form-control" id="nome" placeholder="Nome da atividade/evento">
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="form-group">
-                            <label>Instituição</label>
+                            <label>Quem</label>
                             <input type="text" class="form-control" id="cnpj" placeholder="Instituição responsável">
                         </div>
                     </div>
-                    <div class="col-md-3">
-                        <div class="form-group">
-                            <label>Cidade</label>
-                            <input type="text" class="form-control" id="cidade" placeholder="Cidade" name="cidade"
-                                [(ngModel)]="cidade">
-                        </div>
-                    </div>
+
                     <div class="col-md-1">
                         <label>&nbsp;</label>
                         <button class="btn btn-icon btn-2 btn-outline-light" type="button">
@@ -81,15 +86,17 @@
                                 <div class="rounded-circle mb-4">
                                     <img class="card-img-top" src="https://picsum.photos/200?random={{i}}">
                                 </div>
-                                <h6 class="text-primary text-uppercase">{{item.nome}}</h6>
-                                <p class="description mt-3">{{item.observacao}}</p>
-                                <div>
-                                    <span class="badge badge-pill badge-primary">{{item.telefone}}</span>
-                                    <span class="badge badge-pill badge-secondary">{{item.cidade}}</span>
-                                    <span class="badge badge-pill badge-primary">creative</span>
+                                <div class="text-center">
+                                    <h6 class="text-primary text-uppercase">{{item.nome}}</h6>
+                                    <p class="description mt-3">{{item.telefone}}
+                                        <span class="badge badge-pill badge-secondary">{{item.abrangencia}}</span>
+                                    </p>
+                                    <span class="badge badge-pill badge-primary">{{item.instituicao}}</span>
+                                    
+                                    <p class="description mt-3">{{item.observacao}}</p>
+                                    <a href="javascript:void(0)" class="btn btn-outline-primary mt-4"
+                                        (click)="irParaVejaMais(item)">Veja mais</a>
                                 </div>
-                                <a href="javascript:void(0)" class="btn btn-primary mt-4"
-                                    (click)="irParaVejaMais(item)">Veja mais</a>
                             </div>
                         </div>
                     </div>
@@ -112,15 +119,15 @@
                                 <div class="rounded-circle mb-4">
                                     <img class="card-img-top" src="https://picsum.photos/200?random={{i}}">
                                 </div>
-                                <h6 class="text-primary text-uppercase">{{item.nome}}</h6>
-                                <p class="description mt-3">{{item.observacao}}</p>
-                                <div>
-                                    <span class="badge badge-pill badge-primary">{{item.telefone}}</span>
-                                    <span class="badge badge-pill badge-secondary">{{item.cidade}}</span>
-                                    <span class="badge badge-pill badge-primary">creative</span>
+                                <div class="text-center">
+                                    <h6 class="text-primary text-uppercase">{{item.nome}}</h6>
+                                    <p class="description mt-3">{{item.cidade}}</p>
+                                    <span class="badge badge-pill badge-primary">{{item.instituicao}}</span>
+                                    
+                                    <p class="description mt-3">{{item.observacao}}</p>
+                                    <a href="javascript:void(0)" class="btn btn-outline-primary mt-4"
+                                        (click)="irParaVejaMais(item)">Veja mais</a>
                                 </div>
-                                <a href="javascript:void(0)" class="btn btn-primary mt-4"
-                                    (click)="irParaVejaMais(item)">Veja mais</a>
                             </div>
                         </div>
                     </div>
@@ -143,15 +150,14 @@
                                 <div class="rounded-circle mb-4">
                                     <img class="card-img-top" src="https://picsum.photos/200?random={{i}}">
                                 </div>
-                                <h6 class="text-primary text-uppercase">{{item.nome}}</h6>
-                                <p class="description mt-3">{{item.observacao}}</p>
-                                <div>
-                                    <span class="badge badge-pill badge-primary">{{item.telefone}}</span>
-                                    <span class="badge badge-pill badge-secondary">{{item.cidade}}</span>
-                                    <span class="badge badge-pill badge-primary">creative</span>
+                                <div class="text-center">
+                                    <h6 class="text-primary text-uppercase">{{item.nome}}</h6>
+                                    <span class="badge badge-pill badge-primary">{{item.instituicao}}</span>
+                                    
+                                    <p class="description mt-3">{{item.observacao}}</p>
+                                    <a href="javascript:void(0)" class="btn btn-outline-primary mt-4"
+                                        (click)="irParaVejaMais(item)">Veja mais</a>
                                 </div>
-                                <a href="javascript:void(0)" class="btn btn-primary mt-4"
-                                    (click)="irParaVejaMais(item)">Veja mais</a>
                             </div>
                         </div>
                     </div>
@@ -174,15 +180,15 @@
                                 <div class="rounded-circle mb-4">
                                     <img class="card-img-top" src="https://picsum.photos/200?random={{i}}">
                                 </div>
-                                <h6 class="text-primary text-uppercase">{{item.nome}}</h6>
-                                <p class="description mt-3">{{item.observacao}}</p>
-                                <div>
-                                    <span class="badge badge-pill badge-primary">{{item.telefone}}</span>
-                                    <span class="badge badge-pill badge-secondary">{{item.cidade}}</span>
-                                    <span class="badge badge-pill badge-primary">creative</span>
+                                <div class="text-center">
+                                    <h6 class="text-primary text-uppercase">{{item.nome}}</h6>
+                                    <p class="description mt-3">{{item.cidade}}</p>
+                                    <span class="badge badge-pill badge-primary">{{item.instituicao}}</span>
+                                    
+                                    <p class="description mt-3">{{item.observacao}}</p>
+                                    <a href="javascript:void(0)" class="btn btn-outline-primary mt-4"
+                                        (click)="irParaVejaMais(item)">Veja mais</a>
                                 </div>
-                                <a href="javascript:void(0)" class="btn btn-primary mt-4"
-                                    (click)="irParaVejaMais(item)">Veja mais</a>
                             </div>
                         </div>
                     </div>

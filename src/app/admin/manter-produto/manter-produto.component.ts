@@ -14,9 +14,9 @@ export class ManterProdutoComponent extends BaseComponent implements OnInit {
   criarProdutoDTO = new CriarProdutoDTO();
 
   constructor(private modalService: NgbModal,
-    private router: Router,
+    public router: Router,
     private route: ActivatedRoute) {
-    super();
+    super(router);
   }
 
   ngOnInit(): void {

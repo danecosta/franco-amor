@@ -1,19 +1,29 @@
-@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&family=Quicksand:wght@300;500&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&family=Quicksand:wght@300;500&display=swap");
 
-html,body {
-    height:100% !important;
-    padding:0;
-    font-family: 'Quicksand', sans-serif !important;
+html,
+body {
+    height: 100% !important;
+    padding: 0;
+    font-family: "Quicksand", sans-serif !important;
 }
 
 .bg-gradient-default {
-    background: linear-gradient(87deg, #074d86 0, #4ae2e7 100%)!important
+    background: linear-gradient(87deg, #074d86 0, #4ae2e7 100%) !important;
 }
 
-.btn-editar{
+.btn-editar {
     cursor: pointer;
 }
 
-.tela-cheia{
+.tela-cheia {
     min-height: calc(100vh-30px) !important;
+}
+
+.required {
+    color: orangered;
+}
+
+.btnNovo {
+    margin-bottom: 2rem;
+    margin-top: -2rem;
 }
