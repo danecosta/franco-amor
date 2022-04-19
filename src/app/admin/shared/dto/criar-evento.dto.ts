@@ -1,5 +1,5 @@
 import { CriarHoraAtendimentoDTO } from './criar-horario-atendimento.dto';
-import { CriarEnderecoDTO } from './criar-endereco.dto';
+import { EnderecoDTO } from './criar-endereco.dto';
 
 export class CriarEventoDTO {
   nome: string;
@@ -18,7 +18,7 @@ export class CriarEventoDTO {
 
   dtFim: Date;
 
-  endereco: CriarEnderecoDTO = new CriarEnderecoDTO();
+  endereco: EnderecoDTO = new EnderecoDTO();
 
   instituicaoId: number;
 

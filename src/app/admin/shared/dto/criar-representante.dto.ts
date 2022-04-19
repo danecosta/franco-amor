@@ -1,4 +1,4 @@
-export class CriarRepresentanteDTO {
+export class RepresentanteDTO {
     nome: string;
   
     cpf: string;

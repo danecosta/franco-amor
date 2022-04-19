@@ -4,6 +4,7 @@ import { Subscription } from 'rxjs/Subscription';
 import 'rxjs/add/operator/filter';
 import { DOCUMENT } from '@angular/common';
 import { Location } from '@angular/common';
+import { BaseComponent } from './admin/base.component';
 
 var didScroll;
 var lastScrollTop = 0;
@@ -15,10 +16,17 @@ var navbarHeight = 0;
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit {
+export class AppComponent extends BaseComponent implements OnInit {
     private _router: Subscription;
 
-    constructor(private renderer: Renderer2, private router: Router, @Inject(DOCUMENT,) private document: any, private element: ElementRef, public location: Location) { }
+    constructor(private renderer: Renderer2,
+        public router: Router,
+        @Inject(DOCUMENT,) private document: any,
+        private element: ElementRef,
+        public location: Location) {
+        super(router);
+    }
+
     @HostListener('window:scroll', ['$event'])
     hasScrolled() {
 

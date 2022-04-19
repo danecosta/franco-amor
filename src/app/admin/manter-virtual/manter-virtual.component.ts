@@ -45,7 +45,7 @@ export class ManterVirtualComponent extends BaseComponent implements OnInit {
   async buscarAtividade() {
     let id = this.route.snapshot.paramMap.get('id');
     if (id)
-      this.atendimento = await (await axios.get('https://franco-amor-api.herokuapp.com/atendimentos/virtual/' + id)).data;
+      this.atendimento = await (await axios.get('http://localhost:3000/atendimentos/virtual/' + id)).data;
   }
 
   voltar() {

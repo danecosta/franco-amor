@@ -1,16 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import axios from 'axios';
+import { BaseComponent } from '../base.component';
 @Component({
   selector: 'app-listar-postagem',
   templateUrl: './listar-postagem.component.html',
   styleUrls: ['./listar-postagem.component.css']
 })
-export class ListarPostagemComponent implements OnInit {
+export class ListarPostagemComponent extends BaseComponent implements OnInit {
 
   postagens: any[] = [];
 
-  constructor(private router: Router) { }
+  constructor(public router: Router) {
+    super(router);
+   }
 
   ngOnInit(): void {
     this.obterPostagens();
@@ -21,7 +24,8 @@ export class ListarPostagemComponent implements OnInit {
   }
 
   async obterPostagens() {
-    const inst = await axios.get('https://franco-amor-api.herokuapp.com/postagens');
+    this.loading = true;
+    const inst = await axios.get('http://localhost:3000/postagens');
 
     inst.data.forEach(element => {
       let inst = {
@@ -32,6 +36,7 @@ export class ListarPostagemComponent implements OnInit {
       }
       this.postagens.push(inst);
     });
+    this.loading = false;
   }
 
   novaPostagem() {

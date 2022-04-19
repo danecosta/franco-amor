@@ -1,6 +1,6 @@
 {
     "/": {
-      "target": "https://franco-amor-api.herokuapp.com/",
+      "target": "http://localhost:3000/",
       "secure": false
     }
   }

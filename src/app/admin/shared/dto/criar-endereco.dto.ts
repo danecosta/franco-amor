@@ -1,4 +1,4 @@
-export class CriarEnderecoDTO {
+export class EnderecoDTO {
 
     logradouro: string;
 
@@ -8,5 +8,5 @@ export class CriarEnderecoDTO {
 
     complemento: string;
 
-    cep: string;
+    cep: string = '';
 }

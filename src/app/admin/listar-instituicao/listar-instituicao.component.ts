@@ -36,7 +36,8 @@ export class ListarInstituicaoComponent extends BaseComponent implements OnInit 
   }
 
   async obterInstituicoes() {
-    const inst = await axios.get('https://franco-amor-api.herokuapp.com/instituicoes');
+    this.loading = true;
+    const inst = await axios.get('http://localhost:3000/instituicoes');
 
     inst.data.forEach(element => {
       let inst = {
@@ -50,13 +51,11 @@ export class ListarInstituicaoComponent extends BaseComponent implements OnInit 
       this.instituticoes.push(inst);
     });
 
-    //TODO: Ordenar instituicoes por nome
-    //TODO: Incluir paginacao
+    this.instituticoes = this.orderByName(this.instituticoes);
+    this.loading = false;
   }
 
   filtrar() {
-    if (this.filtro.nome) {
-      this.instituticoes = this.instituticoes.filter(x => x.nome.toUpperCase().indexOf(this.filtro.nome.toUpperCase()) > -1);
-    }
+
   }
 }

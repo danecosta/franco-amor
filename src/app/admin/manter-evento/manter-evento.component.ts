@@ -4,7 +4,7 @@ import { CriarEventoDTO } from './../shared/dto/criar-evento.dto';
 import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { BaseComponent } from '../base.component';
-import * as cep from 'cep-promise';
+import cep from 'cep-promise';
 import axios from 'axios';
 
 @Component({
@@ -59,8 +59,7 @@ export class ManterEventoComponent extends BaseComponent implements OnInit {
 
   async buscarEvento() {
     let id = this.route.snapshot.paramMap.get('id');
-    this.eventoDTO = await (await axios.get('https://franco-amor-api.herokuapp.com/eventos/' + id)).data;
-    console.log(this.eventoDTO);
+    this.eventoDTO = await (await axios.get('http://localhost:3000/eventos/' + id)).data;
   }
 
   public instituicaoHandler($event) {
@@ -74,7 +73,7 @@ export class ManterEventoComponent extends BaseComponent implements OnInit {
   }
 
   private async obterInstituicoes() {
-    const instituicoes = await (await axios.get('https://franco-amor-api.herokuapp.com/instituicoes')).data;
+    const instituicoes = await (await axios.get('http://localhost:3000/instituicoes')).data;
     if (instituicoes) {
       instituicoes.forEach(element => {
         let select = {
@@ -90,8 +89,7 @@ export class ManterEventoComponent extends BaseComponent implements OnInit {
 
   async salvar() {
     this.eventoDTO.horariosAtendimento.push(this.horaAtendimento);
-    console.log(this.eventoDTO)
-    const retorno = await axios.post('https://franco-amor-api.herokuapp.com/eventos', this.eventoDTO);
+    const retorno = await axios.post('http://localhost:3000/eventos', this.eventoDTO);
     this.router.navigate(['procuro-ajuda'])
   }
 

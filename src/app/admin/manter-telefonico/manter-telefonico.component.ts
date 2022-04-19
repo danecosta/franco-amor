@@ -31,8 +31,7 @@ export class ManterTelefonicoComponent extends BaseComponent implements OnInit {
 
   async buscarAtividade() {
     let id = this.route.snapshot.paramMap.get('id');
-    this.atendimento = await (await axios.get('https://franco-amor-api.herokuapp.com/atendimentos/telefonico/' + id)).data;
-    console.log(this.atendimento);
+    this.atendimento = await (await axios.get('http://localhost:3000/atendimentos/telefonico/' + id)).data;
   }
 
   voltar() {

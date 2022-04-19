@@ -1,4 +1,4 @@
-import { AngularFireAuth, AngularFireAuthModule } from '@angular/fire/compat/auth';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -34,13 +34,11 @@ import { FaqComponent } from './site/faq/faq.component';
 import { CadastreAcaoComponent } from './site/cadastre-acao/cadastre-acao.component';
 import { QuemSomosComponent } from './site/quem-somos/quem-somos.component';
 import { HomeComponent } from './site/home/home.component';
-
-import { provideFirebaseApp, getApp, initializeApp } from '@angular/fire/app';
-import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { environment } from '../environments/environment'
 import { AngularFireModule } from '@angular/fire/compat';
 import { CommonModule } from "@angular/common";
 import { FormsModule } from '@angular/forms';
+import { ngxLoadingAnimationTypes, NgxLoadingModule } from 'ngx-loading';
 
 
 
@@ -84,7 +82,15 @@ import { FormsModule } from '@angular/forms';
     TextMaskModule,
     AngularFireModule.initializeApp(environment.firebaseConfig), 
     AngularFireAuthModule,
-    CommonModule
+    CommonModule,
+    NgxLoadingModule.forRoot({
+      animationType: ngxLoadingAnimationTypes.wanderingCubes,
+      backdropBackgroundColour: 'rgba(0,0,0,0.1)', 
+      backdropBorderRadius: '4px',
+      primaryColour: '#ffffff', 
+      secondaryColour: '#ffffff', 
+      tertiaryColour: '#ffffff'
+  })
   ],
   providers: [],
   bootstrap: [AppComponent]

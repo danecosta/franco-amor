@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import  axios  from "axios";
+import { BaseComponent } from 'src/app/admin/base.component';
 
 @Component({
   selector: 'app-quero-ajudar',
   templateUrl: './quero-ajudar.component.html',
   styleUrls: ['./quero-ajudar.component.scss']
 })
-export class QueroAjudarComponent implements OnInit {
+export class QueroAjudarComponent extends BaseComponent implements OnInit {
 
   cidade: string = null;
   tipo: string = null;
@@ -21,7 +22,9 @@ export class QueroAjudarComponent implements OnInit {
 
   cidades: string[] = ["Juiz de Fora", "Rio de Janeiro"]
   
-  constructor(private router: Router) { }
+  constructor(public router: Router) {
+    super(router);
+   }
 
   ngOnInit(): void {
     this.buscarVagas();
@@ -32,8 +35,11 @@ export class QueroAjudarComponent implements OnInit {
   }
 
   async buscarVagas() {
+    this.loading = true;
+    let tempAtividades = [];
+
     //TODO: Recuperar somente os ativos!!
-    const atdTelefonico = await axios.get('https://franco-amor-api.herokuapp.com/atendimentos/telefonico', { params: { vagas: true } });
+    const atdTelefonico = await axios.get('http://localhost:3000/atendimentos/telefonico', { params: { vagas: true } });
     atdTelefonico.data.forEach(element => {
       let atd = {
         id:element.id,
@@ -44,10 +50,10 @@ export class QueroAjudarComponent implements OnInit {
         instituicao: element.instituicao.nome,
         type: 'telefonico'
       }
-      this.telefonicos.push(atd);
+      tempAtividades.push(atd);
     });
 
-    const atdPresencial = await axios.get('https://franco-amor-api.herokuapp.com/atendimentos/presencial', { params: { vagas: true } });
+    const atdPresencial = await axios.get('http://localhost:3000/atendimentos/presencial', { params: { vagas: true } });
     atdPresencial.data.forEach(element => {
       let atd = {
         id:element.id,
@@ -58,10 +64,10 @@ export class QueroAjudarComponent implements OnInit {
         instituicao: element.instituicao.nome,
         type: 'presencial'
       }
-      this.presenciais.push(atd);
+      tempAtividades.push(atd);
     });
 
-    const atdVirtuais = await axios.get('https://franco-amor-api.herokuapp.com/atendimentos/virtual', { params: { vagas: true } });
+    const atdVirtuais = await axios.get('http://localhost:3000/atendimentos/virtual', { params: { vagas: true } });
     atdVirtuais.data.forEach(element => {
       let atd = {
         id:element.id,
@@ -72,12 +78,11 @@ export class QueroAjudarComponent implements OnInit {
         instituicao: element.instituicao.nome,
         type: 'virtual'
       }
-      this.virtuais.push(atd);
+      tempAtividades.push(atd);
     });
 
-    const atdEventos = await axios.get('https://franco-amor-api.herokuapp.com/eventos', { params: { vagas: true } });
+    const atdEventos = await axios.get('http://localhost:3000/eventos', { params: { vagas: true } });
     atdEventos.data.forEach(element => {
-      console.log(element)
       let atd = {
         id:element.id,
         nome: element.nome as string,
@@ -87,8 +92,14 @@ export class QueroAjudarComponent implements OnInit {
         // instituicao: element.instituicao.nome,
         type: 'evento'
       }
-      this.eventos.push(atd);
+      tempAtividades.push(atd);
     });
+
+    this.virtuais = tempAtividades.filter(x=>x.type == 'virtual');
+    this.eventos = tempAtividades.filter(x=>x.type == 'evento');
+    this.presenciais = tempAtividades.filter(x=>x.type == 'presencial');
+    this.telefonicos = tempAtividades.filter(x=>x.type == 'telefonico');
+    this.loading = false;
   }
 
   filtrarCidade(cidade){

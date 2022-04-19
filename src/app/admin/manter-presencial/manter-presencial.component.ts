@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import axios from 'axios';
-import * as cep from 'cep-promise';
+import cep from 'cep-promise';
 import { BaseComponent } from '../base.component';
 
 @Component({
@@ -49,8 +49,7 @@ export class ManterPresencialComponent extends BaseComponent implements OnInit {
 
   async buscarAtividade() {
     let id = this.route.snapshot.paramMap.get('id');
-    this.atendimento = await (await axios.get('https://franco-amor-api.herokuapp.com/atendimentos/presencial/' + id)).data;
-    console.log(this.atendimento);
+    this.atendimento = await (await axios.get('http://localhost:3000/atendimentos/presencial/' + id)).data;
   }
 
   voltar() {

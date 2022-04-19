@@ -22,12 +22,10 @@ export class VejaMaisComponent implements OnInit {
     let id = this.route.snapshot.paramMap.get('id');
 
     if (type == 'evento') {
-      this.atendimento = await (await axios.get('https://franco-amor-api.herokuapp.com/eventos/' + id)).data;
+      this.atendimento = await (await axios.get('http://localhost:3000/eventos/' + id)).data;
     } else {
-      this.atendimento = await (await axios.get('https://franco-amor-api.herokuapp.com/atendimentos/' + type + '/' + id)).data;
+      this.atendimento = await (await axios.get('http://localhost:3000/atendimentos/' + type + '/' + id)).data;
     }
-
-    console.log(this.atendimento)
   }
 
   copiarLink() {

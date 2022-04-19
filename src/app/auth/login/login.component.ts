@@ -29,7 +29,6 @@ export class LoginComponent implements OnInit {
     if (this.email && this.password) {
       this.auth.signInWithEmailAndPassword(this.email, this.password)
         .then(retorno => {
-          console.log(retorno.user.email)
           localStorage.setItem('ativo', 'true')
           this.router.navigate(['home-admin']);
         }).catch(retorno => {
@@ -40,14 +39,13 @@ export class LoginComponent implements OnInit {
   }
 
   public async loginProprio(){
-    const retorno = await axios.post('https://franco-amor-api.herokuapp.com/usuarios/auth/login', {
+    const retorno = await axios.post('http://localhost:3000/usuarios/auth/login', {
       "username": this.email,
       "password": this.password
     });
 
-    console.log(retorno.data)
     if(retorno.data) localStorage.setItem('fr-log-trace-id', retorno.data.access_token);
-    const profile = await axios.get(`https://franco-amor-api.herokuapp.com/usuarios/perfil/${retorno.data.uuid}`, {
+    const profile = await axios.get(`http://localhost:3000/usuarios/perfil/${retorno.data.uuid}`, {
       headers: {
         Authorization: 'Bearer ' + retorno.data.access_token
       }
@@ -56,6 +54,7 @@ export class LoginComponent implements OnInit {
      localStorage.setItem('fr-user-data', profile.data);
      this.router.navigate(['home-admin']);
   }
+  
   public recuperarSenha() {
     if (!this.email) {
       alert('Falta de campo obrigatório - Insira o e-mail para recuperação senha !')

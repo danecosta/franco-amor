@@ -27,12 +27,12 @@ export class ManterPostagemComponent extends BaseComponent implements OnInit {
 
   async buscarPostagem() {
     let id = this.route.snapshot.paramMap.get('id');
-    this.criarPostagemDTO = await (await axios.get('https://franco-amor-api.herokuapp.com/postagens/' + id)).data;
+    this.criarPostagemDTO = await (await axios.get('http://localhost:3000/postagens/' + id)).data;
   }
 
   async salvar() {
     if (this.criarPostagemDTO.autor)
-      await axios.post('https://franco-amor-api.herokuapp.com/postagens', this.criarPostagemDTO);
+      await axios.post('http://localhost:3000/postagens', this.criarPostagemDTO);
     this.router.navigate(['listar-postagem']);
   }
 

@@ -46,6 +46,8 @@ export abstract class BaseComponent implements OnInit {
     };
     closeResult: string;
 
+    public loading = false;
+
     constructor(public router: Router) {
     }
 
@@ -61,5 +63,9 @@ export abstract class BaseComponent implements OnInit {
 
     public relatarProblema(page) {
         this.router.navigate(['contato', page], { skipLocationChange: true });
+    }
+
+    public orderByName(listToOrder){
+        return listToOrder.sort((a, b) => a.nome.localeCompare(b.nome));
     }
 }

@@ -1,33 +1,23 @@
-import { CriarRepresentanteDTO } from './../shared/dto/criar-representante.dto';
-import { CriarInstituicaoDTO } from './../shared/dto/criar-instituicao.dto';
+import { InstituicaoDTO } from './../shared/dto/criar-instituicao.dto';
 import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import * as cep from 'cep-promise';
 import { BaseComponent } from '../base.component';
 import axios from 'axios';
 import { ActivatedRoute, Router } from '@angular/router';
+
+declare var require: any
 
 @Component({
   selector: 'app-manter-instituicao',
   templateUrl: './manter-instituicao.component.html',
   styleUrls: ['./manter-instituicao.component.css']
 })
+
 export class ManterInstituicaoComponent extends BaseComponent implements OnInit {
 
   acao: string = 'Cadastrar';
 
-  cepInformado: string;
-
-  logradouro: string;
-  bairro: string;
-  cidade: string;
-
-  dataFundacao: any;
-  tipoEmpresa: any;
-
-  criarInstituicao = new CriarInstituicaoDTO();
-  criarRepresentanteUm = new CriarRepresentanteDTO();
-  criarRepresentanteDois = new CriarRepresentanteDTO();
+  instituicao = new InstituicaoDTO();
 
   constructor(private modalService: NgbModal,
     private route: ActivatedRoute,
@@ -37,7 +27,6 @@ export class ManterInstituicaoComponent extends BaseComponent implements OnInit 
 
   ngOnInit(): void {
     this.afuConfig.multiple = true;
-
     this.buscarInstituicao();
   }
 
@@ -45,41 +34,45 @@ export class ManterInstituicaoComponent extends BaseComponent implements OnInit 
     let id = this.route.snapshot.paramMap.get('id');
 
     if (id) {
-      this.criarInstituicao = await (await axios.get('https://franco-amor-api.herokuapp.com/instituicoes/' + id)).data;
-      this.acao = 'Editar';
+      const getInstituicao = await axios.get('http://localhost:3000/instituicoes/' + id);
+      if (getInstituicao) {
+        this.instituicao = getInstituicao.data;
+        this.acao = 'Editar';
+      }
     }
   }
 
   public async salvar() {
-    //Preenche representantes
-    if (this.criarRepresentanteUm && this.criarRepresentanteDois)
-      this.criarInstituicao.representantes.push(this.criarRepresentanteUm, this.criarRepresentanteDois);
-
-    // Persiste
+    this.loading = true;
     if (this.acao == 'Cadastrar') {
-      await axios.post('https://franco-amor-api.herokuapp.com/instituicoes', this.criarInstituicao);
+      await axios.post('http://localhost:3000/instituicoes', this.instituicao);
     } else {
-      await axios.put('https://franco-amor-api.herokuapp.com/instituicoes', this.criarInstituicao);
+      await axios.put('http://localhost:3000/instituicoes', this.instituicao);
     }
-
-    this.voltarParaTab('atendimentos')
+    this.loading = false;
+    this.voltarParaTab('atendimentos');
   }
 
   buscarCep() {
+    this.loading = true;
     this.limparCamposCep();
 
-    cep(this.cepInformado).then(
-      data => {
-        this.logradouro = data.street;
-        this.bairro = data.neighborhood;
-        this.cidade = data.city;
-      });
+    if (this.instituicao.endereco.cep) {
+      var cepPromise = require("cep-promise");
+      cepPromise(this.instituicao.endereco.cep).then(
+        data => {
+          this.instituicao.endereco.logradouro = data.street;
+          this.instituicao.endereco.bairro = data.neighborhood;
+          this.instituicao.endereco.cidade = data.city;
+          this.loading = false;
+        });
+    }
   }
 
   limparCamposCep() {
-    this.logradouro = '';
-    this.bairro = '';
-    this.cidade = '';
+    this.instituicao.endereco.logradouro = '';
+    this.instituicao.endereco.bairro = '';
+    this.instituicao.endereco.cidade = '';
   }
 
   openModal(content) {

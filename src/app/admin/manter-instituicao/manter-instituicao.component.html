@@ -28,7 +28,7 @@
                         <div class="col-md-10">
                             <div class="form-group">
                                 <label>Nome <span class="required">*</span></label>
-                                <input type="text" name="nome" [(ngModel)]="criarInstituicao.nome" class="form-control"
+                                <input type="text" name="nome" [(ngModel)]="instituicao.nome" class="form-control"
                                     id="nome" placeholder="Nome da instituição" required>
                             </div>
                         </div>
@@ -47,16 +47,15 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Telefone <span class="required">*</span></label>
-                                <input type="text" name="telefone" [(ngModel)]="criarInstituicao.telefone"
-                                    class="form-control" id="telefone" placeholder="Telefone de contato"
-                                    [textMask]="{mask: phoneMask}" required>
+                                <input type="text" name="telefone" [(ngModel)]="instituicao.telefone"
+                                    class="form-control" id="telefone" placeholder="Telefone de contato" required>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>E-mail <span class="required">*</span></label>
-                                <input type="text" name="email" [(ngModel)]="criarInstituicao.email"
-                                    class="form-control" id="email" placeholder="E-mail de contato" required>
+                                <input type="text" name="email" [(ngModel)]="instituicao.email" class="form-control"
+                                    id="email" placeholder="E-mail de contato" required>
                             </div>
                         </div>
                     </div>
@@ -69,36 +68,36 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="input-group">
-                                <div class="custom-control custom-radio mb-3">
+                                <div class="custom-control custom-radio mb-3 col-md-2">
                                     <input name="tipoEmpresa" class="custom-control-input" id="associacao" type="radio"
-                                        value="associacao" name="associacao" [(ngModel)]="tipoEmpresa">
+                                        value="associacao" name="associacao" [(ngModel)]="instituicao.tipoEmpresa">
                                     <label class="custom-control-label" for="associacao"
                                         value="associacao">Associação</label>
                                 </div>
-                                <div class="custom-control custom-radio mb-3">
+                                <div class="custom-control custom-radio mb-3 col-md-2">
                                     <input name="tipoEmpresa" class="custom-control-input" id="mei" type="radio"
-                                        value="mei" name="mei" [(ngModel)]="criarInstituicao.tipoEmpresa">
+                                        value="mei" name="mei" [(ngModel)]="instituicao.tipoEmpresa">
                                     <label class="custom-control-label" for="mei">MEI</label>
                                 </div>
-                                <div class="custom-control custom-radio mb-3">
+                                <div class="custom-control custom-radio mb-3 col-md-2">
                                     <input name="tipoEmpresa" class="custom-control-input" id="eireli" type="radio"
-                                        name="tipoEmpresa" value="eireli" [(ngModel)]="criarInstituicao.tipoEmpresa">
+                                        name="tipoEmpresa" value="eireli" [(ngModel)]="instituicao.tipoEmpresa">
                                     <label class="custom-control-label" for="eireli">EIRELI</label>
                                 </div>
-                                <div class="custom-control custom-radio mb-3">
+                                <div class="custom-control custom-radio mb-3 col-md-2">
                                     <input name="tipoEmpresa" class="custom-control-input" id="ltda" type="radio"
-                                        name="tipoEmpresa" value="ltda" [(ngModel)]="criarInstituicao.tipoEmpresa">
+                                        name="tipoEmpresa" value="ltda" [(ngModel)]="instituicao.tipoEmpresa">
                                     <label class="custom-control-label" for="ltda">Ltda</label>
                                 </div>
-                                <div class="custom-control custom-radio mb-3">
+                                <div class="custom-control custom-radio mb-3 col-md-2">
                                     <input name="tipoEmpresa" class="custom-control-input" id="fundacao" type="radio"
-                                        name="tipoEmpresa" value="fundacao" [(ngModel)]="criarInstituicao.tipoEmpresa">
+                                        name="tipoEmpresa" value="fundacao" [(ngModel)]="instituicao.tipoEmpresa">
                                     <label class="custom-control-label" for="fundacao">Fundação</label>
                                 </div>
-                                <div class="custom-control custom-radio mb-3">
+                                <div class="custom-control custom-radio mb-3 col-md-2">
                                     <input name="tipoEmpresa" class="custom-control-input" id="pessoaFisica"
                                         type="radio" name="tipoEmpresa" value="pessoaFisica"
-                                        [(ngModel)]="criarInstituicao.tipoEmpresa">
+                                        [(ngModel)]="instituicao.tipoEmpresa">
                                     <label class="custom-control-label" for="pessoaFisica">Pessoa Física</label>
                                 </div>
                             </div>
@@ -109,9 +108,8 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>CNPJ/CPF <span class="required">*</span></label>
-                                <input type="text" name="cnpj" [(ngModel)]="criarInstituicao.cnpj"
-                                    [textMask]="{mask: cnpjMask}" class="form-control" id="cnpj"
-                                    placeholder="CNPJ/CPF da instituição" required>
+                                <input type="text" name="cnpj" [(ngModel)]="instituicao.cnpj" class="form-control"
+                                    id="cnpj" placeholder="CNPJ/CPF da instituição" required>
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -122,7 +120,7 @@
                                         <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
                                     </div>
                                     <input class="form-control datepicker" placeholder="Data de fundação" name="dp"
-                                        [(ngModel)]="criarInstituicao.dtFundacao" ngbDatepicker #d="ngbDatepicker"
+                                        [(ngModel)]="instituicao.dtFundacao" ngbDatepicker #d="ngbDatepicker"
                                         (click)="d.toggle()" type="text" />
                                 </div>
                             </div>
@@ -133,14 +131,14 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>CRP</label>
-                                <input type="text" name="crp" [(ngModel)]="criarInstituicao.crp" class="form-control"
+                                <input type="text" name="crp" [(ngModel)]="instituicao.crp" class="form-control"
                                     id="crp" placeholder="CRP, caso possua">
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Serviços que atende</label>
-                                <input type="text" name="servicos" [(ngModel)]="criarInstituicao.servico"
+                                <input type="text" name="servicos" [(ngModel)]="instituicao.servico"
                                     class="form-control" id="servicos" placeholder="Serviços que atende">
                             </div>
                         </div>
@@ -151,7 +149,7 @@
                             <div class="form-group">
                                 <label>Especialidade de atendimento</label>
                                 <input name="especialidade" type="text" class="form-control" id="especialidade"
-                                    [(ngModel)]="criarInstituicao.especialidade"
+                                    [(ngModel)]="instituicao.especialidade"
                                     placeholder="Especialidade de atendimento, caso possua">
                             </div>
                         </div>
@@ -159,7 +157,7 @@
                             <div class="form-group">
                                 <label>Público alvo</label>
                                 <input type="text" name="publico-alvo" class="form-control" id="publico-alvo"
-                                    [(ngModel)]="criarInstituicao.publicoAlvo" placeholder="Público alvo, caso possua">
+                                    [(ngModel)]="instituicao.publicoAlvo" placeholder="Público alvo, caso possua">
                             </div>
                         </div>
                     </div>
@@ -170,8 +168,8 @@
                         <div class="col-md-6">
                             <label>CEP</label>
                             <div class="input-group campoCep">
-                                <input type="text" [textMask]="{mask: cepMask}" class="form-control" name="cep"
-                                    placeholder="CEP" [(ngModel)]="criarInstituicao.endereco.cep">
+                                <input type="text" class="form-control" name="cep" placeholder="CEP"
+                                    [(ngModel)]="instituicao.endereco.cep">
                                 <div class="input-group-append">
                                     <button class="btn btn-outline-primary" type="button"
                                         (click)="buscarCep()">Buscar</button>
@@ -185,14 +183,14 @@
                             <div class="form-group">
                                 <label>Logradouro</label>
                                 <input type="text" class="form-control" id="logradouro" placeholder="Rua ou Av"
-                                    name="logradouro" [(ngModel)]="criarInstituicao.endereco.logradouro">
+                                    name="logradouro" [(ngModel)]="instituicao.endereco.logradouro">
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Nº/Complemento</label>
-                                <input type="text" [(ngModel)]="criarInstituicao.endereco.complemento"
-                                    name="complemento" class="form-control" id="numComp" placeholder="Nº/Bloco/Apto">
+                                <input type="text" [(ngModel)]="instituicao.endereco.complemento" name="complemento"
+                                    class="form-control" id="numComp" placeholder="Nº/Bloco/Apto">
                             </div>
                         </div>
                     </div>
@@ -201,7 +199,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Bairro</label>
-                                <input type="text" class="form-control" [(ngModel)]="criarInstituicao.endereco.bairro"
+                                <input type="text" class="form-control" [(ngModel)]="instituicao.endereco.bairro"
                                     id="bairro" placeholder="Bairro" name="bairro">
                             </div>
                         </div>
@@ -209,7 +207,7 @@
                             <div class="form-group">
                                 <label>Cidade</label>
                                 <input type="text" class="form-control" id="cidade" placeholder="Cidade" name="cidade"
-                                    [(ngModel)]="criarInstituicao.endereco.cidade">
+                                    [(ngModel)]="instituicao.endereco.cidade">
                             </div>
                         </div>
                     </div>
@@ -220,24 +218,23 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label>Representante 1</label>
-                                <input type="text" name="nome-rep1" [(ngModel)]="criarRepresentanteUm.nome"
+                                <input type="text" name="nome-rep1" [(ngModel)]="instituicao.representantes[0].nome"
                                     class="form-control" id="nomerep1" placeholder="Nome do representante">
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label>CPF</label>
-                                <input type="text" name="cpf-rep1" [textMask]="{mask: cpfMask}" class="form-control"
-                                    id="cpfrep1" placeholder="Cpf do representante"
-                                    [(ngModel)]="criarRepresentanteUm.cpf">
+                                <input type="text" name="cpf-rep1" class="form-control" id="cpfrep1"
+                                    placeholder="Cpf do representante" [(ngModel)]="instituicao.representantes[0].cpf">
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label>Telefone</label>
                                 <input type="text" name="telefole-rep1" class="form-control" id="telefone"
-                                    [(ngModel)]="criarRepresentanteUm.telefone" placeholder="Telefone do representante"
-                                    [textMask]="{mask: phoneMask}">
+                                    [(ngModel)]="instituicao.representantes[0].telefone"
+                                    placeholder="Telefone do representante">
                             </div>
                         </div>
                     </div>
@@ -247,24 +244,22 @@
                             <div class="form-group">
                                 <label>Representante 2</label>
                                 <input type="text" class="form-control" name="nome-rep2"
-                                    [(ngModel)]="criarRepresentanteDois.nome" id="nomerep2"
+                                    [(ngModel)]="instituicao.representantes[1].nome" id="nomerep2"
                                     placeholder="Nome do representante">
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label>CPF</label>
-                                <input type="text" [textMask]="{mask: cpfMask}" class="form-control" id="cpfrep2"
-                                    placeholder="Cpf do representante" name="nome-rep2"
-                                    [(ngModel)]="criarRepresentanteDois.cpf">
+                                <input type="text" class="form-control" id="cpfrep2" placeholder="Cpf do representante"
+                                    name="nome-rep2" [(ngModel)]="instituicao.representantes[1].cpf">
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label>Telefone</label>
                                 <input type="text" class="form-control" id="telefone" name="telefone-rep2"
-                                    [(ngModel)]="criarRepresentanteDois.telefone"
-                                    placeholder="Telefone do representante" [textMask]="{mask: phoneMask}">
+                                    [(ngModel)]="instituicao.representantes[1].telefone" placeholder="Telefone do representante">
                             </div>
                         </div>
                     </div>
@@ -275,14 +270,14 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Twitter</label>
-                                <input type="text" name="twitter" [(ngModel)]="criarInstituicao.twitter"
-                                    class="form-control" id="twitter" placeholder="Twitter, caso possua">
+                                <input type="text" name="twitter" [(ngModel)]="instituicao.twitter" class="form-control"
+                                    id="twitter" placeholder="Twitter, caso possua">
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Instagram</label>
-                                <input type="text" name="instragram" [(ngModel)]="criarInstituicao.instagram"
+                                <input type="text" name="instragram" [(ngModel)]="instituicao.instagram"
                                     class="form-control" id="instagram" placeholder="Instagram, caso possua">
                             </div>
                         </div>
@@ -292,14 +287,14 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Pinterest</label>
-                                <input type="text" name="pinterest" [(ngModel)]="criarInstituicao.pinterest"
+                                <input type="text" name="pinterest" [(ngModel)]="instituicao.pinterest"
                                     class="form-control" id="pinterest" placeholder="Pinterest, caso possua">
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Facebook</label>
-                                <input type="text" name="facebook" [(ngModel)]="criarInstituicao.facebook"
+                                <input type="text" name="facebook" [(ngModel)]="instituicao.facebook"
                                     class="form-control" id="facebook" placeholder="Facebook, caso possua">
                             </div>
                         </div>
@@ -309,14 +304,14 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>LinkedIn</label>
-                                <input type="text" name="linkedin" [(ngModel)]="criarInstituicao.linkedin"
+                                <input type="text" name="linkedin" [(ngModel)]="instituicao.linkedin"
                                     class="form-control" id="linkedIn" placeholder="LinkedIn, caso possua">
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Site</label>
-                                <input type="text" name="site" [(ngModel)]="criarInstituicao.site" class="form-control"
+                                <input type="text" name="site" [(ngModel)]="instituicao.site" class="form-control"
                                     id="site" placeholder="Site, caso possua">
                             </div>
                         </div>
@@ -328,9 +323,8 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label>Objetivo da fundação</label>
-                                <textarea class="form-control" id="objetivo" rows="3"
-                                    [(ngModel)]="criarInstituicao.objetivo" name="objetivo"
-                                    placeholder="Objetivo da fundação"></textarea>
+                                <textarea class="form-control" id="objetivo" rows="3" [(ngModel)]="instituicao.objetivo"
+                                    name="objetivo" placeholder="Objetivo da fundação"></textarea>
                             </div>
                         </div>
                     </div>
@@ -340,7 +334,7 @@
                             <div class="form-group">
                                 <label>Breve história da fundação</label>
                                 <textarea class="form-control" id="historia" rows="3" name="resumo"
-                                    [(ngModel)]="criarInstituicao.historia"
+                                    [(ngModel)]="instituicao.historia"
                                     placeholder="Breve história da fundação"></textarea>
                             </div>
                         </div>
@@ -360,27 +354,27 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label>Ao cadastrar essa atividade, você fica ciente que: </label>
-                                <div>
+                                <div class="check">
                                     <input type="checkbox" id="check1" name="check1" required>
                                     <label for="check1">Deve manter atualizadas as informações do cadastro. <span
                                             class="required">*</span>
                                     </label>
                                 </div>
-                                <div>
+                                <div class="check">
                                     <input type="checkbox" id="check2" name="check2" required>
                                     <label for="check2">Deve manter atualizadas as informações das atividades divulgadas
                                         das que ofereço, tais como: data, horário, valor, formato da atividade, entre
                                         outras. <span class="required">*</span>
                                     </label>
                                 </div>
-                                <div>
+                                <div class="check">
                                     <input type="checkbox" id="check3" name="check3" required>
                                     <label for="check3">Deve excluir a divulgação se o atendimento/atividade for
                                         cancelado, não estiver mais disponível e quando as vagas destinadas à ação
                                         social forem preenchidas. <span class="required">*</span>
                                     </label>
                                 </div>
-                                <div>
+                                <div class="check">
                                     <input type="checkbox" id="check4" name="check4" required>
                                     <label for="check4">Este site está destinado aos serviços gratuitos e com preço
                                         social que promovam a saúde mental e qualidade de vida. <span
@@ -395,14 +389,19 @@
                     <div class="rodape">
                         <button type="button" class="btn btn-outline-light btnVoltar"
                             (click)="voltarParaTab('instituicoes')">Voltar</button>
-                        <button type="button" name="salvar" [disabled]="!myForm.form.valid"
+
+                        <button type="button" class="btn btn-outline-warning"
+                            (click)="relatarProblema('Cadastrar Instituição')">Relatar problema ou
+                            dúvida</button>
+
+                        <button type="button" name="salvar"
                             class="btn btn-outline-success btnSalvar" (click)="salvar()">Salvar e {{acao}} ação
                             social</button>
                     </div>
                 </form>
             </div>
         </section>
-    </div>
+    </div>    
 </main>
 
 <!-- Modal Logo -->

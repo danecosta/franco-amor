@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import axios from 'axios';
+import { BaseComponent } from '../base.component';
 
 @Component({
   selector: 'app-listar-atendimentos-atividades',
   templateUrl: './listar-atendimentos-atividades.component.html',
   styleUrls: ['./listar-atendimentos-atividades.component.css']
 })
-export class ListarAtendimentosAtividadesComponent implements OnInit {
+export class ListarAtendimentosAtividadesComponent extends BaseComponent implements OnInit {
 
   cidade: any;
   tipo: string = null;
@@ -18,16 +19,19 @@ export class ListarAtendimentosAtividadesComponent implements OnInit {
   tooltipVirtual = "Apoio e atividades afins que acontecem virtualmente através de plataformas de videoconferência, chat, redes sociais, mensagens via aplicativo etc.";
   tooltipPresencial = "Reuniões de apoio, atendimento terapêutico e atividades similares que acontecem de forma presencial em grupo ou individualmente.";
 
-  constructor(private router: Router) { }
+  constructor(public router: Router) {
+    super(router);
+   }
 
   ngOnInit(): void {
     this.obterAtendimentos();
   }
 
   async obterAtendimentos() {
-    const inst = await axios.get('https://franco-amor-api.herokuapp.com/instituicoes');
+    this.loading = true;
+    let tempAtividades = [];
 
-    const atdTelefonico = await axios.get('https://franco-amor-api.herokuapp.com/atendimentos/telefonico');
+    const atdTelefonico = await axios.get('http://localhost:3000/atendimentos/telefonico');
     atdTelefonico.data.forEach(element => {
       let atd = {
         id: element.id,
@@ -36,10 +40,10 @@ export class ListarAtendimentosAtividadesComponent implements OnInit {
         local: element.abrangencia,
         instituicao: element.instuicao?.nome
       }
-      this.atividades.push(atd);
+      tempAtividades.push(atd);
     });
 
-    const atdPresencial = await axios.get('https://franco-amor-api.herokuapp.com/atendimentos/presencial');
+    const atdPresencial = await axios.get('http://localhost:3000/atendimentos/presencial');
     atdPresencial.data.forEach(element => {
       let atd = {
         id: element.id,
@@ -48,10 +52,10 @@ export class ListarAtendimentosAtividadesComponent implements OnInit {
         instituicao: element.instuicao?.nome,
         local: element.endereco.cidade
       }
-      this.atividades.push(atd);
+      tempAtividades.push(atd);
     });
 
-    const atdVirtuais = await axios.get('https://franco-amor-api.herokuapp.com/atendimentos/virtual');
+    const atdVirtuais = await axios.get('http://localhost:3000/atendimentos/virtual');
     atdVirtuais.data.forEach(element => {
       let atd = {
         id: element.id,
@@ -59,11 +63,10 @@ export class ListarAtendimentosAtividadesComponent implements OnInit {
         tipo: 'virtual',
         instituicao: element.instuicao?.nome
       }
-      this.atividades.push(atd);
+      tempAtividades.push(atd);
     });
 
-    const atdEventos = await axios.get('https://franco-amor-api.herokuapp.com/eventos');
-    console.log(atdEventos.data)
+    const atdEventos = await axios.get('http://localhost:3000/eventos');
     atdEventos.data.forEach(element => {
       let atd = {
         id: element.id,
@@ -71,8 +74,11 @@ export class ListarAtendimentosAtividadesComponent implements OnInit {
         tipo: 'evento',
         instituicao: element.instituicao?.nome
       }
-      this.atividades.push(atd);
+      tempAtividades.push(atd);
     });
+
+    this.atividades = this.orderByName(tempAtividades);
+    this.loading = false;
   }
 
   novoEvento() {

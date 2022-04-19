@@ -26,12 +26,12 @@ export class ManterProdutoComponent extends BaseComponent implements OnInit {
 
   async buscarProduto() {
     let id = this.route.snapshot.paramMap.get('id');
-    this.criarProdutoDTO = await (await axios.get('https://franco-amor-api.herokuapp.com/produtos/' + id)).data;
+    this.criarProdutoDTO = await (await axios.get('http://localhost:3000/produtos/' + id)).data;
   }
 
   async salvar() {
     if (this.criarProdutoDTO.nome) {
-      await axios.post('https://franco-amor-api.herokuapp.com/produtos', this.criarProdutoDTO);
+      await axios.post('http://localhost:3000/produtos', this.criarProdutoDTO);
       this.router.navigate(['listar-produto'])
     } else {
       alert('Erro ao registrar produto')
