@@ -20,7 +20,7 @@
 
         <section class="section section-shaped bg-secondary">
             <div class="container pt-lg-md">
-                <h3>Manter Produto</h3>
+                <h3>{{titulo}}</h3>
                 <hr>
 
                 <form>
@@ -28,7 +28,7 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label>Nome</label>
-                                <input name="nome-produto" [(ngModel)]="criarProdutoDTO.nome" type="text"
+                                <input name="nome-produto" [(ngModel)]="produtoDTO.nome" type="text"
                                     class="form-control" id="nome" placeholder="Nome do produto">
                             </div>
                         </div>
@@ -39,8 +39,7 @@
                             <div class="form-group">
                                 <label>Descrição</label>
                                 <textarea class="form-control" id="descricao" rows="3" name="descricao-produto"
-                                    [(ngModel)]="criarProdutoDTO.descricao"
-                                    placeholder="Descrição do produto"></textarea>
+                                    [(ngModel)]="produtoDTO.descricao" placeholder="Descrição do produto"></textarea>
                             </div>
                         </div>
                     </div>
@@ -49,14 +48,14 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Valor</label>
-                                <input name="valor-produto" [(ngModel)]="criarProdutoDTO.valor" type="text"
+                                <input name="valor-produto" [(ngModel)]="produtoDTO.valor" type="text"
                                     class="form-control" id="valor" placeholder="Valor (R$)">
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Estoque disponível</label>
-                                <input name="estoque-produto" [(ngModel)]="criarProdutoDTO.estoque" type="number"
+                                <input name="estoque-produto" [(ngModel)]="produtoDTO.estoque" type="number"
                                     class="form-control" id="estoque" placeholder="Estoque">
                             </div>
                         </div>
@@ -73,9 +72,14 @@
 
                     <hr>
                     <div class="rodape">
-                        <button type="button" class="btn btn-outline-light btnVoltar" (click)="voltar()">Voltar</button>
-                        <button type="button" class="btn btn-outline-success btnSalvar"
-                            (click)="salvar()">Salvar</button>
+                        <button type="button" class="btn btn-outline-light btnVoltar"
+                            (click)="voltarParaTab('produtos')">Voltar</button>
+
+                        <button type="button" class="btn btn-outline-warning" (click)="relatarProblema(titulo)">Relatar
+                            problema ou dúvida</button>
+
+                        <button type="button" name="salvar" class="btn btn-outline-success btnSalvar"
+                            (click)="salvar()">Salvar e {{titulo}}</button>
                     </div>
                 </form>
             </div>

@@ -14,7 +14,7 @@ export class EventoDTO extends BaseDTO {
   dtFim: Date;
   endereco: EnderecoDTO = new EnderecoDTO();
   instituicao: InstituicaoDTO = new InstituicaoDTO();
-  horaAtendimento: HoraAtendimentoDTO[];
+  horaAtendimento: HoraAtendimentoDTO[] = [];
 
   participacao: string;//
 }

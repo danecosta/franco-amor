@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import axios from 'axios';
 import { BaseComponent } from '../base.component';
+
+export class FiltroProduto {
+  nome: string = null;
+}
 @Component({
   selector: 'app-listar-produto',
   templateUrl: './listar-produto.component.html',
@@ -9,22 +13,25 @@ import { BaseComponent } from '../base.component';
 })
 export class ListarProdutoComponent extends BaseComponent implements OnInit {
 
+  tempProdutos = [];
   produtos: any[] = [];
+
+  filtro = new FiltroProduto();
 
   constructor(public router: Router) {
     super(router);
-   }
+  }
 
   ngOnInit(): void {
     this.obterProdutos();
   }
 
   irParaManterProduto(item) {
-    this.router.navigate(['manter-produto', item.id]);
+    this.router.navigate(['editar-produto', item.id]);
   }
 
   novoProduto() {
-    this.router.navigate(['manter-produto']);
+    this.router.navigate(['cadastrar-produto']);
   }
 
   async obterProdutos() {
@@ -36,11 +43,26 @@ export class ListarProdutoComponent extends BaseComponent implements OnInit {
         nome: element.nome,
         valor: element.valor,
         estoque: element.estoque,
+        ativo: element.ativo
       }
-      this.produtos.push(prod);
+      this.tempProdutos.push(prod);
     });
-    this.produtos = this.orderByName(this.produtos);
+    this.produtos = this.orderByName(this.tempProdutos);
     this.loading = false;
+  }
+
+  filtrar(): void {
+    let produtosFiltrados = Object.assign(this.tempProdutos);
+
+    if (this.filtro.nome && this.filtro.nome.trim() != '')
+      produtosFiltrados = this.filtrarNome(produtosFiltrados);
+
+    this.produtos = Object.assign(produtosFiltrados);
+    this.loading = false;
+  }
+
+  filtrarNome(produtos): any[] {
+    return produtos.filter(x => x.nome && x.nome.indexOf(this.filtro.nome) > -1);
   }
 
 }

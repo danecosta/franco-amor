@@ -1,9 +1,9 @@
 import { ActivatedRoute, Router } from '@angular/router';
-import { CriarProdutoDTO } from './dto/criar-produto.dto';
 import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { BaseComponent } from '../base.component';
 import axios from 'axios';
+import { ProdutoDTO } from 'src/app/_models/criar-produto.dto';
 @Component({
   selector: 'app-manter-produto',
   templateUrl: './manter-produto.component.html',
@@ -11,12 +11,16 @@ import axios from 'axios';
 })
 export class ManterProdutoComponent extends BaseComponent implements OnInit {
 
-  criarProdutoDTO = new CriarProdutoDTO();
+  produtoDTO = new ProdutoDTO();
 
   constructor(private modalService: NgbModal,
     public router: Router,
-    private route: ActivatedRoute) {
+    private activatedRoute: ActivatedRoute) {
     super(router);
+
+    this.activatedRoute.data.subscribe(data => {
+      this.titulo = data.title;
+    });
   }
 
   ngOnInit(): void {
@@ -25,17 +29,19 @@ export class ManterProdutoComponent extends BaseComponent implements OnInit {
   }
 
   async buscarProduto() {
-    let id = this.route.snapshot.paramMap.get('id');
-    this.criarProdutoDTO = await (await axios.get('http://localhost:3000/produtos/' + id)).data;
+    let id = this.activatedRoute.snapshot.paramMap.get('id');
+    if (id)
+      this.produtoDTO = (await axios.get('http://localhost:3000/produtos/' + id)).data;
   }
 
-  async salvar() {
-    if (this.criarProdutoDTO.nome) {
-      await axios.post('http://localhost:3000/produtos', this.criarProdutoDTO);
+  public async salvar() {
+    this.loading = true;
+    if (this.produtoDTO.nome) {
+      await axios.post('http://localhost:3000/produtos', this.produtoDTO);
       this.router.navigate(['listar-produto'])
-    } else {
-      alert('Erro ao registrar produto')
     }
+    this.loading = false;
+    this.voltarParaTab('produtos');
 
   }
 

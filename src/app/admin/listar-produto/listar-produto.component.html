@@ -10,11 +10,12 @@
             <div class="col-md-4">
                 <div class="form-group">
                     <label>Produto</label>
-                    <input type="text" class="form-control" id="nome" placeholder="Nome do produto">
+                    <input type="text" class="form-control" id="nome" placeholder="Nome do produto" name="nome"
+                        [(ngModel)]="filtro.nome">
                 </div>
             </div>
             <div class="col-md-1" style="padding-top: 2rem;">
-                <button class="btn btn-icon btn-2 btn-outline-light" type="button">
+                <button class="btn btn-icon btn-2 btn-outline-light" type="button" (click)="filtrar()">
                     <span class="btn-inner--icon"><i class="fa fa-search" aria-hidden="true"></i></span>
                 </button>
             </div>
@@ -26,7 +27,7 @@
                     <th scope="col">Produto</th>
                     <th scope="col">Valor</th>
                     <th scope="col">Estoque</th>
-                    <th scope="col"></th>
+                    <th scope="col">Status</th>
                     <th scope="col">Editar</th>
                 </tr>
             </thead>
@@ -43,7 +44,8 @@
                                 'Ativo':'Inativo'}}</label>
                         </div>
                     </td>
-                    <td class="btn-editar"><a (click)="irParaManterProduto(item)"><i class="ni ni-settings-gear-65"></i></a></td>
+                    <td class="btn-editar"><a (click)="irParaManterProduto(item)"><i
+                                class="ni ni-settings-gear-65"></i></a></td>
                 </tr>
             </tbody>
         </table>

@@ -10,7 +10,6 @@ import { BaseComponent } from '../base.component';
 })
 export class ManterVirtualComponent extends BaseComponent implements OnInit {
 
-  acao: string = 'Cadastrar';
   tooltipValorSocial = 'O valor não será divulgado pelo site, mas é obrigatória a apresentação dessa informação para conhecimento e preservação da legitimidade das atividades divulgadas pelo Franco Amor.';
 
   dataAtividade: string;
@@ -33,9 +32,13 @@ export class ManterVirtualComponent extends BaseComponent implements OnInit {
 
   atendimento: any;
 
-  constructor(private route: ActivatedRoute,
+  constructor(private activatedRoute: ActivatedRoute,
     public router: Router) {
     super(router);
+
+    this.activatedRoute.data.subscribe(data => {
+      this.titulo = data.title;
+    });
   }
 
   ngOnInit(): void {
@@ -43,13 +46,9 @@ export class ManterVirtualComponent extends BaseComponent implements OnInit {
   }
 
   async buscarAtividade() {
-    let id = this.route.snapshot.paramMap.get('id');
+    let id = this.activatedRoute.snapshot.paramMap.get('id');
     if (id)
-      this.atendimento = await (await axios.get('http://localhost:3000/atendimentos/virtual/' + id)).data;
-  }
-
-  voltar() {
-    history.back();
+      this.atendimento = (await axios.get('http://localhost:3000/atendimentos/virtual/' + id)).data;
   }
 
   salvar() { }

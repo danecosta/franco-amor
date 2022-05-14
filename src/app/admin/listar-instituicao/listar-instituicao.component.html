@@ -24,8 +24,10 @@
             <div class="col-md-4">
                 <div class="form-group">
                     <label>Cidade</label>
-                    <input type="text" class="form-control" id="cidade" placeholder="Cidade" name="cidade"
-                        [(ngModel)]="filtro.cidade">
+                    <select class="form-control" id="cidade" name='cidade' [(ngModel)]="filtro.cidade">
+                        <option value=null>Todos</option>
+                        <option *ngFor="let cidade of cidadesFiltro" [ngValue]="cidade">{{cidade}}</option>
+                    </select>
                 </div>
             </div>
             <div class="col-md-1" style="padding-top: 2rem;">
@@ -44,7 +46,7 @@
                         <th scope="col">Cidade</th>
                         <th scope="col">E-mail</th>
                         <th scope="col">Telefone</th>
-                        <th scope="col"></th>
+                        <th scope="col">Status</th>
                         <th scope="col">Editar</th>
                     </tr>
                 </thead>

@@ -47,8 +47,12 @@ export class ManterEventoComponent extends BaseComponent implements OnInit {
 
   constructor(private modalService: NgbModal,
     public router: Router,
-    private route: ActivatedRoute) {
+    private activatedRoute: ActivatedRoute) {
     super(router);
+
+    this.activatedRoute.data.subscribe(data => {
+      this.titulo = data.title;
+    });
   }
 
   ngOnInit(): void {
@@ -58,8 +62,9 @@ export class ManterEventoComponent extends BaseComponent implements OnInit {
   }
 
   async buscarEvento() {
-    let id = this.route.snapshot.paramMap.get('id');
-    this.eventoDTO = await (await axios.get('http://localhost:3000/eventos/' + id)).data;
+    let id = this.activatedRoute.snapshot.paramMap.get('id');
+    if (id)
+      this.eventoDTO = (await axios.get('http://localhost:3000/eventos/' + id)).data;
   }
 
   public instituicaoHandler($event) {
@@ -87,10 +92,12 @@ export class ManterEventoComponent extends BaseComponent implements OnInit {
   }
 
 
-  async salvar() {
+  public async salvar() {
+    this.loading = true;
     this.eventoDTO.horaAtendimento.push(this.horaAtendimento);
-    const retorno = await axios.post('http://localhost:3000/eventos', this.eventoDTO);
-    this.router.navigate(['procuro-ajuda'])
+    await axios.post('http://localhost:3000/eventos', this.eventoDTO);
+    this.loading = false;
+    this.voltarParaTab('atendimentos');
   }
 
   buscarCep() {

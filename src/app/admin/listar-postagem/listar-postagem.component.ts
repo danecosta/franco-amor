@@ -2,6 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import axios from 'axios';
 import { BaseComponent } from '../base.component';
+
+export class FiltroPostagem {
+  titulo: string = null;
+  autor: string = null;
+}
 @Component({
   selector: 'app-listar-postagem',
   templateUrl: './listar-postagem.component.html',
@@ -9,18 +14,20 @@ import { BaseComponent } from '../base.component';
 })
 export class ListarPostagemComponent extends BaseComponent implements OnInit {
 
+  tempPostagens = [];
   postagens: any[] = [];
+  filtro: FiltroPostagem = new FiltroPostagem();
 
   constructor(public router: Router) {
     super(router);
-   }
+  }
 
   ngOnInit(): void {
     this.obterPostagens();
   }
 
   irParaManterPostagem(item) {
-    this.router.navigate(['manter-postagem', item.id]);
+    this.router.navigate(['editar-postagem', item.id]);
   }
 
   async obterPostagens() {
@@ -32,15 +39,39 @@ export class ListarPostagemComponent extends BaseComponent implements OnInit {
         id: element.id,
         titulo: element.titulo,
         autor: element.autor,
-        data: element.dt_insercao
+        data: element.dt_insercao,
+        ativo: element.ativo
       }
-      this.postagens.push(inst);
+      this.tempPostagens.push(inst);
     });
+
+    this.postagens = this.tempPostagens.sort((a, b) => a.titulo.localeCompare(b.titulo));
     this.loading = false;
   }
 
+  filtrar(): void {
+    let postagensFiltradas = Object.assign(this.tempPostagens);
+
+    if (this.filtro.titulo && this.filtro.titulo.trim() != '')
+      postagensFiltradas = this.filtrarTitulo(postagensFiltradas);
+
+    if (this.filtro.autor && this.filtro.autor.trim() != '')
+      postagensFiltradas = this.filtrarAutor(postagensFiltradas);
+
+    this.postagens = Object.assign(postagensFiltradas);
+    this.loading = false;
+  }
+
+  filtrarTitulo(postagens): any[] {
+    return postagens.filter(x => x.nome && x.nome.indexOf(this.filtro.titulo) > -1);
+  }
+
+  filtrarAutor(postagens): any[] {
+    return postagens.filter(x => x.nome && x.nome.indexOf(this.filtro.autor) > -1);
+  }
+
   novaPostagem() {
-    this.router.navigate(['manter-postagem']);
+    this.router.navigate(['cadastrar-postagem']);
   }
 
 }

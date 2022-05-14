@@ -13,12 +13,16 @@ export class ManterPostagemComponent extends BaseComponent implements OnInit {
 
   categoria: string = null;
 
-  criarPostagemDTO = new PostagemDTO();
+  postagemDTO = new PostagemDTO();
 
   constructor(private modalService: NgbModal,
     public router: Router,
-    private route: ActivatedRoute) {
+    private activatedRoute: ActivatedRoute) {
     super(router);
+
+    this.activatedRoute.data.subscribe(data => {
+      this.titulo = data.title;
+    });
   }
 
   ngOnInit(): void {
@@ -26,14 +30,18 @@ export class ManterPostagemComponent extends BaseComponent implements OnInit {
   }
 
   async buscarPostagem() {
-    let id = this.route.snapshot.paramMap.get('id');
-    this.criarPostagemDTO = await (await axios.get('http://localhost:3000/postagens/' + id)).data;
+    let id = this.activatedRoute.snapshot.paramMap.get('id');
+    if (id)
+      this.postagemDTO = (await axios.get('http://localhost:3000/postagens/' + id)).data;
   }
 
-  async salvar() {
-    if (this.criarPostagemDTO.autor)
-      await axios.post('http://localhost:3000/postagens', this.criarPostagemDTO);
+  public async salvar() {
+    this.loading = true;
+    if (this.postagemDTO.titulo)
+      await axios.post('http://localhost:3000/postagens', this.postagemDTO);
     this.router.navigate(['listar-postagem']);
+    this.loading = false;
+    this.voltarParaTab('postagens');
   }
 
   openModal(content) {

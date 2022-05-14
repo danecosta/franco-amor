@@ -20,7 +20,7 @@
 
         <section class="section section-shaped bg-secondary">
             <div class="container pt-lg-md">
-                <h3>{{acao}} Instituição</h3>
+                <h3>{{titulo}}</h3>
                 <small>Os campos assinalados com <span class="required">*</span> são obrigatórios.</small>
                 <hr>
                 <form #myForm="ngForm">
@@ -259,7 +259,8 @@
                             <div class="form-group">
                                 <label>Telefone</label>
                                 <input type="text" class="form-control" id="telefone" name="telefone-rep2"
-                                    [(ngModel)]="instituicao.representantes[1].telefone" placeholder="Telefone do representante">
+                                    [(ngModel)]="instituicao.representantes[1].telefone"
+                                    placeholder="Telefone do representante">
                             </div>
                         </div>
                     </div>
@@ -390,18 +391,16 @@
                         <button type="button" class="btn btn-outline-light btnVoltar"
                             (click)="voltarParaTab('instituicoes')">Voltar</button>
 
-                        <button type="button" class="btn btn-outline-warning"
-                            (click)="relatarProblema('Cadastrar Instituição')">Relatar problema ou
-                            dúvida</button>
+                        <button type="button" class="btn btn-outline-warning" (click)="relatarProblema(titulo)">Relatar
+                            problema ou dúvida</button>
 
-                        <button type="button" name="salvar"
-                            class="btn btn-outline-success btnSalvar" (click)="salvar()">Salvar e {{acao}} ação
-                            social</button>
+                        <button type="button" name="salvar" class="btn btn-outline-success btnSalvar"
+                            (click)="salvar()">Salvar e {{titulo}}</button>
                     </div>
                 </form>
             </div>
         </section>
-    </div>    
+    </div>
 </main>
 
 <!-- Modal Logo -->

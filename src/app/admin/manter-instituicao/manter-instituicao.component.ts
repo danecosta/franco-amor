@@ -15,36 +15,32 @@ declare var require: any
 
 export class ManterInstituicaoComponent extends BaseComponent implements OnInit {
 
-  acao: string = 'Cadastrar';
-
   instituicao = new InstituicaoDTO();
 
   constructor(private modalService: NgbModal,
-    private route: ActivatedRoute,
+    private activatedRoute: ActivatedRoute,
     public router: Router) {
     super(router);
+
+    this.activatedRoute.data.subscribe(data => {
+      this.titulo = data.title;
+    });
   }
 
   ngOnInit(): void {
-    this.afuConfig.multiple = true;
     this.buscarInstituicao();
   }
 
   async buscarInstituicao() {
-    let id = this.route.snapshot.paramMap.get('id');
+    let id = this.activatedRoute.snapshot.paramMap.get('id');
 
-    if (id) {
-      const getInstituicao = await axios.get('http://localhost:3000/instituicoes/' + id);
-      if (getInstituicao) {
-        this.instituicao = getInstituicao.data;
-        this.acao = 'Editar';
-      }
-    }
+    if (id)
+      this.instituicao = (await axios.get('http://localhost:3000/instituicoes/' + id)).data;
   }
 
   public async salvar() {
     this.loading = true;
-    if (this.acao == 'Cadastrar') {
+    if (!this.instituicao.id) {
       await axios.post('http://localhost:3000/instituicoes', this.instituicao);
     } else {
       await axios.put('http://localhost:3000/instituicoes', this.instituicao);

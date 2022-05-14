@@ -44,7 +44,9 @@ export abstract class BaseComponent implements OnInit {
             sizeLimit: 'Tamanho máximo'
         }
     };
+
     closeResult: string;
+    titulo: string;
 
     public loading = false;
 
@@ -65,7 +67,7 @@ export abstract class BaseComponent implements OnInit {
         this.router.navigate(['contato', page], { skipLocationChange: true });
     }
 
-    public orderByName(listToOrder){
+    public orderByName(listToOrder) {
         return listToOrder.sort((a, b) => a.nome.localeCompare(b.nome));
     }
 }

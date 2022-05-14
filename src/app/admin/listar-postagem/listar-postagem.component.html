@@ -10,17 +10,19 @@
             <div class="col-md-4">
                 <div class="form-group">
                     <label>Título</label>
-                    <input type="text" class="form-control" id="nome" placeholder="Título da postagem">
+                    <input type="text" class="form-control" id="titulo" placeholder="Título da postagem" name="titulo"
+                        [(ngModel)]="filtro.titulo">
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="form-group">
                     <label>Autor</label>
-                    <input type="text" class="form-control" id="cnpj" placeholder="Autor da postagem">
+                    <input type="text" class="form-control" id="cnpj" placeholder="Autor da postagem" name="autor"
+                        [(ngModel)]="filtro.autor">
                 </div>
             </div>
-            <div class="col-md-1" style="padding-top: 2rem;">
-                <button class="btn btn-icon btn-2 btn-outline-light" type="button">
+            <div class=" col-md-1" style="padding-top: 2rem;">
+                <button class="btn btn-icon btn-2 btn-outline-light" type="button" (click)="filtrar()">
                     <span class="btn-inner--icon"><i class="fa fa-search" aria-hidden="true"></i></span>
                 </button>
             </div>
@@ -32,7 +34,7 @@
                     <th scope="col">Título</th>
                     <th scope="col">Autor</th>
                     <th scope="col">Data</th>
-                    <th scope="col"></th>
+                    <th scope="col">Status</th>
                     <th scope="col">Editar</th>
                 </tr>
             </thead>
@@ -49,7 +51,8 @@
                                 'Ativo':'Inativo'}}</label>
                         </div>
                     </td>
-                    <td class="btn-editar"><a (click)="irParaManterPostagem(item)"><i class="ni ni-settings-gear-65"></i></a></td>
+                    <td class="btn-editar"><a (click)="irParaManterPostagem(item)"><i
+                                class="ni ni-settings-gear-65"></i></a></td>
                 </tr>
             </tbody>
         </table>

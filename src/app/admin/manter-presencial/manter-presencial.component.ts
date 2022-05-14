@@ -38,9 +38,13 @@ export class ManterPresencialComponent extends BaseComponent implements OnInit {
 
   atendimento: any;
 
-  constructor(private route: ActivatedRoute,
+  constructor(private activatedRoute: ActivatedRoute,
     public router: Router) {
     super(router);
+
+    this.activatedRoute.data.subscribe(data => {
+      this.titulo = data.title;
+    });
   }
 
   ngOnInit(): void {
@@ -48,12 +52,9 @@ export class ManterPresencialComponent extends BaseComponent implements OnInit {
   }
 
   async buscarAtividade() {
-    let id = this.route.snapshot.paramMap.get('id');
-    this.atendimento = await (await axios.get('http://localhost:3000/atendimentos/presencial/' + id)).data;
-  }
-
-  voltar() {
-    history.back();
+    let id = this.activatedRoute.snapshot.paramMap.get('id');
+    if (id)
+      this.atendimento = (await axios.get('http://localhost:3000/atendimentos/presencial/' + id)).data;
   }
 
   salvar() { }

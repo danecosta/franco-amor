@@ -45,6 +45,7 @@ export class ListarAtendimentosAtividadesComponent extends BaseComponent impleme
         observacao: element.observacao,
         abrangencia: element.abrangencia,
         instituicao: element.instituicao.nome,
+        ativo: element.ativo,
         type: 'telefonico'
       }
       this.tempAtividades.push(atd);
@@ -59,6 +60,7 @@ export class ListarAtendimentosAtividadesComponent extends BaseComponent impleme
         telefone: element.telefone,
         observacao: element.observacao,
         instituicao: element.instituicao.nome,
+        ativo: element.ativo,
         type: 'presencial'
       }
       this.tempAtividades.push(atd);
@@ -73,6 +75,7 @@ export class ListarAtendimentosAtividadesComponent extends BaseComponent impleme
         observacao: element.observacao,
         endVirtual: element.enderecoVirtual,
         instituicao: element.instituicao.nome,
+        ativo: element.ativo,
         type: 'virtual'
       }
       this.tempAtividades.push(atd);
@@ -87,6 +90,7 @@ export class ListarAtendimentosAtividadesComponent extends BaseComponent impleme
         telefone: element.telefone,
         observacao: element.observacao,
         // instituicao: element.instituicao.nome,
+        ativo: element.ativo,
         type: 'evento'
       }
       this.tempAtividades.push(atd);
@@ -146,22 +150,26 @@ export class ListarAtendimentosAtividadesComponent extends BaseComponent impleme
   }
 
   novoEvento() {
-    this.router.navigate(['manter-evento']);
+    this.router.navigate(['cadastrar-evento']);
   }
 
   novoTelefonico() {
-    this.router.navigate(['manter-telefonico']);
+    this.router.navigate(['cadastrar-telefonico']);
   }
 
   novoVirtual() {
-    this.router.navigate(['manter-virtual']);
+    this.router.navigate(['cadastrar-virtual']);
   }
 
   novoPresencial() {
-    this.router.navigate(['manter-presencial']);
+    this.router.navigate(['cadastrar-presencial']);
   }
 
   irParaManterAtendimentos(item) {
-    this.router.navigate(['./manter-' + item.tipo, item.id]);
+    this.router.navigate(['./editar-' + item.type, item.id]);
+  }
+
+  atualizarStatus(id) {
+    console.log(id)
   }
 }
