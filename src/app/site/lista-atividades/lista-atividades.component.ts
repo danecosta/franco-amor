@@ -1,42 +1,56 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import axios from 'axios';
-import { BaseComponent } from '../base.component';
+import { ActivatedRoute, Router } from '@angular/router';
+import { BaseComponent } from 'src/app/admin/base.component';
+import axios from "axios";
 
 @Component({
-  selector: 'app-listar-atendimentos-atividades',
-  templateUrl: './listar-atendimentos-atividades.component.html',
-  styleUrls: ['./listar-atendimentos-atividades.component.css']
+  selector: 'app-lista-atividades',
+  templateUrl: './lista-atividades.component.html',
+  styleUrls: ['./lista-atividades.component.scss']
 })
-export class ListarAtendimentosAtividadesComponent extends BaseComponent implements OnInit {
+export class ListaAtividadesComponent extends BaseComponent implements OnInit {
 
   cidade: string = null;
   tipo: string = null;
   atividade: string = null;
   instituicao: string = null;
 
-  atividades: any[] = [];
-  cidadesFiltro = [];
+  telefonicos = [];
+  presenciais = [];
+  virtuais = [];
+  eventos = [];
 
-  tooltipEvento = "Cursos, workshops, seminários, aulas, palestras na área da saúde mental voltados para público em geral seja presencial ou virtual";
-  tooltipTelefonico = "Serviço de acolhimento emocional por telefone.";
-  tooltipVirtual = "Apoio e atividades afins que acontecem virtualmente através de plataformas de videoconferência, chat, redes sociais, mensagens via aplicativo etc.";
-  tooltipPresencial = "Reuniões de apoio, atendimento terapêutico e atividades similares que acontecem de forma presencial em grupo ou individualmente.";
+  cidadesFiltro: string[] = []
+  instituicoesFiltro: string[] = []
 
   tempAtividades = [];
 
-  constructor(public router: Router) {
+  // Diff entre procuro ajuda e quero ajudar
+  titulo: string;
+  apenasComVagas = false;
+
+  constructor(public router: Router, public activatedRoute: ActivatedRoute) {
     super(router);
   }
 
   ngOnInit(): void {
-    this.obterAtendimentos();
+    this.activatedRoute.data.subscribe(data => {
+      this.titulo = data.title;
+      this.apenasComVagas = data.apenasComVagas;
+    })
+
+    this.buscarVagas();
   }
 
-  async obterAtendimentos() {
-    this.loading = true;
+  irParaVejaMais(item) {
+    this.router.navigate(['./veja-mais', item.type, item.id]);
+  }
 
-    const atdTelefonico = await axios.get('http://localhost:3000/atendimentos/telefonico');
+  async buscarVagas() {
+    this.loading = true;
+    this.tempAtividades = [];
+
+    const atdTelefonico = await axios.get('http://localhost:3000/atendimentos/telefonico', { params: { vagas: this.apenasComVagas, ativo: true } });
     atdTelefonico.data.forEach(element => {
       let atd = {
         id: element.id,
@@ -50,7 +64,7 @@ export class ListarAtendimentosAtividadesComponent extends BaseComponent impleme
       this.tempAtividades.push(atd);
     });
 
-    const atdPresencial = await axios.get('http://localhost:3000/atendimentos/presencial');
+    const atdPresencial = await axios.get('http://localhost:3000/atendimentos/presencial', { params: { vagas: this.apenasComVagas, ativo: true } });
     atdPresencial.data.forEach(element => {
       let atd = {
         id: element.id,
@@ -64,7 +78,7 @@ export class ListarAtendimentosAtividadesComponent extends BaseComponent impleme
       this.tempAtividades.push(atd);
     });
 
-    const atdVirtuais = await axios.get('http://localhost:3000/atendimentos/virtual');
+    const atdVirtuais = await axios.get('http://localhost:3000/atendimentos/virtual', { params: { vagas: this.apenasComVagas, ativo: true } });
     atdVirtuais.data.forEach(element => {
       let atd = {
         id: element.id,
@@ -78,7 +92,7 @@ export class ListarAtendimentosAtividadesComponent extends BaseComponent impleme
       this.tempAtividades.push(atd);
     });
 
-    const atdEventos = await axios.get('http://localhost:3000/eventos');
+    const atdEventos = await axios.get('http://localhost:3000/eventos', { params: { vagas: this.apenasComVagas, ativo: true } });
     atdEventos.data.forEach(element => {
       let atd = {
         id: element.id,
@@ -93,13 +107,27 @@ export class ListarAtendimentosAtividadesComponent extends BaseComponent impleme
     });
 
     this.filtrarOpcoesCidades();
-    this.atividades = this.orderByName(this.tempAtividades);
+    this.categorizarAtendimentosPorTipo(this.tempAtividades);
+  }
+
+  categorizarAtendimentosPorTipo(atividades): void {
+    this.virtuais = atividades.filter(x => x.type == 'virtual');
+    this.eventos = atividades.filter(x => x.type == 'evento');
+    this.presenciais = atividades.filter(x => x.type == 'presencial');
+    this.telefonicos = atividades.filter(x => x.type == 'telefonico');
     this.loading = false;
   }
 
   filtrarOpcoesCidades(): void {
     const unique = [...new Set(this.tempAtividades.map(item => item.cidade))];
     this.cidadesFiltro = unique.map(x => {
+      return x ? x.toString() : '';
+    });
+  }
+
+  filtrarOpcoesInstituicoes(): void {
+    const unique = [...new Set(this.tempAtividades.map(item => item.instituicao))];
+    this.instituicoesFiltro = unique.map(x => {
       return x ? x.toString() : '';
     });
   }
@@ -120,8 +148,7 @@ export class ListarAtendimentosAtividadesComponent extends BaseComponent impleme
       atividadesFiltradas = this.filtrarInstituicao(atividadesFiltradas);
     }
 
-    this.atividades = this.orderByName(atividadesFiltradas);
-    this.loading = false;
+    this.categorizarAtendimentosPorTipo(atividadesFiltradas);
   }
 
   filtrarCidade(atividades): any[] {
@@ -143,25 +170,5 @@ export class ListarAtendimentosAtividadesComponent extends BaseComponent impleme
 
   filtrarInstituicao(atividades): any[] {
     return atividades.filter(x => x.instituicao && x.instituicao == this.instituicao);
-  }
-
-  novoEvento() {
-    this.router.navigate(['manter-evento']);
-  }
-
-  novoTelefonico() {
-    this.router.navigate(['manter-telefonico']);
-  }
-
-  novoVirtual() {
-    this.router.navigate(['manter-virtual']);
-  }
-
-  novoPresencial() {
-    this.router.navigate(['manter-presencial']);
-  }
-
-  irParaManterAtendimentos(item) {
-    this.router.navigate(['./manter-' + item.tipo, item.id]);
   }
 }

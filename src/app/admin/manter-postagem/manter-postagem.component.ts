@@ -1,9 +1,9 @@
 import { ActivatedRoute, Router } from '@angular/router';
-import { CriarPostagemDTO } from './../shared/dto/criar-postagem.dto';
 import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { BaseComponent } from '../base.component';
 import axios from 'axios';
+import { PostagemDTO } from 'src/app/_models/postagem.dto';
 @Component({
   selector: 'app-manter-postagem',
   templateUrl: './manter-postagem.component.html',
@@ -13,7 +13,7 @@ export class ManterPostagemComponent extends BaseComponent implements OnInit {
 
   categoria: string = null;
 
-  criarPostagemDTO = new CriarPostagemDTO();
+  criarPostagemDTO = new PostagemDTO();
 
   constructor(private modalService: NgbModal,
     public router: Router,

@@ -14,8 +14,6 @@ import { ManterInstituicaoComponent } from './admin/manter-instituicao/manter-in
 import { ManterPostagemComponent } from './admin/manter-postagem/manter-postagem.component';
 import { ManterProdutoComponent } from './admin/manter-produto/manter-produto.component';
 import { HomeAdminComponent } from './admin/home-admin/home-admin.component';
-import { ProcuroAjudaComponent } from './site/procuro-ajuda/procuro-ajuda.component';
-import { QueroAjudarComponent } from './site/quero-ajudar/quero-ajudar.component';
 import { ApoiarComponent } from './site/apoiar/apoiar.component';
 import { ProdutosComponent } from './site/produtos/produtos.component';
 import { BlogComponent } from './blog/blog.component';
@@ -28,6 +26,7 @@ import { VejaMaisComponent } from './site/veja-mais/veja-mais.component';
 import { FaqComponent } from './site/faq/faq.component';
 import { CadastreAcaoComponent } from './site/cadastre-acao/cadastre-acao.component';
 import { QuemSomosComponent } from './site/quem-somos/quem-somos.component';
+import { ListaAtividadesComponent } from './site/lista-atividades/lista-atividades.component';
 
 const routes: Routes = [
   // Site
@@ -38,8 +37,8 @@ const routes: Routes = [
   { path: 'contato/:page', component: ContatoComponent },
   { path: 'apoiar', component: ApoiarComponent },
   { path: 'produtos', component: ProdutosComponent },
-  { path: 'procuro-ajuda', component: ProcuroAjudaComponent },
-  { path: 'quero-ajudar', component: QueroAjudarComponent },
+  { path: 'procuro-ajuda', component: ListaAtividadesComponent, data: { title: 'Procuro Ajuda', apenasComVagas: false } },
+  { path: 'lista-atividades', component: ListaAtividadesComponent, data: { title: 'Quero Ajudar', apenasComVagas: true } },
   { path: 'veja-mais/:type/:id', component: VejaMaisComponent },
   { path: 'faq', component: FaqComponent },
   { path: 'cadastre-acao', component: CadastreAcaoComponent },

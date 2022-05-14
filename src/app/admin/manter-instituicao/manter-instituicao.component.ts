@@ -1,9 +1,9 @@
-import { InstituicaoDTO } from './../shared/dto/criar-instituicao.dto';
 import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { BaseComponent } from '../base.component';
 import axios from 'axios';
 import { ActivatedRoute, Router } from '@angular/router';
+import { InstituicaoDTO } from 'src/app/_models/instituicao.dto';
 
 declare var require: any
 

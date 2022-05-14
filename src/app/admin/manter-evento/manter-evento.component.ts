@@ -1,9 +1,9 @@
 import { ActivatedRoute, Router } from '@angular/router';
-import { CriarHoraAtendimentoDTO } from './../shared/dto/criar-horario-atendimento.dto';
-import { CriarEventoDTO } from './../shared/dto/criar-evento.dto';
 import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { BaseComponent } from '../base.component';
+import { HoraAtendimentoDTO } from 'src/app/_models/horario-atendimento.dto';
+import { EventoDTO } from 'src/app/_models/evento.dto';
 import cep from 'cep-promise';
 import axios from 'axios';
 
@@ -41,9 +41,9 @@ export class ManterEventoComponent extends BaseComponent implements OnInit {
   instituicoesSelect = [];
   enderecosSelect = [];
 
-  public eventoDTO = new CriarEventoDTO();
+  public eventoDTO = new EventoDTO();
 
-  horaAtendimento: CriarHoraAtendimentoDTO = new CriarHoraAtendimentoDTO();
+  horaAtendimento: HoraAtendimentoDTO = new HoraAtendimentoDTO();
 
   constructor(private modalService: NgbModal,
     public router: Router,
@@ -65,11 +65,11 @@ export class ManterEventoComponent extends BaseComponent implements OnInit {
   public instituicaoHandler($event) {
     this.enderecosSelect = [];
     this.enderecosSelect.push($event.endereco);
-    this.eventoDTO.instituicaoId = $event.id;
+    this.eventoDTO.instituicao.id = $event.id;
   }
 
   public enderecoHandler($event) {
-    this.eventoDTO.enderecoId = $event.id;
+    this.eventoDTO.endereco.id = $event.id;
   }
 
   private async obterInstituicoes() {
@@ -88,7 +88,7 @@ export class ManterEventoComponent extends BaseComponent implements OnInit {
 
 
   async salvar() {
-    this.eventoDTO.horariosAtendimento.push(this.horaAtendimento);
+    this.eventoDTO.horaAtendimento.push(this.horaAtendimento);
     const retorno = await axios.post('http://localhost:3000/eventos', this.eventoDTO);
     this.router.navigate(['procuro-ajuda'])
   }

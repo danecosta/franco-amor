@@ -19,8 +19,6 @@ import { NavbarComponent } from './shared/navbar/navbar.component';
 import { ContatoComponent } from './site/contato/contato.component';
 import { HomeAdminComponent } from './admin/home-admin/home-admin.component';
 import { ApoiarComponent } from './site/apoiar/apoiar.component';
-import { ProcuroAjudaComponent } from './site/procuro-ajuda/procuro-ajuda.component';
-import { QueroAjudarComponent } from './site/quero-ajudar/quero-ajudar.component';
 import { ListarAtendimentosAtividadesComponent } from './admin/listar-atendimentos-atividades/listar-atendimentos-atividades.component';
 import { ManterEventoComponent } from './admin/manter-evento/manter-evento.component';
 import { ManterPresencialComponent } from './admin/manter-presencial/manter-presencial.component';
@@ -39,6 +37,7 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { CommonModule } from "@angular/common";
 import { FormsModule } from '@angular/forms';
 import { ngxLoadingAnimationTypes, NgxLoadingModule } from 'ngx-loading';
+import { ListaAtividadesComponent } from './site/lista-atividades/lista-atividades.component';
 
 
 
@@ -58,8 +57,7 @@ import { ngxLoadingAnimationTypes, NgxLoadingModule } from 'ngx-loading';
     ListarPostagemComponent,
     ListarInstituicaoComponent,
     HomeAdminComponent,
-    QueroAjudarComponent,
-    ProcuroAjudaComponent,
+    ListaAtividadesComponent,
     ApoiarComponent,
     ListarAtendimentosAtividadesComponent,
     ManterTelefonicoComponent,
