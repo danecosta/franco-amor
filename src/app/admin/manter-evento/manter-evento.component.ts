@@ -4,7 +4,6 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { BaseComponent } from '../base.component';
 import { HoraAtendimentoDTO } from 'src/app/_models/horario-atendimento.dto';
 import { EventoDTO } from 'src/app/_models/evento.dto';
-import cep from 'cep-promise';
 import axios from 'axios';
 
 @Component({
@@ -32,11 +31,6 @@ export class ManterEventoComponent extends BaseComponent implements OnInit {
   valor: string;
   participacao: string;
   endereco: string = null;
-
-  cepInformado: string;
-  logradouro: string;
-  bairro: string;
-  cidade: string;
 
   instituicoesSelect = [];
   enderecosSelect = [];
@@ -101,21 +95,25 @@ export class ManterEventoComponent extends BaseComponent implements OnInit {
   }
 
   buscarCep() {
-
+    this.loading = true;
     this.limparCamposCep();
 
-    cep(this.cepInformado).then(
-      data => {
-        this.logradouro = data.street;
-        this.bairro = data.neighborhood;
-        this.cidade = data.city;
-      });
+    if (this.eventoDTO.endereco.cep) {
+      var cepPromise = require("cep-promise");
+      cepPromise(this.eventoDTO.endereco.cep).then(
+        data => {
+          this.eventoDTO.endereco.logradouro = data.street;
+          this.eventoDTO.endereco.bairro = data.neighborhood;
+          this.eventoDTO.endereco.cidade = data.city;
+          this.loading = false;
+        });
+    }
   }
 
   limparCamposCep() {
-    this.logradouro = '';
-    this.bairro = '';
-    this.cidade = '';
+    this.eventoDTO.endereco.logradouro = '';
+    this.eventoDTO.endereco.bairro = '';
+    this.eventoDTO.endereco.cidade = '';
   }
 
   openModal(content) {

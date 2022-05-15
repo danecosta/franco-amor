@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import axios from 'axios';
-import cep from 'cep-promise';
+import { AtendimentoPresencialDTO } from 'src/app/_models/atendimento-presencial.dto';
 import { BaseComponent } from '../base.component';
 
 @Component({
@@ -31,12 +31,9 @@ export class ManterPresencialComponent extends BaseComponent implements OnInit {
   tipoEncontro: string;
   endereco: string = null;
 
-  cepInformado: string;
-  logradouro: string;
-  bairro: string;
-  cidade: string;
-
   atendimento: any;
+
+  atendimentoPresencialDTO = new AtendimentoPresencialDTO();
 
   constructor(private activatedRoute: ActivatedRoute,
     public router: Router) {
@@ -60,20 +57,24 @@ export class ManterPresencialComponent extends BaseComponent implements OnInit {
   salvar() { }
 
   buscarCep() {
-
+    this.loading = true;
     this.limparCamposCep();
 
-    cep(this.cepInformado).then(
-      data => {
-        this.logradouro = data.street;
-        this.bairro = data.neighborhood;
-        this.cidade = data.city;
-      });
+    if (this.atendimentoPresencialDTO.endereco.cep) {
+      var cepPromise = require("cep-promise");
+      cepPromise(this.atendimentoPresencialDTO.endereco.cep).then(
+        data => {
+          this.atendimentoPresencialDTO.endereco.logradouro = data.street;
+          this.atendimentoPresencialDTO.endereco.bairro = data.neighborhood;
+          this.atendimentoPresencialDTO.endereco.cidade = data.city;
+          this.loading = false;
+        });
+    }
   }
 
   limparCamposCep() {
-    this.logradouro = '';
-    this.bairro = '';
-    this.cidade = '';
+    this.atendimentoPresencialDTO.endereco.logradouro = '';
+    this.atendimentoPresencialDTO.endereco.bairro = '';
+    this.atendimentoPresencialDTO.endereco.cidade = '';
   }
 }

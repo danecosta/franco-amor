@@ -55,7 +55,7 @@
                                 <label>CEP</label>
                                 <div class="input-group campoCep">
                                     <input type="text" [textMask]="{mask: cepMask}" class="form-control" name="cep"
-                                        placeholder="CEP" [(ngModel)]="cepInformado">
+                                        placeholder="CEP" [(ngModel)]="atendimentoPresencialDTO.endereco.cep">
                                     <div class="input-group-append">
                                         <button class="btn btn-outline-primary" type="button"
                                             (click)="buscarCep()">Buscar</button>
@@ -69,30 +69,31 @@
                                 <div class="form-group">
                                     <label>Logradouro</label>
                                     <input type="text" class="form-control" id="logradouro" placeholder="Rua ou Av"
-                                        name="logradouro" [(ngModel)]="logradouro">
+                                        name="logradouro" [(ngModel)]="atendimentoPresencialDTO.endereco.logradouro">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Nº/Complemento</label>
-                                    <input type="text" class="form-control" id="numComp" placeholder="Nº/Bloco/Apto">
+                                    <input type="text" class="form-control" id="numComp" placeholder="Nº/Bloco/Apto"
+                                        name="complemento" [(ngModel)]="atendimentoPresencialDTO.endereco.complemento">
                                 </div>
                             </div>
                         </div>
 
-                        <div class="row">
+                        <div class=" row">
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Bairro</label>
                                     <input type="text" class="form-control" id="bairro" placeholder="Bairro"
-                                        name="bairro" [(ngModel)]="bairro">
+                                        name="bairro" [(ngModel)]="atendimentoPresencialDTO.endereco.bairro">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Cidade</label>
                                     <input type="text" class="form-control" id="cidade" placeholder="Cidade"
-                                        name="cidade" [(ngModel)]="cidade">
+                                        name="cidade" [(ngModel)]="atendimentoPresencialDTO.endereco.cidade">
                                 </div>
                             </div>
                         </div>
@@ -231,7 +232,8 @@
                             <div class="custom-control custom-checkbox mb-3 divIndefinido">
                                 <input class="custom-control-input" id="prazoIndefinido" type="checkbox"
                                     name="chkIndefinido" [(ngModel)]="prazoIndefinido">
-                                <label class="custom-control-label" for="prazoIndefinido">Prazo indefinido</label>
+                                <label class="custom-control-label" for="prazoIndefinido">Prazo
+                                    indefinido</label>
                             </div>
                         </div>
                     </div>

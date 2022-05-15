@@ -59,7 +59,7 @@
                                 <label>CEP</label>
                                 <div class="input-group campoCep">
                                     <input type="text" [textMask]="{mask: cepMask}" class="form-control" name="cep"
-                                        placeholder="CEP" [(ngModel)]="cepInformado">
+                                        placeholder="CEP" [(ngModel)]="eventoDTO.endereco.cep">
                                     <div class="input-group-append">
                                         <button class="btn btn-outline-primary" type="button"
                                             (click)="buscarCep()">Buscar</button>
