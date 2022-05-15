@@ -88,7 +88,7 @@
                     <td>
                         <div class="custom-control custom-switch">
                             <input type="checkbox" class="custom-control-input" id="ativoSwitch{{i}}"
-                                [(ngModel)]="item.ativo" (click)="atualizarStatus(item.id)">
+                                [(ngModel)]="item.ativo" (click)="atualizarStatus(item)">
                             <label class="custom-control-label" for="ativoSwitch{{i}}">{{item.ativo?
                                 'Ativo':'Inativo'}}</label>
                         </div>

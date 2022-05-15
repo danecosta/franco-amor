@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { InstituicaoDTO } from 'src/app/_models/instituicao.dto';
 import { InstituicaoService } from 'src/app/_services/instituicao.service';
 import { BaseComponent } from '../base.component';
 
@@ -99,5 +100,10 @@ export class ListarInstituicaoComponent extends BaseComponent implements OnInit 
 
   filtrarCNPJ(instituicoes): any[] {
     return instituicoes.filter(x => x.cnpj && x.cnpj.indexOf(this.filtro.cnpj) > -1);
+  }
+
+  async atualizarStatus(instituicao: InstituicaoDTO) {
+    instituicao.ativo = !instituicao.ativo;
+    await this.instituicaoService.updateInstituicao(instituicao);
   }
 }

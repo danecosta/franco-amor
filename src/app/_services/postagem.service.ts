@@ -20,4 +20,8 @@ export class PostagemService {
   async createPostagem(postagem: PostagemDTO) {
     await axios.post('http://localhost:3000/postagens', postagem);
   }
+
+  async updatePostagem(postagem: PostagemDTO) {
+    await axios.put('http://localhost:3000/postagens', postagem);
+  }
 }

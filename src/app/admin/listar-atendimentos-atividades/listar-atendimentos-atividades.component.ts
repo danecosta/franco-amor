@@ -172,7 +172,8 @@ export class ListarAtendimentosAtividadesComponent extends BaseComponent impleme
     this.router.navigate(['./editar-' + item.type, item.id]);
   }
 
-  atualizarStatus(id) {
-    console.log(id)
+  async atualizarStatus(atendimento) {
+    atendimento.ativo = !atendimento.ativo;
+    await this.atendimentoService.updateAtendimento(atendimento);
   }
 }

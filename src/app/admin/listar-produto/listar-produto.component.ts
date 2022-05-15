@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ProdutoDTO } from 'src/app/_models/criar-produto.dto';
 import { ProdutoService } from 'src/app/_services/produto.service';
 import { BaseComponent } from '../base.component';
 
@@ -64,6 +65,11 @@ export class ListarProdutoComponent extends BaseComponent implements OnInit {
 
   filtrarNome(produtos): any[] {
     return produtos.filter(x => x.nome && x.nome.indexOf(this.filtro.nome) > -1);
+  }
+
+  async atualizarStatus(produto: ProdutoDTO) {
+    produto.ativo = !produto.ativo;
+    await this.produtoService.updateProduto(produto);
   }
 
 }

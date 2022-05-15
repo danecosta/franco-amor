@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { PostagemDTO } from 'src/app/_models/postagem.dto';
 import { PostagemService } from 'src/app/_services/postagem.service';
 import { BaseComponent } from '../base.component';
 
@@ -73,6 +74,11 @@ export class ListarPostagemComponent extends BaseComponent implements OnInit {
 
   novaPostagem() {
     this.router.navigate(['cadastrar-postagem']);
+  }
+
+  async atualizarStatus(postagem: PostagemDTO) {
+    postagem.ativo = !postagem.ativo;
+    await this.postagemService.updatePostagem(postagem);
   }
 
 }

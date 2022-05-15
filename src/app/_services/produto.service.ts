@@ -20,4 +20,8 @@ export class ProdutoService {
   async createProduto(produto: ProdutoDTO) {
     await axios.post('http://localhost:3000/produtos', produto);
   }
+
+  async updateProduto(produto: ProdutoDTO) {
+    await axios.put('http://localhost:3000/produtos', produto);
+  }
 }
