@@ -1,7 +1,5 @@
 import { Router } from '@angular/router';
-import { Component, ComponentFactoryResolver, OnInit } from '@angular/core';
-import { environment } from '../../../environments/environment'
- import * as firebase from 'firebase/app';
+import { Component, OnInit } from '@angular/core';
 import 'firebase/compat/auth';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 

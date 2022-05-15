@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import axios from 'axios';
+import { AtendimentoService } from 'src/app/_services/atendimento.service';
+import { EventoService } from 'src/app/_services/evento.service';
 import { BaseComponent } from '../base.component';
 
 @Component({
@@ -25,7 +26,9 @@ export class ListarAtendimentosAtividadesComponent extends BaseComponent impleme
 
   tempAtividades = [];
 
-  constructor(public router: Router) {
+  constructor(public router: Router,
+    private atendimentoService: AtendimentoService,
+    private eventoService: EventoService) {
     super(router);
   }
 
@@ -36,7 +39,7 @@ export class ListarAtendimentosAtividadesComponent extends BaseComponent impleme
   async obterAtendimentos() {
     this.loading = true;
 
-    const atdTelefonico = await axios.get('http://localhost:3000/atendimentos/telefonico');
+    const atdTelefonico = await this.atendimentoService.getAllByType('telefonico');
     atdTelefonico.data.forEach(element => {
       let atd = {
         id: element.id,
@@ -51,7 +54,7 @@ export class ListarAtendimentosAtividadesComponent extends BaseComponent impleme
       this.tempAtividades.push(atd);
     });
 
-    const atdPresencial = await axios.get('http://localhost:3000/atendimentos/presencial');
+    const atdPresencial = await this.atendimentoService.getAllByType('presencial');
     atdPresencial.data.forEach(element => {
       let atd = {
         id: element.id,
@@ -66,7 +69,7 @@ export class ListarAtendimentosAtividadesComponent extends BaseComponent impleme
       this.tempAtividades.push(atd);
     });
 
-    const atdVirtuais = await axios.get('http://localhost:3000/atendimentos/virtual');
+    const atdVirtuais = await this.atendimentoService.getAllByType('virtual');
     atdVirtuais.data.forEach(element => {
       let atd = {
         id: element.id,
@@ -81,7 +84,7 @@ export class ListarAtendimentosAtividadesComponent extends BaseComponent impleme
       this.tempAtividades.push(atd);
     });
 
-    const atdEventos = await axios.get('http://localhost:3000/eventos');
+    const atdEventos = await this.eventoService.getAll();
     atdEventos.data.forEach(element => {
       let atd = {
         id: element.id,

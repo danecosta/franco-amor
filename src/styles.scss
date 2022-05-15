@@ -28,7 +28,15 @@ body {
     margin-top: -2rem;
 }
 
-.check{
+.check {
     white-space: nowrap;
     word-break: break-word;
+}
+
+.rodape {
+    text-align: center;
+
+    .btn:not(:last-child) {
+        margin-right: 2rem;
+    }
 }

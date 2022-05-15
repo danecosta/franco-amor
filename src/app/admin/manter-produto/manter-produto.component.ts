@@ -2,8 +2,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { BaseComponent } from '../base.component';
-import axios from 'axios';
 import { ProdutoDTO } from 'src/app/_models/criar-produto.dto';
+import { ProdutoService } from 'src/app/_services/produto.service';
 @Component({
   selector: 'app-manter-produto',
   templateUrl: './manter-produto.component.html',
@@ -15,7 +15,8 @@ export class ManterProdutoComponent extends BaseComponent implements OnInit {
 
   constructor(private modalService: NgbModal,
     public router: Router,
-    private activatedRoute: ActivatedRoute) {
+    private activatedRoute: ActivatedRoute,
+    private produtoService: ProdutoService) {
     super(router);
 
     this.activatedRoute.data.subscribe(data => {
@@ -31,13 +32,13 @@ export class ManterProdutoComponent extends BaseComponent implements OnInit {
   async buscarProduto() {
     let id = this.activatedRoute.snapshot.paramMap.get('id');
     if (id)
-      this.produtoDTO = (await axios.get('http://localhost:3000/produtos/' + id)).data;
+      this.produtoDTO = (await this.produtoService.getById(id)).data;
   }
 
   public async salvar() {
     this.loading = true;
     if (this.produtoDTO.nome) {
-      await axios.post('http://localhost:3000/produtos', this.produtoDTO);
+      this.produtoService.createProduto(this.produtoDTO);
       this.router.navigate(['listar-produto'])
     }
     this.loading = false;

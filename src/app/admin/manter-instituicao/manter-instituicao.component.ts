@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { BaseComponent } from '../base.component';
-import axios from 'axios';
 import { ActivatedRoute, Router } from '@angular/router';
 import { InstituicaoDTO } from 'src/app/_models/instituicao.dto';
+import { InstituicaoService } from 'src/app/_services/instituicao.service';
 
 declare var require: any
 
@@ -19,6 +19,7 @@ export class ManterInstituicaoComponent extends BaseComponent implements OnInit 
 
   constructor(private modalService: NgbModal,
     private activatedRoute: ActivatedRoute,
+    private instituicaoService: InstituicaoService,
     public router: Router) {
     super(router);
 
@@ -35,15 +36,15 @@ export class ManterInstituicaoComponent extends BaseComponent implements OnInit 
     let id = this.activatedRoute.snapshot.paramMap.get('id');
 
     if (id)
-      this.instituicao = (await axios.get('http://localhost:3000/instituicoes/' + id)).data;
+      this.instituicao = (await this.instituicaoService.getById(id)).data;
   }
 
   public async salvar() {
     this.loading = true;
     if (!this.instituicao.id) {
-      await axios.post('http://localhost:3000/instituicoes', this.instituicao);
+      await this.instituicaoService.createInstituicao(this.instituicao);
     } else {
-      await axios.put('http://localhost:3000/instituicoes', this.instituicao);
+      await this.instituicaoService.updateInstituicao(this.instituicao);
     }
     this.loading = false;
     this.voltarParaTab('atendimentos');

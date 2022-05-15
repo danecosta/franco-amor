@@ -4,7 +4,8 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { BaseComponent } from '../base.component';
 import { HoraAtendimentoDTO } from 'src/app/_models/horario-atendimento.dto';
 import { EventoDTO } from 'src/app/_models/evento.dto';
-import axios from 'axios';
+import { InstituicaoService } from 'src/app/_services/instituicao.service';
+import { EventoService } from 'src/app/_services/evento.service';
 
 @Component({
   selector: 'app-manter-evento',
@@ -41,7 +42,9 @@ export class ManterEventoComponent extends BaseComponent implements OnInit {
 
   constructor(private modalService: NgbModal,
     public router: Router,
-    private activatedRoute: ActivatedRoute) {
+    private activatedRoute: ActivatedRoute,
+    private instituicaoService: InstituicaoService,
+    private eventoService: EventoService) {
     super(router);
 
     this.activatedRoute.data.subscribe(data => {
@@ -58,7 +61,7 @@ export class ManterEventoComponent extends BaseComponent implements OnInit {
   async buscarEvento() {
     let id = this.activatedRoute.snapshot.paramMap.get('id');
     if (id)
-      this.eventoDTO = (await axios.get('http://localhost:3000/eventos/' + id)).data;
+      this.eventoDTO = (await this.eventoService.getById(id)).data;
   }
 
   public instituicaoHandler($event) {
@@ -72,9 +75,9 @@ export class ManterEventoComponent extends BaseComponent implements OnInit {
   }
 
   private async obterInstituicoes() {
-    const instituicoes = await (await axios.get('http://localhost:3000/instituicoes')).data;
+    const instituicoes = await this.instituicaoService.getAll();
     if (instituicoes) {
-      instituicoes.forEach(element => {
+      instituicoes.data.forEach(element => {
         let select = {
           id: element.id,
           nome: element.nome,
@@ -89,7 +92,7 @@ export class ManterEventoComponent extends BaseComponent implements OnInit {
   public async salvar() {
     this.loading = true;
     this.eventoDTO.horaAtendimento.push(this.horaAtendimento);
-    await axios.post('http://localhost:3000/eventos', this.eventoDTO);
+    await this.eventoService.createEvento(this.eventoDTO);
     this.loading = false;
     this.voltarParaTab('atendimentos');
   }

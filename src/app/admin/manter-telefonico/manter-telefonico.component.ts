@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import axios from 'axios';
+import { AtendimentoService } from 'src/app/_services/atendimento.service';
 import { BaseComponent } from '../base.component';
 
 @Component({
@@ -21,7 +21,8 @@ export class ManterTelefonicoComponent extends BaseComponent implements OnInit {
   atendimento: any;
 
   constructor(private activatedRoute: ActivatedRoute,
-    public router: Router) {
+    public router: Router,
+    private atendimentoService: AtendimentoService) {
     super(router);
 
     this.activatedRoute.data.subscribe(data => {
@@ -36,7 +37,7 @@ export class ManterTelefonicoComponent extends BaseComponent implements OnInit {
   async buscarAtividade() {
     let id = this.activatedRoute.snapshot.paramMap.get('id');
     if (id)
-      this.atendimento = (await axios.get('http://localhost:3000/atendimentos/telefonico/' + id)).data;
+      this.atendimento = (await this.atendimentoService.getByIdByType('telefonico', id)).data;
   }
 
   salvar() { }

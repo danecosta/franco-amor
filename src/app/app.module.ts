@@ -38,6 +38,12 @@ import { CommonModule } from "@angular/common";
 import { FormsModule } from '@angular/forms';
 import { ngxLoadingAnimationTypes, NgxLoadingModule } from 'ngx-loading';
 import { ListaAtividadesComponent } from './site/lista-atividades/lista-atividades.component';
+import { InstituicaoService } from './_services/instituicao.service';
+import { EventoService } from './_services/evento.service';
+import { AtendimentoService } from './_services/atendimento.service';
+import { ProdutoService } from './_services/produto.service';
+import { PostagemService } from './_services/postagem.service';
+import { UsuarioService } from './_services/usuario.service';
 
 
 
@@ -83,14 +89,21 @@ import { ListaAtividadesComponent } from './site/lista-atividades/lista-atividad
     CommonModule,
     NgxLoadingModule.forRoot({
       animationType: ngxLoadingAnimationTypes.wanderingCubes,
-      backdropBackgroundColour: 'rgba(0,0,0,0.1)', 
+      backdropBackgroundColour: 'rgba(0,0,0,0.1)',
       backdropBorderRadius: '4px',
-      primaryColour: '#ffffff', 
-      secondaryColour: '#ffffff', 
+      primaryColour: '#ffffff',
+      secondaryColour: '#ffffff',
       tertiaryColour: '#ffffff'
-  })
+    })
   ],
-  providers: [],
+  providers: [
+    InstituicaoService,
+    EventoService,
+    AtendimentoService,
+    ProdutoService,
+    PostagemService,
+    UsuarioService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

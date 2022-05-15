@@ -410,18 +410,16 @@
                 </form>
 
                 <hr>
-                <div class="row">
-                    <div class="col-md-12">
-                        <button type="button" class="btn btn-outline-light"
-                            (click)="voltarParaTab('atendimentos')">Voltar</button>
+                <div class="rodape">
+                    <button type="button" class="btn btn-outline-light"
+                        (click)="voltarParaTab('atendimentos')">Voltar</button>
 
-                        <button type="button" class="btn btn-outline-warning"
-                            (click)="relatarProblema('Cadastrar Serviço Virtual')">Relatar problema ou
-                            dúvida</button>
+                    <button type="button" class="btn btn-outline-warning"
+                        (click)="relatarProblema('Cadastrar Serviço Virtual')">Relatar problema ou
+                        dúvida</button>
 
-                        <button type="button" class="btn btn-outline-success" (click)="salvar()"
-                            [disabled]="!myForm.form.valid">Salvar</button>
-                    </div>
+                    <button type="button" class="btn btn-outline-success" (click)="salvar()"
+                        [disabled]="!myForm.form.valid">Salvar</button>
                 </div>
             </div>
         </section>

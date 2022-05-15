@@ -2,8 +2,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { BaseComponent } from '../base.component';
-import axios from 'axios';
 import { PostagemDTO } from 'src/app/_models/postagem.dto';
+import { PostagemService } from 'src/app/_services/postagem.service';
 @Component({
   selector: 'app-manter-postagem',
   templateUrl: './manter-postagem.component.html',
@@ -17,7 +17,8 @@ export class ManterPostagemComponent extends BaseComponent implements OnInit {
 
   constructor(private modalService: NgbModal,
     public router: Router,
-    private activatedRoute: ActivatedRoute) {
+    private activatedRoute: ActivatedRoute,
+    private postagemService: PostagemService) {
     super(router);
 
     this.activatedRoute.data.subscribe(data => {
@@ -32,13 +33,13 @@ export class ManterPostagemComponent extends BaseComponent implements OnInit {
   async buscarPostagem() {
     let id = this.activatedRoute.snapshot.paramMap.get('id');
     if (id)
-      this.postagemDTO = (await axios.get('http://localhost:3000/postagens/' + id)).data;
+      this.postagemDTO = (await this.postagemService.getById(id)).data;
   }
 
   public async salvar() {
     this.loading = true;
     if (this.postagemDTO.titulo)
-      await axios.post('http://localhost:3000/postagens', this.postagemDTO);
+      await this.postagemService.createPostagem(this.postagemDTO);
     this.router.navigate(['listar-postagem']);
     this.loading = false;
     this.voltarParaTab('postagens');

@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { InstituicaoService } from 'src/app/_services/instituicao.service';
 import { BaseComponent } from '../base.component';
-import axios from 'axios';
-
 
 export class FiltroInstituicao {
   nome: string = null;
@@ -23,7 +22,7 @@ export class ListarInstituicaoComponent extends BaseComponent implements OnInit 
   public instituticoes: any[] = [];
   public filtro = new FiltroInstituicao();
 
-  constructor(public router: Router) {
+  constructor(public router: Router, private instituicaoService: InstituicaoService) {
     super(router);
   }
 
@@ -41,7 +40,7 @@ export class ListarInstituicaoComponent extends BaseComponent implements OnInit 
 
   async obterInstituicoes() {
     this.loading = true;
-    const inst = await axios.get('http://localhost:3000/instituicoes');
+    const inst = await this.instituicaoService.getAll();
 
     inst.data.forEach(element => {
       let inst = {

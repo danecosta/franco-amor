@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import axios from 'axios';
+import { PostagemService } from 'src/app/_services/postagem.service';
 import { BaseComponent } from '../base.component';
 
 export class FiltroPostagem {
@@ -18,7 +18,8 @@ export class ListarPostagemComponent extends BaseComponent implements OnInit {
   postagens: any[] = [];
   filtro: FiltroPostagem = new FiltroPostagem();
 
-  constructor(public router: Router) {
+  constructor(public router: Router,
+    private postagemService: PostagemService) {
     super(router);
   }
 
@@ -32,7 +33,7 @@ export class ListarPostagemComponent extends BaseComponent implements OnInit {
 
   async obterPostagens() {
     this.loading = true;
-    const inst = await axios.get('http://localhost:3000/postagens');
+    const inst = await this.postagemService.getAll();
 
     inst.data.forEach(element => {
       let inst = {

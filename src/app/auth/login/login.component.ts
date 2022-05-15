@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { UsuarioService } from 'src/app/_services/usuario.service';
 
 @Component({
   selector: 'app-login',
@@ -20,7 +21,8 @@ export class LoginComponent implements OnInit {
 
   constructor(private router: Router,
     public auth: AngularFireAuth,
-    private modalService: NgbModal) { }
+    private modalService: NgbModal,
+    private usuarioService: UsuarioService) { }
 
   ngOnInit() {
   }
@@ -38,23 +40,16 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  public async loginProprio(){
-    const retorno = await axios.post('http://localhost:3000/usuarios/auth/login', {
-      "username": this.email,
-      "password": this.password
-    });
+  public async loginProprio() {
+    const retorno = await this.usuarioService.login(this.email, this.password);
 
-    if(retorno.data) localStorage.setItem('fr-log-trace-id', retorno.data.access_token);
-    const profile = await axios.get(`http://localhost:3000/usuarios/perfil/${retorno.data.uuid}`, {
-      headers: {
-        Authorization: 'Bearer ' + retorno.data.access_token
-      }
-     });
+    if (retorno.data) localStorage.setItem('fr-log-trace-id', retorno.data.access_token);
+    const profile = await this.usuarioService.getUserProfile(retorno.data.uuid, retorno.data.access_token);
 
-     localStorage.setItem('fr-user-data', profile.data);
-     this.router.navigate(['home-admin']);
+    localStorage.setItem('fr-user-data', profile.data);
+    this.router.navigate(['home-admin']);
   }
-  
+
   public recuperarSenha() {
     if (!this.email) {
       alert('Falta de campo obrigatório - Insira o e-mail para recuperação senha !')

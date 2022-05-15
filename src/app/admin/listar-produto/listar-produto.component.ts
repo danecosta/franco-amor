@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import axios from 'axios';
+import { ProdutoService } from 'src/app/_services/produto.service';
 import { BaseComponent } from '../base.component';
 
 export class FiltroProduto {
@@ -18,7 +18,8 @@ export class ListarProdutoComponent extends BaseComponent implements OnInit {
 
   filtro = new FiltroProduto();
 
-  constructor(public router: Router) {
+  constructor(public router: Router,
+    private produtoService: ProdutoService) {
     super(router);
   }
 
@@ -36,7 +37,7 @@ export class ListarProdutoComponent extends BaseComponent implements OnInit {
 
   async obterProdutos() {
     this.loading = true;
-    const prod = await axios.get('http://localhost:3000/produtos');
+    const prod = await this.produtoService.getAll();
     prod.data.forEach(element => {
       let prod = {
         id: element.id,
